@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RW1T1" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-W0-T0c">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RW1T1" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-W0-T0c">
                                 <rect key="frame" x="580" y="399" width="34" height="36"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woodBody" translatesAutoresizingMaskIntoConstraints="NO" id="y57-q5-5Yj">
@@ -118,13 +118,13 @@
                                 <rect key="frame" x="768" y="320.5" width="376" height="193"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Dq-W9-II2">
-                                <rect key="frame" x="831" y="303" width="253" height="228"/>
+                                <rect key="frame" x="831" y="303.5" width="253" height="227"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="4jG-2z-KmB">
-                                        <rect key="frame" x="0.0" y="0.0" width="253" height="114"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="253" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t3y-ju-gZS">
-                                                <rect key="frame" x="0.0" y="19.5" width="75" height="75"/>
+                                                <rect key="frame" x="0.0" y="17.5" width="75" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw1"/>
                                                 <connections>
@@ -132,7 +132,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="csx-wJ-hFF">
-                                                <rect key="frame" x="89" y="19.5" width="75" height="75"/>
+                                                <rect key="frame" x="89" y="17.5" width="75" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw2"/>
                                                 <connections>
@@ -140,7 +140,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cse-om-TMV">
-                                                <rect key="frame" x="178" y="19.5" width="75" height="75"/>
+                                                <rect key="frame" x="178" y="17.5" width="75" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw3"/>
                                                 <connections>
@@ -150,28 +150,28 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-9L-gXJ">
-                                        <rect key="frame" x="0.0" y="114" width="253" height="114"/>
+                                        <rect key="frame" x="0.0" y="110" width="253" height="117"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nPi-t8-cVg">
-                                                <rect key="frame" x="0.0" y="19.5" width="75" height="75"/>
+                                                <rect key="frame" x="0.0" y="21" width="75" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="rw1"/>
+                                                <state key="normal" image="rw4"/>
                                                 <connections>
                                                     <action selector="WSize4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xtr-Lb-HTB"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="maI-I1-jmo">
-                                                <rect key="frame" x="89" y="19.5" width="75" height="75"/>
+                                                <rect key="frame" x="89" y="21" width="75" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="rw1"/>
+                                                <state key="normal" image="rw5"/>
                                                 <connections>
                                                     <action selector="WSize5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VPn-7Z-NIu"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bcz-jC-eYx">
-                                                <rect key="frame" x="178" y="19.5" width="75" height="75"/>
+                                                <rect key="frame" x="178" y="18.5" width="75" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="rw1"/>
+                                                <state key="normal" image="rw6"/>
                                                 <connections>
                                                     <action selector="WSize6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ti-t3-o3r"/>
                                                 </connections>
@@ -229,6 +229,9 @@
         <image name="rw1" width="75" height="75"/>
         <image name="rw2" width="75" height="75"/>
         <image name="rw3" width="75" height="75"/>
+        <image name="rw4" width="75" height="75"/>
+        <image name="rw5" width="75" height="75"/>
+        <image name="rw6" width="80" height="80"/>
         <image name="woodBody" width="411" height="85"/>
         <image name="woodWing1" width="376" height="193"/>
         <image name="woodWing2" width="274" height="69"/>
