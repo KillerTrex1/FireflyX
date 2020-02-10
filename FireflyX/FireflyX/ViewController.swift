@@ -13,9 +13,26 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var FireflyImage: UIImageView!
     
-    var body = "R"
-    var wing = 1
-    var tail = 1
+    @IBOutlet weak var BodyWood: UIImageView!
+    
+    @IBOutlet weak var BodyOptions: UIStackView!
+    
+    @IBOutlet weak var Wing2Wood: UIImageView!
+    
+    @IBOutlet weak var Wing2Options: UIStackView!
+    
+    @IBOutlet weak var Wing1Wood: UIImageView!
+    
+    @IBOutlet weak var Wing1Options: UIStackView!
+    
+    
+    
+    var bodyTemp = "R"
+    var wingTemp = 1
+    var tailTemp = 1
+    var body = Body()
+    var wing = Wing()
+    var JarMode = true
     
     
     override func viewDidLoad() {
@@ -25,87 +42,103 @@ class ViewController: UIViewController {
 
 
     @IBAction func RedBody(_ sender: Any) {
-        body = "R"
+        bodyTemp = "R"
         UpdateImage()
         
     }
     
+    @IBAction func JarFunction(_ sender: Any) {
+        JarMode = !JarMode
+        ChoiceAppear()
+    }
     @IBAction func OrangeBody(_ sender: Any) {
-        body = "O"
+        bodyTemp = "O"
         UpdateImage()
         
     }
     
     
     @IBAction func YellowBody(_ sender: Any) {
-        body = "Y"
+        bodyTemp = "Y"
         UpdateImage()
         
     }
     
     
     @IBAction func GreenBody(_ sender: Any) {
-        body = "G"
+        bodyTemp = "G"
         UpdateImage()
         
     }
     
     @IBAction func BlueBody(_ sender: Any) {
-        body = "B"
+        bodyTemp = "B"
         UpdateImage()
         
     }
     
     @IBAction func IndigoBody(_ sender: Any) {
-        body = "I"
+        bodyTemp = "I"
         UpdateImage()
         
     }
     
     @IBAction func VioletBody(_ sender: Any) {
-        body = "V"
+        bodyTemp = "V"
         UpdateImage()
         
     }
     
     @IBAction func WSize1(_ sender: Any) {
-        wing = 1
+        wingTemp = 1
         UpdateImage()
         
     }
     
     
     @IBAction func WSize2(_ sender: Any) {
-        wing = 2
+        wingTemp = 2
         UpdateImage()
         
     }
     
     @IBAction func WSize3(_ sender: Any) {
-        wing = 3
+        wingTemp = 3
         UpdateImage()
         
     }
     
     @IBAction func WSize4(_ sender: Any) {
-        wing = 4
+        wingTemp = 4
         UpdateImage()
         
     }
     
     @IBAction func WSize5(_ sender: Any) {
-        wing = 5
+        wingTemp = 5
         UpdateImage()
         
     }
     
     @IBAction func WSize6(_ sender: Any) {
-        wing = 6
+        wingTemp = 6
         UpdateImage()
         
     }
     func UpdateImage(){
-        FireflyImage.image = UIImage(named: "\(body)W\(wing)T\(tail)")
+        FireflyImage.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)")
+    }
+    
+    func ChoiceAppear(){
+        BodyWood.isHidden = JarMode
+        BodyOptions.isHidden = JarMode
+        Wing1Wood.isHidden = JarMode
+        Wing1Options.isHidden = JarMode
+        Wing2Wood.isHidden = JarMode
+        Wing2Options.isHidden = JarMode
+        if JarMode {
+            
+        }
     }
 }
 

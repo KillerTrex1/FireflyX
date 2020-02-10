@@ -14,6 +14,7 @@ class Body{
     init(){
         color = .Red
         tempo = Tempolookup(color: self.color)
+        
     }
     
     func setTempo(tempo:Tempos){
