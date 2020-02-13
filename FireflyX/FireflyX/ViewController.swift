@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     var tailTemp = 1
     var body = Body()
     var wing = Wing()
-    var JarMode = true
+    var JarMode = false
     
     
     override func viewDidLoad() {
