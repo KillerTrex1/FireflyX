@@ -19,8 +19,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RW1T1" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-W0-T0c">
-                                <rect key="frame" x="580" y="281" width="34" height="72"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow300" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-W0-T0c">
+                                <rect key="frame" x="580" y="17" width="34" height="600"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woodBody" translatesAutoresizingMaskIntoConstraints="NO" id="y57-q5-5Yj">
                                 <rect key="frame" x="186" y="80" width="822" height="170"/>
@@ -91,25 +91,37 @@
                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-is-93m">
                                 <rect key="frame" x="0.0" y="288.5" width="212" height="57"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kFX-0a-6fF">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kFX-0a-6fF" userLabel="Note1">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="lw1"/>
+                                        <connections>
+                                            <action selector="WNote1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BBD-Hg-sIC"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XQ6-zz-du5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XQ6-zz-du5" userLabel="Note2">
                                         <rect key="frame" x="56" y="0.0" width="50.5" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="lw2"/>
+                                        <connections>
+                                            <action selector="WNote2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uus-hD-Qt7"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0Tj-iI-Zc5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0Tj-iI-Zc5" userLabel="Note4">
                                         <rect key="frame" x="112.5" y="0.0" width="50" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="lw3"/>
+                                        <connections>
+                                            <action selector="WNote4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DfO-Yt-opy"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W9t-3m-7io">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W9t-3m-7io" userLabel="Note8">
                                         <rect key="frame" x="168.5" y="0.0" width="43.5" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="lw4"/>
+                                        <connections>
+                                            <action selector="WNote8:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l3c-wm-6W5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
@@ -190,16 +202,25 @@
                                     <action selector="JarFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7X-6V-sJ6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaL-H3-dXI">
+                                <rect key="frame" x="4" y="44" width="204" height="204"/>
+                                <state key="normal" image="leftLever"/>
+                                <connections>
+                                    <action selector="ToggleRest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8xH-Ve-0cU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="4Dq-W9-II2" firstAttribute="centerY" secondItem="kOz-W0-T0c" secondAttribute="centerY" id="13l-qX-QEC"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="leading" secondItem="vs4-AE-r1L" secondAttribute="trailing" constant="200" id="GLE-qr-ZmD"/>
                             <constraint firstItem="t20-sB-zvE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="IaY-B9-gK2"/>
+                            <constraint firstItem="vs4-AE-r1L" firstAttribute="top" secondItem="UaL-H3-dXI" secondAttribute="bottom" id="K9o-dA-dlu"/>
                             <constraint firstItem="vs4-AE-r1L" firstAttribute="centerY" secondItem="kOz-W0-T0c" secondAttribute="centerY" id="Lx0-ub-LCi"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="MxU-Ju-CXZ"/>
                             <constraint firstItem="EbZ-is-93m" firstAttribute="centerY" secondItem="vs4-AE-r1L" secondAttribute="centerY" id="Q1J-RX-iWB"/>
                             <constraint firstAttribute="top" secondItem="y57-q5-5Yj" secondAttribute="top" constant="-80" id="WMW-eG-xMC"/>
+                            <constraint firstItem="UaL-H3-dXI" firstAttribute="centerX" secondItem="vs4-AE-r1L" secondAttribute="centerX" id="X8B-7Z-83s"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c9j-DU-frP"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="trailing" secondItem="K1E-AI-CP2" secondAttribute="leading" constant="-110" id="dOZ-xl-mVF"/>
                             <constraint firstItem="K1E-AI-CP2" firstAttribute="centerY" secondItem="kOz-W0-T0c" secondAttribute="centerY" id="ec8-um-2pY"/>
@@ -217,6 +238,7 @@
                         <outlet property="BodyOptions" destination="YlB-dM-Jo5" id="Jjm-Pm-qHV"/>
                         <outlet property="BodyWood" destination="y57-q5-5Yj" id="47Z-WJ-nF1"/>
                         <outlet property="FireflyImage" destination="kOz-W0-T0c" id="UIg-rK-3DK"/>
+                        <outlet property="RestLever" destination="UaL-H3-dXI" id="8P2-Fh-c16"/>
                         <outlet property="Wing1Options" destination="4Dq-W9-II2" id="zW0-Pm-UmT"/>
                         <outlet property="Wing1Wood" destination="K1E-AI-CP2" id="Zxg-rr-UgQ"/>
                         <outlet property="Wing2Options" destination="EbZ-is-93m" id="Ksi-hR-VhH"/>
@@ -230,7 +252,6 @@
     </scenes>
     <resources>
         <image name="JarClose" width="178" height="347"/>
-        <image name="RW1T1" width="34" height="36"/>
         <image name="b1" width="45" height="45"/>
         <image name="b2" width="45" height="45"/>
         <image name="b3" width="45" height="45"/>
@@ -239,6 +260,7 @@
         <image name="b6" width="45" height="45"/>
         <image name="b7" width="45" height="45"/>
         <image name="bg" width="960" height="720"/>
+        <image name="leftLever" width="102" height="102"/>
         <image name="lw1" width="40" height="40"/>
         <image name="lw2" width="40" height="40"/>
         <image name="lw3" width="40" height="40"/>
@@ -252,5 +274,6 @@
         <image name="woodBody" width="411" height="85"/>
         <image name="woodWing1" width="376" height="193"/>
         <image name="woodWing2" width="274" height="69"/>
+        <image name="yellow300" width="300" height="300"/>
     </resources>
 </document>
