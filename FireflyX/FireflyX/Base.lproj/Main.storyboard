@@ -19,8 +19,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow300" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-W0-T0c">
-                                <rect key="frame" x="580" y="17" width="34" height="600"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YW1T1" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-W0-T0c">
+                                <rect key="frame" x="580" y="167" width="34" height="300"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woodBody" translatesAutoresizingMaskIntoConstraints="NO" id="y57-q5-5Yj">
                                 <rect key="frame" x="186" y="80" width="822" height="170"/>
@@ -209,6 +209,52 @@
                                     <action selector="ToggleRest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8xH-Ve-0cU"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woodTail" translatesAutoresizingMaskIntoConstraints="NO" id="2w4-Ez-5gG">
+                                <rect key="frame" x="131" y="470.5" width="932" height="214"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2w4-Ez-5gG" secondAttribute="height" multiplier="466:107" id="IT2-2S-dSe"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Wb7-h1-aPq" userLabel="Tail Options">
+                                <rect key="frame" x="311" y="526.5" width="572" height="102"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDb-qP-Drq" userLabel="T0">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="102"/>
+                                        <state key="normal" image="YL0"/>
+                                        <connections>
+                                            <action selector="TailButton0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VsO-JU-MDb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHD-LG-TEy" userLabel="T1">
+                                        <rect key="frame" x="118" y="0.0" width="100" height="102"/>
+                                        <state key="normal" image="YL1"/>
+                                        <connections>
+                                            <action selector="TailButton1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WCu-Gx-Wr1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqZ-Qr-0mT" userLabel="T2">
+                                        <rect key="frame" x="236" y="0.0" width="100" height="102"/>
+                                        <state key="normal" image="YL2"/>
+                                        <connections>
+                                            <action selector="TailButton2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pMR-Sy-BNC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-RC-C8U" userLabel="T3">
+                                        <rect key="frame" x="354" y="0.0" width="100" height="102"/>
+                                        <state key="normal" image="YL3"/>
+                                        <connections>
+                                            <action selector="TailButton3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2rQ-A8-Cb3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PE-gR-49A" userLabel="T4">
+                                        <rect key="frame" x="472" y="0.0" width="100" height="102"/>
+                                        <state key="normal" image="YL4"/>
+                                        <connections>
+                                            <action selector="TailButton4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jc3-Co-lcA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -219,13 +265,17 @@
                             <constraint firstItem="vs4-AE-r1L" firstAttribute="centerY" secondItem="kOz-W0-T0c" secondAttribute="centerY" id="Lx0-ub-LCi"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="MxU-Ju-CXZ"/>
                             <constraint firstItem="EbZ-is-93m" firstAttribute="centerY" secondItem="vs4-AE-r1L" secondAttribute="centerY" id="Q1J-RX-iWB"/>
+                            <constraint firstItem="2w4-Ez-5gG" firstAttribute="top" secondItem="4Dq-W9-II2" secondAttribute="bottom" constant="40" id="Uiu-pG-qSI"/>
                             <constraint firstAttribute="top" secondItem="y57-q5-5Yj" secondAttribute="top" constant="-80" id="WMW-eG-xMC"/>
                             <constraint firstItem="UaL-H3-dXI" firstAttribute="centerX" secondItem="vs4-AE-r1L" secondAttribute="centerX" id="X8B-7Z-83s"/>
+                            <constraint firstItem="Wb7-h1-aPq" firstAttribute="centerX" secondItem="2w4-Ez-5gG" secondAttribute="centerX" id="XEt-M9-Oxw"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c9j-DU-frP"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="trailing" secondItem="K1E-AI-CP2" secondAttribute="leading" constant="-110" id="dOZ-xl-mVF"/>
                             <constraint firstItem="K1E-AI-CP2" firstAttribute="centerY" secondItem="kOz-W0-T0c" secondAttribute="centerY" id="ec8-um-2pY"/>
                             <constraint firstItem="y57-q5-5Yj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fbI-jo-JDL"/>
+                            <constraint firstItem="2w4-Ez-5gG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i9h-b1-iaT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="t20-sB-zvE" secondAttribute="bottom" constant="10" id="ign-OW-OPU"/>
+                            <constraint firstItem="Wb7-h1-aPq" firstAttribute="centerY" secondItem="2w4-Ez-5gG" secondAttribute="centerY" id="ivF-bs-470"/>
                             <constraint firstItem="YlB-dM-Jo5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jYu-Mq-M0v"/>
                             <constraint firstItem="y57-q5-5Yj" firstAttribute="centerY" secondItem="YlB-dM-Jo5" secondAttribute="centerY" id="m6y-7h-plf"/>
                             <constraint firstItem="vs4-AE-r1L" firstAttribute="centerX" secondItem="EbZ-is-93m" secondAttribute="centerX" id="qRM-VW-ImA"/>
@@ -239,6 +289,11 @@
                         <outlet property="BodyWood" destination="y57-q5-5Yj" id="47Z-WJ-nF1"/>
                         <outlet property="FireflyImage" destination="kOz-W0-T0c" id="UIg-rK-3DK"/>
                         <outlet property="RestLever" destination="UaL-H3-dXI" id="8P2-Fh-c16"/>
+                        <outlet property="Tail0" destination="fDb-qP-Drq" id="6de-4O-aZb"/>
+                        <outlet property="Tail1" destination="CHD-LG-TEy" id="EvV-sg-NoC"/>
+                        <outlet property="Tail2" destination="mqZ-Qr-0mT" id="iem-IW-f9x"/>
+                        <outlet property="Tail3" destination="qJ5-RC-C8U" id="hoW-aX-dt7"/>
+                        <outlet property="Tail4" destination="0PE-gR-49A" id="9an-Ig-59R"/>
                         <outlet property="Wing1Options" destination="4Dq-W9-II2" id="zW0-Pm-UmT"/>
                         <outlet property="Wing1Wood" destination="K1E-AI-CP2" id="Zxg-rr-UgQ"/>
                         <outlet property="Wing2Options" destination="EbZ-is-93m" id="Ksi-hR-VhH"/>
@@ -252,6 +307,12 @@
     </scenes>
     <resources>
         <image name="JarClose" width="178" height="347"/>
+        <image name="YL0" width="50" height="51"/>
+        <image name="YL1" width="50" height="51"/>
+        <image name="YL2" width="50" height="51"/>
+        <image name="YL3" width="50" height="51"/>
+        <image name="YL4" width="50" height="51"/>
+        <image name="YW1T1" width="150" height="150"/>
         <image name="b1" width="45" height="45"/>
         <image name="b2" width="45" height="45"/>
         <image name="b3" width="45" height="45"/>
@@ -272,8 +333,8 @@
         <image name="rw5" width="75" height="75"/>
         <image name="rw6" width="80" height="80"/>
         <image name="woodBody" width="411" height="85"/>
+        <image name="woodTail" width="466" height="107"/>
         <image name="woodWing1" width="376" height="193"/>
         <image name="woodWing2" width="274" height="69"/>
-        <image name="yellow300" width="300" height="300"/>
     </resources>
 </document>

@@ -12,7 +12,7 @@ class Wing{
     var repetitions: Int
     
     init(){
-        firstNote = .whole
+        firstNote = .half
         repetitions = 1
     }
     init(note:NoteType,rep:Int){

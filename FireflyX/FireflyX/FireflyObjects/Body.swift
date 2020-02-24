@@ -12,13 +12,13 @@ class Body{
     var tempo : Double
     
     init(){
-        color = .Red
-        tempo = TempoLookup.tempoLookup(color: self.color)
+        color = .Yellow
+        tempo = Lookups.tempoLookup(color: self.color)
         
     }
     init(color:Colors){
         self.color = color
-        tempo = TempoLookup.tempoLookup(color: self.color)
+        tempo = Lookups.tempoLookup(color: self.color)
     }
     
     func setTempo(tempo:Double){
@@ -26,7 +26,7 @@ class Body{
     }
     func setColor(color:Colors){
         self.color = color
-        setTempo(tempo: TempoLookup.tempoLookup(color: self.color))
+        setTempo(tempo: Lookups.tempoLookup(color: self.color))
     }
     func getTempo()->Double{
         return tempo
