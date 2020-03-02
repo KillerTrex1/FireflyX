@@ -13,21 +13,24 @@ class Note {
     var type:NoteType
     var value:Int
     var pitch:Pitch
-    
+    //512
+    //256
+    //128
+    //64
     init (type: NoteType, pitch:Pitch) {
         switch type {
         case .whole,
              .wholeRest:
-            value = 512
+            value = 8
         case .half,
              .halfRest:
-            value = 256
+            value = 4
         case .quarter,
              .quarterRest:
-            value = 128
+            value = 2
         case .eighth,
              .eighthRest:
-            value = 64
+            value = 1
         }
         
         self.pitch = pitch
@@ -81,6 +84,9 @@ class Note {
             return "Er"
         }
 
+    }
+    func getValue()->Int{
+        return value
     }
 }
 

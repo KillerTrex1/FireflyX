@@ -25,14 +25,15 @@ class SongPlayer{
         
     }
     static func playSong(){
-        print("test")
-        self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curSong.getTempo() * 0.0078125, // 1/128 = 0.0078125
+        print("DURATION OF quarter NOTE: \(60 / self.curSong.getTempo() * 1.0)")
+        self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curSong.getTempo() * 0.5, // 1/128 = 0.0078125
         repeats: true,
         block: {_ in self.optimizedPlaybackLoop(
             notes: self.curSong.getNotes(),
                 sampler: self.audioEngine.sampler
             )})
     }
+    //static var num = 0
     static func optimizedPlaybackLoop (notes: [Note], sampler: AKAppleSampler) {
         //print(self.currBeat)
         
@@ -44,12 +45,15 @@ class SongPlayer{
             // invalidate the timer to stop it
             if self.currNoteIndex > notes.count-1 {
                 self.timer.invalidate()
-                repeatCounter+=1
+                repeatCounter += 1
                 currBeatCounter = 0
                 currNoteIndex = -1
                 if repeatCounter != curSong.getRepetitions(){
                     playSong()
+                }else{
+                    View.hidePanels(val: false)
                 }
+                
                 return
             }
             
@@ -61,6 +65,8 @@ class SongPlayer{
             // from AudioEngine
             if currNote.convertToMIDI() != 0{
                 try! sampler.play(noteNumber: MIDINoteNumber(currNote.convertToMIDI()))
+                FireflyAnimator.animateImageOnce(duration: (60.0 / self.curSong.getTempo() *  0.5) * self.currNote.getValue())
+                //print("DURATION OF NOTE: \((60.0 / self.curSong.getTempo() * (self.currNote.getValue() )))")
             }
             
             
