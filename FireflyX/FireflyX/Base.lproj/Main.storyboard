@@ -19,26 +19,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YW1T1" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-W0-T0c">
-                                <rect key="frame" x="522" y="242" width="150" height="150"/>
+                                <rect key="frame" x="447" y="167" width="300" height="300"/>
                             </imageView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YW1T1" translatesAutoresizingMaskIntoConstraints="NO" id="zNV-Ux-iuY">
-                                <rect key="frame" x="522" y="242" width="150" height="150"/>
+                                <rect key="frame" x="447" y="167" width="300" height="300"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woodBody" translatesAutoresizingMaskIntoConstraints="NO" id="y57-q5-5Yj">
-                                <rect key="frame" x="391.5" y="30" width="411" height="85"/>
+                                <rect key="frame" x="186" y="30" width="822" height="170"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="YlB-dM-Jo5">
-                                <rect key="frame" x="404" y="50" width="386.5" height="45"/>
+                                <rect key="frame" x="404" y="92.5" width="386.5" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fha-hA-98c" userLabel="Red">
-                                        <rect key="frame" x="0.0" y="0.0" width="52" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="45"/>
                                         <state key="normal" image="b1"/>
                                         <connections>
                                             <action selector="RedBody:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hql-ed-amw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="22d-1A-geT" userLabel="Orange">
-                                        <rect key="frame" x="55" y="0.0" width="52.5" height="45"/>
+                                        <rect key="frame" x="56.5" y="0.0" width="54" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="b2"/>
                                         <connections>
@@ -46,7 +46,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="C3f-Cx-fIN" userLabel="Yellow">
-                                        <rect key="frame" x="110.5" y="0.0" width="52" height="45"/>
+                                        <rect key="frame" x="113.5" y="0.0" width="53.5" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="b3"/>
                                         <connections>
@@ -54,7 +54,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NnU-qC-2rP" userLabel="Green">
-                                        <rect key="frame" x="165.5" y="0.0" width="52.5" height="45"/>
+                                        <rect key="frame" x="170" y="0.0" width="53.5" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="b4"/>
                                         <connections>
@@ -62,7 +62,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7bk-gJ-djJ" userLabel="Blue">
-                                        <rect key="frame" x="221" y="0.0" width="52" height="45"/>
+                                        <rect key="frame" x="226.5" y="0.0" width="54" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="b5"/>
                                         <connections>
@@ -70,7 +70,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PLO-mL-LoG" userLabel="Indigo">
-                                        <rect key="frame" x="276" y="0.0" width="52.5" height="45"/>
+                                        <rect key="frame" x="283.5" y="0.0" width="53.5" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="b6"/>
                                         <connections>
@@ -78,7 +78,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4WI-ah-uhk" userLabel="Violet">
-                                        <rect key="frame" x="331.5" y="0.0" width="55" height="45"/>
+                                        <rect key="frame" x="340" y="0.0" width="46.5" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="b7"/>
                                         <connections>
@@ -88,13 +88,13 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woodWing2" translatesAutoresizingMaskIntoConstraints="NO" id="vs4-AE-r1L">
-                                <rect key="frame" x="80" y="282.5" width="274" height="69"/>
+                                <rect key="frame" x="80" y="248" width="548" height="138"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-is-93m">
-                                <rect key="frame" x="111" y="288.5" width="212" height="57"/>
+                                <rect key="frame" x="248" y="288.5" width="212" height="57"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kFX-0a-6fF" userLabel="Note1">
-                                        <rect key="frame" x="0.0" y="0.0" width="47.5" height="57"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="lw1"/>
                                         <connections>
@@ -102,7 +102,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XQ6-zz-du5" userLabel="Note2">
-                                        <rect key="frame" x="53.5" y="0.0" width="48" height="57"/>
+                                        <rect key="frame" x="56" y="0.0" width="50.5" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="lw2"/>
                                         <connections>
@@ -110,7 +110,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0Tj-iI-Zc5" userLabel="Note4">
-                                        <rect key="frame" x="107.5" y="0.0" width="47.5" height="57"/>
+                                        <rect key="frame" x="112.5" y="0.0" width="50" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="lw3"/>
                                         <connections>
@@ -118,7 +118,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W9t-3m-7io" userLabel="Note8">
-                                        <rect key="frame" x="161" y="0.0" width="51" height="57"/>
+                                        <rect key="frame" x="168.5" y="0.0" width="43.5" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="lw4"/>
                                         <connections>
@@ -129,16 +129,16 @@
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woodWing1" translatesAutoresizingMaskIntoConstraints="NO" id="K1E-AI-CP2">
-                                <rect key="frame" x="818" y="220.5" width="376" height="193"/>
+                                <rect key="frame" x="442" y="124" width="752" height="386"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Dq-W9-II2">
-                                <rect key="frame" x="879.5" y="203.5" width="253" height="227"/>
+                                <rect key="frame" x="691.5" y="203.5" width="253" height="227"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="4jG-2z-KmB">
                                         <rect key="frame" x="0.0" y="0.0" width="253" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t3y-ju-gZS">
-                                                <rect key="frame" x="0.0" y="17.5" width="75" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="110"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw1"/>
                                                 <connections>
@@ -146,7 +146,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="csx-wJ-hFF">
-                                                <rect key="frame" x="89" y="17.5" width="75" height="75"/>
+                                                <rect key="frame" x="89" y="0.0" width="75" height="110"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw2"/>
                                                 <connections>
@@ -154,7 +154,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cse-om-TMV">
-                                                <rect key="frame" x="178" y="17.5" width="75" height="75"/>
+                                                <rect key="frame" x="178" y="0.0" width="75" height="110"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw3"/>
                                                 <connections>
@@ -167,7 +167,7 @@
                                         <rect key="frame" x="0.0" y="110" width="253" height="117"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nPi-t8-cVg">
-                                                <rect key="frame" x="0.0" y="21" width="75" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="117"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw4"/>
                                                 <connections>
@@ -175,7 +175,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="maI-I1-jmo">
-                                                <rect key="frame" x="89" y="21" width="75" height="75"/>
+                                                <rect key="frame" x="89" y="0.0" width="75" height="117"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw5"/>
                                                 <connections>
@@ -183,7 +183,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bcz-jC-eYx">
-                                                <rect key="frame" x="178" y="18.5" width="75" height="80"/>
+                                                <rect key="frame" x="178" y="0.0" width="75" height="117"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw6"/>
                                                 <connections>
@@ -195,55 +195,55 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t20-sB-zvE" userLabel="Jar">
-                                <rect key="frame" x="364" y="655" width="466" height="139"/>
+                                <rect key="frame" x="131" y="516" width="932" height="278"/>
                                 <state key="normal" image="PlayWood"/>
                                 <connections>
                                     <action selector="JarFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7X-6V-sJ6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaL-H3-dXI">
-                                <rect key="frame" x="166" y="180.5" width="102" height="102"/>
+                                <rect key="frame" x="252" y="44" width="204" height="204"/>
                                 <state key="normal" image="leftLever"/>
                                 <connections>
                                     <action selector="ToggleRest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8xH-Ve-0cU"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woodTail" translatesAutoresizingMaskIntoConstraints="NO" id="2w4-Ez-5gG">
-                                <rect key="frame" x="364" y="467" width="466" height="107"/>
+                                <rect key="frame" x="131" y="467" width="932" height="214"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Wb7-h1-aPq" userLabel="Tail Options">
-                                <rect key="frame" x="436" y="495" width="322" height="51"/>
+                                <rect key="frame" x="311" y="523" width="572" height="102"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDb-qP-Drq" userLabel="T0">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="51"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="102"/>
                                         <state key="normal" image="YL0"/>
                                         <connections>
                                             <action selector="TailButton0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VsO-JU-MDb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHD-LG-TEy" userLabel="T1">
-                                        <rect key="frame" x="68" y="0.0" width="50" height="51"/>
+                                        <rect key="frame" x="118" y="0.0" width="100" height="102"/>
                                         <state key="normal" image="YL1"/>
                                         <connections>
                                             <action selector="TailButton1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WCu-Gx-Wr1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqZ-Qr-0mT" userLabel="T2">
-                                        <rect key="frame" x="136" y="0.0" width="50" height="51"/>
+                                        <rect key="frame" x="236" y="0.0" width="100" height="102"/>
                                         <state key="normal" image="YL2"/>
                                         <connections>
                                             <action selector="TailButton2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pMR-Sy-BNC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-RC-C8U" userLabel="T3">
-                                        <rect key="frame" x="204" y="0.0" width="50" height="51"/>
+                                        <rect key="frame" x="354" y="0.0" width="100" height="102"/>
                                         <state key="normal" image="YL3"/>
                                         <connections>
                                             <action selector="TailButton3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2rQ-A8-Cb3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PE-gR-49A" userLabel="T4">
-                                        <rect key="frame" x="272" y="0.0" width="50" height="51"/>
+                                        <rect key="frame" x="472" y="0.0" width="100" height="102"/>
                                         <state key="normal" image="YL4"/>
                                         <connections>
                                             <action selector="TailButton4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jc3-Co-lcA"/>
@@ -252,37 +252,37 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bw-pO-DDJ" userLabel="HeadTouchArea">
-                                <rect key="frame" x="577" y="242" width="40" height="50"/>
+                                <rect key="frame" x="577" y="167" width="40" height="50"/>
                                 <connections>
                                     <action selector="HeadTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="viI-BA-fm1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qb4-P2-10j" userLabel="LeftWingTouchArea">
-                                <rect key="frame" x="522" y="292" width="75" height="55"/>
+                                <rect key="frame" x="447" y="217" width="150" height="130"/>
                                 <connections>
                                     <action selector="LWingTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d3o-YH-qMw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRf-rd-mqL" userLabel="RIghtWingTouchArea">
-                                <rect key="frame" x="597" y="292" width="75" height="55"/>
+                                <rect key="frame" x="597" y="217" width="150" height="130"/>
                                 <connections>
                                     <action selector="RWingTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uel-ef-4RY"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dot" translatesAutoresizingMaskIntoConstraints="NO" id="dWs-3Q-g3y" userLabel="Dot1">
-                                <rect key="frame" x="588.5" y="225" width="17" height="17"/>
+                                <rect key="frame" x="580" y="133" width="34" height="34"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dot" translatesAutoresizingMaskIntoConstraints="NO" id="Kjh-73-bLg" userLabel="Dot2">
-                                <rect key="frame" x="505" y="308.5" width="17" height="17"/>
+                                <rect key="frame" x="413" y="300" width="34" height="34"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dot" translatesAutoresizingMaskIntoConstraints="NO" id="7Re-g8-hpb" userLabel="Dot3">
-                                <rect key="frame" x="672" y="308.5" width="17" height="17"/>
+                                <rect key="frame" x="747" y="300" width="34" height="34"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dot" translatesAutoresizingMaskIntoConstraints="NO" id="2sK-RK-lgE" userLabel="Dot4">
-                                <rect key="frame" x="588.5" y="382" width="17" height="17"/>
+                                <rect key="frame" x="580" y="457" width="34" height="34"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UN-Yk-uP0" userLabel="TailTouchArea">
-                                <rect key="frame" x="577" y="347" width="40" height="45"/>
+                                <rect key="frame" x="577" y="347" width="40" height="120"/>
                                 <connections>
                                     <action selector="TailTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gTW-iI-uGk"/>
                                 </connections>
