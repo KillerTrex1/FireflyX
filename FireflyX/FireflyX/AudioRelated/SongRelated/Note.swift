@@ -36,7 +36,38 @@ class Note {
         self.pitch = pitch
         self.type = type
     }
-    
+    func changePitch(pitchIndex: Int){
+        var pitch: Pitch
+        switch pitchIndex{
+            case 0:
+                pitch = .AH
+            case 1:
+                pitch = .GH
+            case 2:
+                pitch = .FH
+            case 3:
+                pitch = .EH
+            case 4:
+                pitch = .DH
+            case 5:
+                pitch = .CH
+            case 6:
+                pitch = .B
+            case 7:
+                pitch = .A
+            case 8:
+                pitch = .G
+            case 9:
+                pitch = .F
+            case 10:
+                pitch = .E
+            case 11:
+                pitch = .D
+            default:
+                pitch = .C
+        }
+        self.pitch = pitch
+    }
     func convertToMIDI() -> Int {
         // all values here are in 4th octave
         
@@ -57,6 +88,18 @@ class Note {
             MIDINum = 69
         case .B:
             MIDINum = 71
+        case .CH:
+            MIDINum = 72
+        case .DH:
+            MIDINum = 74
+        case .EH:
+            MIDINum = 76
+        case .FH:
+            MIDINum = 77
+        case .GH:
+            MIDINum = 79
+        case .AH:
+            MIDINum = 81
         default:
             MIDINum = 0
         }
