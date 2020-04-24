@@ -13,16 +13,10 @@ class FireflyAnimator {
     static var fireflyAnimations: [UIImage] = []
     static var fireflyImageSupport: UIImageView!
     static var mode = false
-    static var curImage: UIImage!
-    static var restImage: UIImage!
-    static var restAnimation: Bool!
     
     static func setImage(flyImageView:UIImageView, support: UIImageView){
         fireflyImage = flyImageView
         fireflyImageSupport = support
-    }
-    static func setRestImage(image: UIImage){
-        restImage = image
     }
     static func setIarray(ImageCount:Int,ImagePrefix:String){
         var imageArray: [UIImage] = []
@@ -42,9 +36,6 @@ class FireflyAnimator {
         fireflyImage.startAnimating()
         
     }
-    static func setAnimationMode(isRest:Bool){
-        restAnimation = isRest
-    }
     static func animateImageOnce(duration:Double){
         mode = !mode
         if mode{
@@ -62,23 +53,6 @@ class FireflyAnimator {
         animated.animationDuration = Aduration
         animated.animationRepeatCount = 1
         animated.startAnimating()
-    }
-    static func prepareAnimation(){
-        if !restAnimation{
-            curImage = fireflyImage.image
-            fireflyImage.image = restImage
-            
-        }
-        fireflyImageSupport.image = fireflyImage.image
-        
-    }
-    static func endAnimation(){
-        if !restAnimation{
-            fireflyImage.image = curImage
-        }
-        fireflyImage.isHidden = false
-        fireflyImageSupport.isHidden = true
-        mode = false
     }
     /*
     static func ResetAnimate(){

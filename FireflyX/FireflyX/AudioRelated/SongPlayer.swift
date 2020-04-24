@@ -22,8 +22,6 @@ class SongPlayer{
     static func placeSong(song:Song){
         curSong = song
         repeatCounter = 0
-        //FireflyAnimator.prepareAnimation()
-        PitchView.prepareMoveFly()
         
     }
     static func playSong(){
@@ -53,9 +51,7 @@ class SongPlayer{
                 if repeatCounter != curSong.getRepetitions(){
                     playSong()
                 }else{
-                    //FireflyAnimator.endAnimation()
-                    //View.hidePanels(val: false)
-                    PitchView.endMoveFly()
+                    View.hidePanels(val: false)
                 }
                 
                 return
@@ -64,14 +60,13 @@ class SongPlayer{
             // assign next note to current note
             self.currNote = notes[self.currNoteIndex]
             print("Current MIDI Note Played: \(currNote.convertBeat())")
-            PitchView.nextNoteMove()
+            
             // get the MIDI number of current note and play it using the sampler
             // from AudioEngine
             if currNote.convertToMIDI() != 0{
                 try! sampler.play(noteNumber: MIDINoteNumber(currNote.convertToMIDI()))
-                
-                //FireflyAnimator.animateImageOnce(duration: (60.0 / self.curSong.getTempo() *  0.5) * self.currNote.getValue())
-                print("DURATION OF NOTE: \((60.0 / self.curSong.getTempo() * (self.currNote.getValue() )))")
+                FireflyAnimator.animateImageOnce(duration: (60.0 / self.curSong.getTempo() *  0.5) * self.currNote.getValue())
+                //print("DURATION OF NOTE: \((60.0 / self.curSong.getTempo() * (self.currNote.getValue() )))")
             }
             
             

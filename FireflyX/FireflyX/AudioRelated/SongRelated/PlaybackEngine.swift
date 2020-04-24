@@ -16,15 +16,15 @@ class PlaybackEngine{
         SongPlayer.placeSong(song: newSong)
         SongPlayer.playSong()
     }
-    static func makeSongnoPitch(mFirefly:Firefly)->Song{
-        let newSong = songConverter(nfirefly: mFirefly)
-        return newSong
-    }
     static func songConverter(nfirefly:Firefly)->Song{
         return Song(
             notes: noPitchSongNoteConverter(beatPattern:nfirefly.getTail().getBeatPattern()),
             tempo: nfirefly.getBody().getTempo(),
             repetitions: nfirefly.getWing().getRepetitions())
+        
+        
+        
+        
     }
     
     static func noPitchSongNoteConverter(beatPattern:String)->[Note]{
