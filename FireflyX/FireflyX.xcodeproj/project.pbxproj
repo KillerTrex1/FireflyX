@@ -518,11 +518,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-<<<<<<< Updated upstream
-				PRODUCT_BUNDLE_IDENTIFIER = "Thesis.FireflyX-testold";
-=======
 				PRODUCT_BUNDLE_IDENTIFIER = "Thesis.FireflyX-SalcyTEST-";
->>>>>>> Stashed changes
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -546,11 +542,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-<<<<<<< Updated upstream
-				PRODUCT_BUNDLE_IDENTIFIER = "Thesis.FireflyX-testold";
-=======
 				PRODUCT_BUNDLE_IDENTIFIER = "Thesis.FireflyX-SalcyTEST-";
->>>>>>> Stashed changes
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;

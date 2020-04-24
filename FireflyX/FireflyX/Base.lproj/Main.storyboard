@@ -132,21 +132,13 @@
                                 <rect key="frame" x="442" y="124" width="752" height="386"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Dq-W9-II2">
-<<<<<<< Updated upstream
-                                <rect key="frame" x="691.5" y="203.5" width="253" height="227"/>
-=======
                                 <rect key="frame" x="802.5" y="203.5" width="31" height="227"/>
->>>>>>> Stashed changes
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="4jG-2z-KmB">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t3y-ju-gZS">
-<<<<<<< Updated upstream
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="110"/>
-=======
                                                 <rect key="frame" x="0.0" y="0.0" width="1" height="110"/>
->>>>>>> Stashed changes
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw1"/>
                                                 <connections>
@@ -154,11 +146,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="csx-wJ-hFF">
-<<<<<<< Updated upstream
-                                                <rect key="frame" x="89" y="0.0" width="75" height="110"/>
-=======
                                                 <rect key="frame" x="15" y="0.0" width="1" height="110"/>
->>>>>>> Stashed changes
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw2"/>
                                                 <connections>
@@ -166,11 +154,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cse-om-TMV">
-<<<<<<< Updated upstream
-                                                <rect key="frame" x="178" y="0.0" width="75" height="110"/>
-=======
                                                 <rect key="frame" x="30" y="0.0" width="1" height="110"/>
->>>>>>> Stashed changes
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw3"/>
                                                 <connections>
@@ -183,11 +167,7 @@
                                         <rect key="frame" x="0.0" y="110" width="31" height="117"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nPi-t8-cVg">
-<<<<<<< Updated upstream
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="117"/>
-=======
                                                 <rect key="frame" x="0.0" y="0.0" width="1" height="117"/>
->>>>>>> Stashed changes
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw4"/>
                                                 <connections>
@@ -195,11 +175,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="maI-I1-jmo">
-<<<<<<< Updated upstream
-                                                <rect key="frame" x="89" y="0.0" width="75" height="117"/>
-=======
                                                 <rect key="frame" x="15" y="0.0" width="1" height="117"/>
->>>>>>> Stashed changes
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw5"/>
                                                 <connections>
@@ -207,11 +183,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bcz-jC-eYx">
-<<<<<<< Updated upstream
-                                                <rect key="frame" x="178" y="0.0" width="75" height="117"/>
-=======
                                                 <rect key="frame" x="30" y="0.0" width="1" height="117"/>
->>>>>>> Stashed changes
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw6"/>
                                                 <connections>
@@ -239,11 +211,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woodTail" translatesAutoresizingMaskIntoConstraints="NO" id="2w4-Ez-5gG">
                                 <rect key="frame" x="131" y="467" width="932" height="214"/>
                             </imageView>
-<<<<<<< Updated upstream
-                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Wb7-h1-aPq" userLabel="Tail Options">
-=======
                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Wb7-h1-aPq" userLabel="Tail Options">
->>>>>>> Stashed changes
                                 <rect key="frame" x="311" y="523" width="572" height="102"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDb-qP-Drq" userLabel="T0">
@@ -319,10 +287,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dot" translatesAutoresizingMaskIntoConstraints="NO" id="2sK-RK-lgE" userLabel="Dot4">
                                 <rect key="frame" x="580" y="457" width="34" height="34"/>
                             </imageView>
-<<<<<<< Updated upstream
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UN-Yk-uP0" userLabel="TailTouchArea">
-                                <rect key="frame" x="577" y="347" width="40" height="120"/>
-=======
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="jHV-hD-JQK">
                                 <rect key="frame" x="166" y="495" width="13" height="13"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -337,7 +301,6 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxq-fM-YA5">
                                 <rect key="frame" x="448" y="701" width="298" height="154"/>
                                 <state key="normal" image="Pitch Feed"/>
->>>>>>> Stashed changes
                                 <connections>
                                     <action selector="ShowPitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PQF-oA-emW"/>
                                 </connections>
