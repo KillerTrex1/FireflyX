@@ -15,5 +15,11 @@ enum Pitch {
     case G
     case A
     case B
+    case CH
+    case DH
+    case EH
+    case FH
+    case GH
+    case AH
     case Rest
 }

@@ -28,6 +28,8 @@ class View{
     static var wing2Touch: UIButton!
     static var lever: UIButton!
     static var tailTouch: UIButton!
+    static var arrow1: UIImageView!
+    static var arrow2: UIImageView!
     
     static func setMainImages(firefly : UIImageView, body : UIImageView, wing1 : UIImageView, wing2 : UIImageView,tail:UIImageView){
         fireflyMain = firefly
@@ -57,11 +59,17 @@ class View{
         tailTouch = tailArea
         
     }
+    static func setArrow(wingArrow: UIImageView, tailArrow: UIImageView){
+        arrow1 = wingArrow
+        arrow2 = tailArrow
+    }
     static func hidePanels(val:Bool){
         BodyWood.isHidden = val
         wing1Wood.isHidden = val
         wing2Wood.isHidden = val
         tailWood.isHidden = val
+        arrow1.isHidden = val
+        arrow2.isHidden = val
         //dot1.isHidden = val
         //dot2.isHidden = val
         //dot3.isHidden = val
@@ -71,12 +79,18 @@ class View{
         wing2Options.isHidden = val
         lever.isHidden = val
         tailOptions.isHidden = val
-        play.isHidden = val
+        //play.isHidden = val
         headTouch.isHidden = val
         wing1Touch.isHidden = val
         wing2Touch.isHidden = val
         tailTouch.isHidden = val
         
     }
-    
+    static func hideAll(val:Bool){
+        fireflyMain.isHidden = val
+        hidePanels(val: val)
+    }
+    static func fireflySetup(){
+        
+    }
 }
