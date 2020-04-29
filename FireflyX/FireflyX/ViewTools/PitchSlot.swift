@@ -33,6 +33,7 @@ class PitchSlot{
         if(!taken){
             //pitchSlot.image = slotImage
             pitchSlot.isHidden = false
+            
         }
         
     }

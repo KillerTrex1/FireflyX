@@ -169,7 +169,7 @@ class ViewController: UIViewController {
         var pSlots = [[PitchSlot]]()
         for i in 0 ... 7{
             var array = [PitchSlot]()
-            var slotImage  = UIImage(named: "Slot")
+            let slotImage  = UIImage(named: "slot")
             for j in 0 ... 12{
                 var imageView : UIImageView
                 let staffRatio = Double(Staff.frame.height) * 0.12
@@ -183,7 +183,7 @@ class ViewController: UIViewController {
                 imageView.image = slotImage
                 var newSlot: PitchSlot
                 if j == 0 || j == 12{
-                    var edgeImage  = UIImage(named: "Edgeline")
+                    let edgeImage  = UIImage(named: "edgeline")
                     
                     var edgeLineView = UIImageView(frame: CGRect(x:  0, y: 0, width : width * 1.5, height: height))
                     edgeLineView.image = edgeImage
