@@ -49,14 +49,16 @@ class PitchView{
         playBtn = play
         clearBtn = clear
         
-        
+        //pitchFly.translatesAutoresizingMaskIntoConstraints = true
         
     }
-    static func setOrigpoints(){
+    static func setOrigpointsAndAutoFormatConstraints(){
         
         for i in candies{
             origPoints.append(i.center)
+            i.translatesAutoresizingMaskIntoConstraints = true
         }
+        
     }
     static func setSlots(slotArray: [[PitchSlot]]){
         pitchSLots = slotArray
@@ -64,6 +66,7 @@ class PitchView{
     static func showCandies(notes:[Note]){
         for i in 0 ..< notes.count{
             var CImage: UIImage!
+            print(notes[i].convertBeat())
             switch notes[i].convertBeat(){
             case "W":
                 CImage  = UIImage(named: "cw2")
@@ -97,6 +100,13 @@ class PitchView{
             candies[i].isHidden = true
             candies[i].isUserInteractionEnabled = false
         }
+    }
+    static func retainCandies(){
+        print("RETAINNNNNNNNNNNNNNNNNNNN")
+        for i in 0 ..< maxPoint{
+            candies[i].center = pitchSLots[i][pitchPlaymap[i]].pitchSlot.center
+        }
+        
     }
     static func shouldHide(val: Bool){
         staff.isHidden = val
@@ -132,6 +142,8 @@ class PitchView{
     }
     
     static func clearAll(){
+        //print("CLEAR--------------------------")
+        
         for i in 0 ..< pitchSLots.count{
             for j in 0 ..< pitchSLots[i].count {
                 pitchSLots[i][j].freeSlot()
@@ -162,6 +174,7 @@ class PitchView{
         backBtn.isHidden = true
         clearBtn.isHidden = true
         playBtn.isHidden = true
+        
     }
     static func nextNoteMove(){
         fIndex += 1
@@ -177,6 +190,9 @@ class PitchView{
         backBtn.isHidden = false
         clearBtn.isHidden = false
         playBtn.isHidden = false
+        
+        print("SHOW UR SELF")
+        pitchFly.isHidden = false
     }
     static func trySnap(val: Int)->Int{
         for i in 0 ..< pitchSLots[0].count{
@@ -200,7 +216,7 @@ class PitchView{
                 }else{
                     candies[val].center = pitchSLots[val][i].pitchSlot.center
                 }
-                print(i)
+                //print(i)
                 return i
             }
         }

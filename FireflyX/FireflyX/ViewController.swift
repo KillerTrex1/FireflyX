@@ -73,7 +73,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var Arrow2: UIImageView!
     
-    
     @IBOutlet weak var Staff: UIImageView!
     
     @IBOutlet weak var FeedBtn: UIButton!
@@ -106,6 +105,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var BackButton: UIButton!
     
+    @IBOutlet weak var Chat: UIImageView!
     
     @IBOutlet var PGRecognizer0: UIPanGestureRecognizer!
     
@@ -142,6 +142,7 @@ class ViewController: UIViewController {
     var dimensions: [CGFloat] = [150.0,180.0,210.0,240.0,270.0,300.0]
     var prevPoint: CGPoint!
     var fSong: Song!
+    var curTail: Int! = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,10 +154,10 @@ class ViewController: UIViewController {
         View.setOptionStacks(bOptions: BodyOptions, w1Options: Wing1Options, w2Options: Wing2Options, tOptions: TailOptions)
         View.setButtons(playButton: Play, headArea: HeadTouchArea, wing1Area: RightWingTouchArea, wing2Area: LeftWingTouchArea,rLever: RestLever, tailArea: TailTouchArea)
         View.setArrow(wingArrow: Arrow2, tailArrow: Arrow)
-        FireflyAnimator.setImage(flyImageView: FireflyImage,support: FireFlySupport)
+        FireflyAnimator.setImage(flyImageView: PitchFly ,support: FireFlySupport)
         PitchView.setPitchImages(staffImage: Staff, pitchFlyImage: PitchFly, candy0Image: Candy0, candy1Image: Candy1, candy2Image: Candy2, candy3Image: Candy3, candy4Image: Candy4, candy5Image: Candy5, candy6Image: Candy6, candy7Image: Candy7, moveFly: MovingPitchFly, back: BackButton, clear: ClearButton, play: Play)
         
-        
+        PitchFly.isHidden = true
         //FireflyAnimator.setIarray(ImageCount: 8, ImagePrefix: "YW1C")
         //PitchView.showCandies(num: 4)
         //FireflyAnimator.animateImage(duration:1.0)
@@ -206,7 +207,7 @@ class ViewController: UIViewController {
     @IBAction func openJar(_ sender: Any) {
         StartingJar.isHidden = true
         EndingJar.isHidden = false
-        PitchView.setOrigpoints()
+        PitchView.setOrigpointsAndAutoFormatConstraints()
         addSlots()
     }
     
@@ -218,6 +219,7 @@ class ViewController: UIViewController {
         let newFly = Firefly(nBody: body, nWing: wing, nTail: tail)
         fSong = PlaybackEngine.makeSongnoPitch(mFirefly: newFly)
         PitchView.showCandies(notes: fSong.getNotes())
+        Chat.isHidden = true
     }
     
     
@@ -267,12 +269,34 @@ class ViewController: UIViewController {
     
     @IBAction func ToggleRest(_ sender: Any) {
         restToggle = !restToggle
+        switch (wing.firstNote){
+        case .eighth:
+            wing.firstNote = .eighthRest
+        case .eighthRest:
+            wing.firstNote = .eighth
+        case .quarter:
+            wing.firstNote = .quarterRest
+        case .quarterRest:
+            wing.firstNote = .quarter
+        case .half:
+            wing.firstNote = .halfRest
+        case .halfRest:
+            wing.firstNote = .half
+        case.whole:
+            wing.firstNote = .wholeRest
+        case.wholeRest:
+            wing.firstNote = .whole
+        }
+        
         if restToggle{
             RestLever.setImage(UIImage(named:"rightLever"), for: .normal)
+            chatChangeLeverToRest()
         }else{
             RestLever.setImage(UIImage(named:"leftLever"), for: .normal)
+            chatChangeLeverToNote()
         }
         UpdateImage()
+        tail.setBeatPattern(beatType: wing.getNFirstNote(), Bindex: curTail)
         
     }
     @IBAction func RedBody(_ sender: Any) {
@@ -311,7 +335,9 @@ class ViewController: UIViewController {
     }
     
     func bodyChange(Bcolor:String){
+        
         bodyTemp = Bcolor
+        chatChangeHead()
         body.setColor(color: Lookups.colorsLookup(color: Bcolor))
         UpdateImage()
         UpdateTailOptions(isSingle: previousWhole)
@@ -359,11 +385,13 @@ class ViewController: UIViewController {
     }
     
     func changeWingSizeAndUnlockTail1(num:Int){
+        //chatChangeSize(num: num)
         changeWingSize(num: num)
         tail1LockUnlock()
     }
     func changeWingSize(num:Int){
         wingTemp = num
+        chatChangeSize(num: num)
         wing.setRepetitions(repetitions: num)
         UpdateImage()
         ChangeTopTouchSize()
@@ -383,7 +411,10 @@ class ViewController: UIViewController {
         }else{
             wing.firstNote = NoteType.wholeRest
         }
-        changeTail(index: 2)
+        if !tail1lock && !tail2lock{
+            changeTail(index: 2)
+        }
+        
         MoveArrow(mArrow: Arrow, stack: TailOptions, Sindex: 2)
         changeFirstNote(fNoteIndex: 1)
     }
@@ -418,6 +449,12 @@ class ViewController: UIViewController {
         changeFirstNote(fNoteIndex: 4)
     }
     func changeFirstNote(fNoteIndex: Int){
+        
+        if(restToggle){
+            chatChangeFNoteRest(num: fNoteIndex)
+        }else{
+            chatChangeFNote(num: fNoteIndex)
+        }
         if fNoteIndex == 1{
             if !previousWhole{
                 ChangeTailOptionsCount(isWhole: true)
@@ -442,25 +479,30 @@ class ViewController: UIViewController {
     
     @IBAction func TailButton0(_ sender: Any) {
         changeTail(index: 0)
+        curTail = 0
         //MoveArrow(button: Tail0)
     }
     
     @IBAction func TailButton1(_ sender: Any) {
         changeTail(index: 1)
+        curTail = 1
         //MoveArrow(button: Tail1)
     }
     
     @IBAction func TailButton2(_ sender: Any) {
         changeTail(index: 2)
+        curTail = 2
         //MoveArrow(button: Tail2)
     }
     @IBAction func TailButton3(_ sender: Any) {
         changeTail(index: 3)
+        curTail = 3
         //MoveArrow(button: Tail3)
     }
     
     @IBAction func TailButton4(_ sender: Any) {
         changeTail(index: 4)
+        curTail = 4
         //MoveArrow(button: Tail4)
     }
     
@@ -514,6 +556,7 @@ class ViewController: UIViewController {
     }
     
     func changeTail(index:Int){
+        Chat.isHidden = true
         tail.setBeatPattern(beatType: wing.getNFirstNote(), Bindex: index)
         if(playlock){
             playlock = false
@@ -524,29 +567,41 @@ class ViewController: UIViewController {
         arrowApppear =  true
     }
     
+    
     //var imageMode = 0
     func UpdateImage(){
         //FireflyAnimator.ResetAnimate()
+        var fireflyPic: UIImage!
         if  restToggle{
-            FireflyImage.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)R")
+            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)R")
+            FireflyImage.image = fireflyPic
             FireflyAnimator.setAnimationMode(isRest: true)
             
             
-            PitchFly.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)R")
+            PitchFly.image = fireflyPic
             MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T\(tailTemp)R")
             
-            //FireFlySupport.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)R")
-        }else{
-            FireflyImage.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)")
-            FireflyAnimator.setAnimationMode(isRest: false)
-            let pic: UIImage!
-            pic = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)")
-            FireflyAnimator.setRestImage(image: pic)
             
-            //FireflyImage.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)")
-            PitchFly.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)")
+            //FireFlySupport.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)R")
+            
+            
+            
+        }else{
+            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)")
+            
+            FireflyImage.image = fireflyPic
+            FireflyAnimator.setAnimationMode(isRest: false)
+            
+            //FireFlySupport.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)")
+            PitchFly.image = fireflyPic
             MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T\(tailTemp)")
         }
+        FireflyAnimator.setOGImage(image: fireflyPic)
+        //FireFlySupport.center = PitchFly.center
+        var pic: UIImage!
+        pic = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)R")
+        FireflyAnimator.setRestImage(image: pic)
+        
         let prefix = "\(bodyTemp)W\(wingTemp)C"
         FireflyAnimator.setIarray(ImageCount: 8, ImagePrefix: prefix)
         
@@ -714,11 +769,17 @@ class ViewController: UIViewController {
     
     @IBAction func BackPitch(_ sender: Any) {
         FeedBtn.isHidden = false
+        
+        print("hello")
         View.hideAll(val: false)
         
         PitchView.clearAll()
         PitchView.shouldHide(val: true)
         PitchView.hideCandies()
+        PitchFly.isHidden = true
+        FireFlySupport.isHidden = true
+        
+        
     }
     @IBAction func clearPitch(_ sender: Any) {
         PitchView.clearAll()
@@ -737,6 +798,32 @@ class ViewController: UIViewController {
         //Play.isHidden = true
         SongPlayer.placeSong(song: fSong)
         SongPlayer.playSong()
+    }
+    
+    func chatChangeHead(){
+        Chat.isHidden = false
+        Chat.image = UIImage(named: "\(bodyTemp)Chat")
+    }
+    
+    func chatChangeFNote(num: Int){
+        Chat.isHidden = false
+        Chat.image = UIImage(named: "\(bodyTemp)N\(num)Chat")
+    }
+    func chatChangeFNoteRest(num: Int){
+        Chat.isHidden = false
+        Chat.image = UIImage(named: "\(bodyTemp)R\(num)Chat")
+    }
+    func chatChangeLeverToNote(){
+        Chat.isHidden = false
+        Chat.image = UIImage(named: "\(bodyTemp)RtoL")
+    }
+    func chatChangeLeverToRest(){
+        Chat.isHidden = false
+        Chat.image = UIImage(named: "\(bodyTemp)LtoR")
+    }
+    func chatChangeSize(num:Int){
+        Chat.isHidden = false
+        Chat.image = UIImage(named: "\(bodyTemp)S\(num)Chat")
     }
     
     

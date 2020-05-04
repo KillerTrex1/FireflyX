@@ -25,5 +25,14 @@ class Song{
     func getRepetitions()->Int{
         return repetitions
     }
+    func getRepeatedNotes()->[Note]{
+        var repeatedNotes = [Note]()
+        for i in 0 ..< repetitions{
+            for j in 0 ..< notes.count{
+                repeatedNotes.append(notes[j])
+            }
+        }
+        return repeatedNotes
+    }
     
 }

@@ -23,15 +23,16 @@ class SongPlayer{
         curSong = song
         repeatCounter = 0
         //FireflyAnimator.prepareAnimation()
-        PitchView.prepareMoveFly()
+        
         
     }
     static func playSong(){
-        print("DURATION OF quarter NOTE: \(60 / self.curSong.getTempo() * 1.0)")
+        //print("DURATION OF quarter NOTE: \(60 / self.curSong.getTempo() * 1.0)")
+        PitchView.prepareMoveFly()
         self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curSong.getTempo() * 0.5, // 1/128 = 0.0078125
         repeats: true,
         block: {_ in self.optimizedPlaybackLoop(
-            notes: self.curSong.getNotes(),
+            notes: self.curSong.getRepeatedNotes(),
                 sampler: self.audioEngine.sampler
             )})
     }
@@ -40,6 +41,7 @@ class SongPlayer{
         //print(self.currBeat)
         
         // play next note if counter is 0
+        //PitchView.retainCandies()
         if self.currBeatCounter == 0 {
             self.currNoteIndex += 1 // move to next note
             
@@ -50,13 +52,14 @@ class SongPlayer{
                 repeatCounter += 1
                 currBeatCounter = 0
                 currNoteIndex = -1
-                if repeatCounter != curSong.getRepetitions(){
-                    playSong()
-                }else{
-                    //FireflyAnimator.endAnimation()
+                //if repeatCounter != curSong.getRepetitions(){
+                //    playSong()
+                    
+                //}else{
+                    FireflyAnimator.endAnimation()
                     //View.hidePanels(val: false)
                     PitchView.endMoveFly()
-                }
+                //}
                 
                 return
             }
@@ -65,12 +68,15 @@ class SongPlayer{
             self.currNote = notes[self.currNoteIndex]
             print("Current MIDI Note Played: \(currNote.convertBeat())")
             PitchView.nextNoteMove()
+            //PitchView.retainCandies()
             // get the MIDI number of current note and play it using the sampler
             // from AudioEngine
+            
             if currNote.convertToMIDI() != 0{
                 try! sampler.play(noteNumber: MIDINoteNumber(currNote.convertToMIDI()))
                 
-                //FireflyAnimator.animateImageOnce(duration: (60.0 / self.curSong.getTempo() *  0.5) * self.currNote.getValue())
+                
+                FireflyAnimator.animateImageOnce(duration: (60.0 / self.curSong.getTempo() *  0.5) * self.currNote.getValue())
                 print("DURATION OF NOTE: \((60.0 / self.curSong.getTempo() * (self.currNote.getValue() )))")
             }
             

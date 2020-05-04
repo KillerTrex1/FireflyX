@@ -24,6 +24,9 @@ class FireflyAnimator {
     static func setRestImage(image: UIImage){
         restImage = image
     }
+    static func setOGImage(image: UIImage){
+        curImage = image
+    }
     static func setIarray(ImageCount:Int,ImagePrefix:String){
         var imageArray: [UIImage] = []
         for i in 1..<ImageCount{
@@ -47,11 +50,14 @@ class FireflyAnimator {
     }
     static func animateImageOnce(duration:Double){
         mode = !mode
+        fireflyImage.image = restImage
+        fireflyImageSupport.image = restImage
         if mode{
             animateMode(animated: fireflyImage, hidden: fireflyImageSupport, Aduration: duration)
         }else{
             animateMode(animated: fireflyImageSupport, hidden: fireflyImage, Aduration: duration)
         }
+        
         
     }
     static func animateMode(animated: UIImageView, hidden: UIImageView,Aduration:Double){
@@ -64,21 +70,22 @@ class FireflyAnimator {
         animated.startAnimating()
     }
     static func prepareAnimation(){
-        if !restAnimation{
-            curImage = fireflyImage.image
-            fireflyImage.image = restImage
-            
-        }
+        //curImage = fireflyImage.image
+        //fireflyImage.image = restImage
         fireflyImageSupport.image = fireflyImage.image
         
     }
     static func endAnimation(){
-        if !restAnimation{
-            fireflyImage.image = curImage
-        }
+        resetImages()
+
+        print("oi")
         fireflyImage.isHidden = false
         fireflyImageSupport.isHidden = true
         mode = false
+    }
+    static func resetImages(){
+        fireflyImage.image = curImage
+        fireflyImageSupport.image = curImage
     }
     /*
     static func ResetAnimate(){
