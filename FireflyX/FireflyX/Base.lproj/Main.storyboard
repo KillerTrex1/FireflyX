@@ -387,7 +387,7 @@
                                 </connections>
                             </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bchat7" translatesAutoresizingMaskIntoConstraints="NO" id="NM1-BX-pb2">
-                                <rect key="frame" x="384" y="-136" width="868" height="320"/>
+                                <rect key="frame" x="334" y="-136" width="868" height="320"/>
                             </imageView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Staff" translatesAutoresizingMaskIntoConstraints="NO" id="5Qs-u4-i5M">
                                 <rect key="frame" x="350" y="160" width="804" height="354"/>
@@ -396,6 +396,13 @@
                                 <rect key="frame" x="142" y="100" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ja-9g-JQQ">
+                                <rect key="frame" x="1054" y="20" width="110" height="110"/>
+                                <state key="normal" image="Chat"/>
+                                <connections>
+                                    <action selector="funcHideOrShowChat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pys-8z-TPb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -449,12 +456,13 @@
                             <constraint firstItem="8kx-Yc-Zg8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ZSp-WQ-SSI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="t20-sB-zvE" secondAttribute="bottom" constant="20" id="a5w-bg-ZLA"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="centerY" secondItem="o1u-l4-VmB" secondAttribute="centerY" constant="20" id="aIf-tM-RU1"/>
+                            <constraint firstItem="9ja-9g-JQQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="bLN-UL-Vux"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="leading" secondItem="qb4-P2-10j" secondAttribute="leading" id="bhu-tK-Zsa"/>
                             <constraint firstItem="K1E-AI-CP2" firstAttribute="top" secondItem="NM1-BX-pb2" secondAttribute="centerY" constant="100" id="bqR-Xs-ugc"/>
                             <constraint firstItem="vs4-AE-r1L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="dDn-Rk-S3t"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="centerX" secondItem="7Bw-pO-DDJ" secondAttribute="centerX" id="eCV-w0-GS1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="j10-Qu-aZb" secondAttribute="leading" constant="-250" id="fZS-4c-Tmx"/>
-                            <constraint firstItem="NM1-BX-pb2" firstAttribute="centerX" secondItem="K1E-AI-CP2" secondAttribute="centerX" id="faP-UW-nvE"/>
+                            <constraint firstItem="NM1-BX-pb2" firstAttribute="centerX" secondItem="K1E-AI-CP2" secondAttribute="centerX" constant="-50" id="faP-UW-nvE"/>
                             <constraint firstItem="Z6H-Ut-GQg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fcE-Uq-1lG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Qs-u4-i5M" secondAttribute="bottom" constant="300" id="fit-ai-J3t"/>
                             <constraint firstItem="nRf-rd-mqL" firstAttribute="leading" secondItem="qb4-P2-10j" secondAttribute="trailing" id="g9v-4u-mki"/>
@@ -479,6 +487,7 @@
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="top" secondItem="7Bw-pO-DDJ" secondAttribute="top" id="sNi-wi-Nm0"/>
                             <constraint firstItem="kOz-W0-T0c" firstAttribute="centerY" secondItem="2w4-Ez-5gG" secondAttribute="top" constant="-150" id="ta9-R0-Zva"/>
                             <constraint firstItem="t20-sB-zvE" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uPl-7s-toh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9ja-9g-JQQ" secondAttribute="trailing" constant="30" id="vZi-X4-g9D"/>
                             <constraint firstAttribute="centerX" secondItem="2sK-RK-lgE" secondAttribute="centerX" id="vbs-vS-lHY"/>
                             <constraint firstItem="8UN-Yk-uP0" firstAttribute="top" secondItem="qb4-P2-10j" secondAttribute="bottom" id="w4P-tS-LWa"/>
                             <constraint firstAttribute="trailing" secondItem="5Qs-u4-i5M" secondAttribute="trailing" constant="40" id="xGj-Qf-VY2"/>
@@ -504,6 +513,7 @@
                         <outlet property="Candy6" destination="e7V-lZ-1qs" id="4lx-jG-xee"/>
                         <outlet property="Candy7" destination="SxB-M6-BLb" id="aag-eC-Eax"/>
                         <outlet property="Chat" destination="NM1-BX-pb2" id="ZKa-8u-YlK"/>
+                        <outlet property="ChatOption" destination="9ja-9g-JQQ" id="lBM-bb-ZJb"/>
                         <outlet property="ClearButton" destination="eBx-2W-VSX" id="a39-MY-rSf"/>
                         <outlet property="DotBottom" destination="2sK-RK-lgE" id="sXb-Tn-Iex"/>
                         <outlet property="DotLeft" destination="Kjh-73-bLg" id="ToL-0n-otw"/>
@@ -596,6 +606,7 @@
     <resources>
         <image name="Arrow" width="12" height="9"/>
         <image name="Back Button" width="162" height="56"/>
+        <image name="Chat" width="55" height="55"/>
         <image name="Clear Button" width="162" height="56"/>
         <image name="Dot" width="17" height="17"/>
         <image name="JarClose" width="178" height="347"/>

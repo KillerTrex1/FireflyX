@@ -123,6 +123,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var PGRecognizer7: UIPanGestureRecognizer!
     
+    @IBOutlet weak var ChatOption: UIButton!
     
     var bodyTemp = "Y"
     var wingTemp = 1
@@ -143,7 +144,7 @@ class ViewController: UIViewController {
     var prevPoint: CGPoint!
     var fSong: Song!
     var curTail: Int! = 2
-    
+    var showChat: Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -209,6 +210,7 @@ class ViewController: UIViewController {
         EndingJar.isHidden = false
         PitchView.setOrigpointsAndAutoFormatConstraints()
         addSlots()
+        ChatOption.isHidden = false
     }
     
     
@@ -220,8 +222,8 @@ class ViewController: UIViewController {
         fSong = PlaybackEngine.makeSongnoPitch(mFirefly: newFly)
         PitchView.showCandies(notes: fSong.getNotes())
         Chat.isHidden = true
+        ChatOption.isHidden = true
     }
-    
     
     func lockProgress(){
         winglock = true
@@ -779,7 +781,7 @@ class ViewController: UIViewController {
         PitchFly.isHidden = true
         FireFlySupport.isHidden = true
         
-        
+        ChatOption.isHidden = false
     }
     @IBAction func clearPitch(_ sender: Any) {
         PitchView.clearAll()
@@ -801,31 +803,41 @@ class ViewController: UIViewController {
     }
     
     func chatChangeHead(){
-        Chat.isHidden = false
+        Chat.isHidden = !showChat
         Chat.image = UIImage(named: "\(bodyTemp)Chat")
     }
     
     func chatChangeFNote(num: Int){
-        Chat.isHidden = false
+        Chat.isHidden = !showChat
         Chat.image = UIImage(named: "\(bodyTemp)N\(num)Chat")
     }
     func chatChangeFNoteRest(num: Int){
-        Chat.isHidden = false
+        Chat.isHidden = !showChat
         Chat.image = UIImage(named: "\(bodyTemp)R\(num)Chat")
     }
     func chatChangeLeverToNote(){
-        Chat.isHidden = false
+        Chat.isHidden = !showChat
         Chat.image = UIImage(named: "\(bodyTemp)RtoL")
     }
     func chatChangeLeverToRest(){
-        Chat.isHidden = false
+        Chat.isHidden = !showChat
         Chat.image = UIImage(named: "\(bodyTemp)LtoR")
     }
     func chatChangeSize(num:Int){
-        Chat.isHidden = false
+        Chat.isHidden = !showChat
         Chat.image = UIImage(named: "\(bodyTemp)S\(num)Chat")
     }
     
+    @IBAction func funcHideOrShowChat(_ sender: Any) {
+        
+        showChat = !showChat
+        Chat.isHidden = showChat
+        if(showChat){
+            ChatOption.setImage(UIImage(named:"Chat"), for: .normal)
+        }else{
+            ChatOption.setImage(UIImage(named:"NoChat"), for: .normal)
+        }
+    }
     
     
     
