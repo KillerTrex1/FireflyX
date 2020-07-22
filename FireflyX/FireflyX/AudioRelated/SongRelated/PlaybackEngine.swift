@@ -28,7 +28,7 @@ class PlaybackEngine{
     }
     
     static func noPitchSongNoteConverter(beatPattern:String)->[Note]{
-        let Tpitch = Pitch.C
+        let Tpitch = Pitch.None
         let beatLetters = beatPattern.components(separatedBy: " ")
         var beats:[Note]=[]
         for i in 0..<beatLetters.count{
@@ -36,19 +36,19 @@ class PlaybackEngine{
             case "W":
                 beats.append(Note(type:.whole,pitch:Tpitch))
             case "Wr":
-                beats.append(Note(type:.wholeRest,pitch:.Rest))
+                beats.append(Note(type:.wholeRest,pitch:Tpitch))
             case "H":
                 beats.append(Note(type:.half,pitch:Tpitch))
             case "Hr":
-                beats.append(Note(type:.halfRest,pitch:.Rest))
+                beats.append(Note(type:.halfRest,pitch:Tpitch))
             case "Q":
                 beats.append(Note(type:.quarter,pitch:Tpitch))
             case "Qr":
-                beats.append(Note(type:.quarterRest,pitch:.Rest))
+                beats.append(Note(type:.quarterRest,pitch:Tpitch))
             case "E":
                 beats.append(Note(type:.eighth,pitch:Tpitch))
             case "Er":
-                beats.append(Note(type:.eighthRest,pitch:.Rest))
+                beats.append(Note(type:.eighthRest,pitch:Tpitch))
             default:
                 beats.append(Note(type:.eighth,pitch:Tpitch))
             }

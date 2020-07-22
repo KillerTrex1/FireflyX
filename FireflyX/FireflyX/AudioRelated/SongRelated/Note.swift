@@ -36,8 +36,17 @@ class Note {
         self.pitch = pitch
         self.type = type
     }
+    func isRest() ->Bool{
+        switch type{
+            case .eighthRest,.halfRest,.quarterRest,.wholeRest:
+                return true
+            default:
+                return false
+        }
+        
+    }
     func changePitch(pitchIndex: Int){
-        var pitch: Pitch
+        let pitch: Pitch
         switch pitchIndex{
             case 0:
                 pitch = .AH
@@ -63,14 +72,55 @@ class Note {
                 pitch = .E
             case 11:
                 pitch = .D
-            default:
+            case 12:
                 pitch = .C
+            default:
+                pitch = .None
+            
         }
         self.pitch = pitch
     }
-    func convertToMIDI() -> Int {
-        // all values here are in 4th octave
+    func getPitchIndex() -> Int {
         
+        
+        var index = 0
+        
+        switch self.pitch {
+        case .C:
+            index = 12
+        case .D:
+            index = 11
+        case .E:
+            index = 10
+        case .F:
+            index = 9
+        case .G:
+            index = 8
+        case .A:
+            index = 7
+        case .B:
+            index = 6
+        case .CH:
+            index = 5
+        case .DH:
+            index = 4
+        case .EH:
+            index = 3
+        case .FH:
+            index = 2
+        case .GH:
+            index = 1
+        case .AH:
+            index = 0
+        default:
+            index = -1
+
+        }
+        
+        return index
+    }
+    func convertToMIDI()->Int{
+        // all values here are in 4th octave
         var MIDINum = 0
         
         switch self.pitch {
@@ -101,7 +151,7 @@ class Note {
         case .AH:
             MIDINum = 81
         default:
-            MIDINum = 0
+            MIDINum = -1
         }
         
         return MIDINum

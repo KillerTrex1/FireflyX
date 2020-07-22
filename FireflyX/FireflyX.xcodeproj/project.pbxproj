@@ -31,9 +31,7 @@
 		84418AE723F802940056F4C6 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84418AE623F802940056F4C6 /* Song.swift */; };
 		8454B3A223F67D1300179E71 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454B3A123F67D1300179E71 /* Note.swift */; };
 		8454B3A523F67F5300179E71 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8454B3A323F67F5300179E71 /* AudioKit.framework */; };
-		8454B3A623F67F5300179E71 /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8454B3A323F67F5300179E71 /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8454B3A723F67F5300179E71 /* AudioKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8454B3A423F67F5300179E71 /* AudioKitUI.framework */; };
-		8454B3A823F67F5300179E71 /* AudioKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8454B3A423F67F5300179E71 /* AudioKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8454B3AD23F682A400179E71 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454B3AC23F682A400179E71 /* AudioEngine.swift */; };
 		8454B3AF23F6861C00179E71 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454B3AE23F6861C00179E71 /* PlaybackEngine.swift */; };
 		8470B88223FCE58F002826C5 /* PatternCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470B88123FCE58F002826C5 /* PatternCollection.swift */; };
@@ -41,21 +39,6 @@
 		8470B88623FCE9DA002826C5 /* NoteTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470B88523FCE9DA002826C5 /* NoteTypes.swift */; };
 		84E98E43240024500013BC36 /* Grand Piano.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E98E42240024500013BC36 /* Grand Piano.wav */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		8454B3A923F67F5300179E71 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8454B3A823F67F5300179E71 /* AudioKitUI.framework in Embed Frameworks */,
-				8454B3A623F67F5300179E71 /* AudioKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1607FFDEF598377E21768079 /* Pods-FireflyX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireflyX.debug.xcconfig"; path = "Target Support Files/Pods-FireflyX/Pods-FireflyX.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +117,7 @@
 				6AEE402723CE1B31009149BD /* Enums */,
 				843F6E3124181D0D00CFCEBD /* ViewTools */,
 				6AEE401123CE0636009149BD /* SceneDelegate.swift */,
+				84286F032409F68F00E449E7 /* View.swift */,
 				6AEE401323CE0636009149BD /* ViewController.swift */,
 				6AEE401523CE0636009149BD /* Main.storyboard */,
 				6AEE402823CE1B6F009149BD /* Lookups.swift */,
@@ -141,7 +125,6 @@
 				6AEE401A23CE0642009149BD /* LaunchScreen.storyboard */,
 				6AEE401D23CE0642009149BD /* Info.plist */,
 				8432470E2403AEB500F30379 /* FireflyAnimator.swift */,
-				84286F032409F68F00E449E7 /* View.swift */,
 			);
 			path = FireflyX;
 			sourceTree = "<group>";
@@ -240,7 +223,6 @@
 				6AEE400823CE0636009149BD /* Sources */,
 				6AEE400923CE0636009149BD /* Frameworks */,
 				6AEE400A23CE0636009149BD /* Resources */,
-				8454B3A923F67F5300179E71 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

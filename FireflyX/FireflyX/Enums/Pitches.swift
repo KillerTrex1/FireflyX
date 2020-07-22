@@ -21,5 +21,5 @@ enum Pitch {
     case FH
     case GH
     case AH
-    case Rest
+    case None
 }

@@ -95,8 +95,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var StartingJar: UIButton!
     
-    @IBOutlet weak var EndingJar: UIImageView!
-    
     @IBOutlet weak var PitchFly: UIImageView!
     
     @IBOutlet weak var MovingPitchFly: UIImageView!
@@ -125,6 +123,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var ChatOption: UIButton!
     
+    @IBOutlet weak var NextFButton: UIButton!
+    
+    @IBOutlet weak var JFly1: UIImageView!
+    @IBOutlet weak var JFly2: UIImageView!
+    @IBOutlet weak var JFly3: UIImageView!
+    @IBOutlet weak var JFly4: UIImageView!
+    @IBOutlet weak var JFly5: UIImageView!
+    
     var bodyTemp = "Y"
     var wingTemp = 1
     var tailTemp = 1
@@ -145,6 +151,9 @@ class ViewController: UIViewController {
     var fSong: Song!
     var curTail: Int! = 2
     var showChat: Bool = true
+    var Songs = [Song]()
+    var flyCtr = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -156,7 +165,7 @@ class ViewController: UIViewController {
         View.setButtons(playButton: Play, headArea: HeadTouchArea, wing1Area: RightWingTouchArea, wing2Area: LeftWingTouchArea,rLever: RestLever, tailArea: TailTouchArea)
         View.setArrow(wingArrow: Arrow2, tailArrow: Arrow)
         FireflyAnimator.setImage(flyImageView: PitchFly ,support: FireFlySupport)
-        PitchView.setPitchImages(staffImage: Staff, pitchFlyImage: PitchFly, candy0Image: Candy0, candy1Image: Candy1, candy2Image: Candy2, candy3Image: Candy3, candy4Image: Candy4, candy5Image: Candy5, candy6Image: Candy6, candy7Image: Candy7, moveFly: MovingPitchFly, back: BackButton, clear: ClearButton, play: Play)
+        PitchView.setPitchImages(staffImage: Staff, pitchFlyImage: PitchFly, candy0Image: Candy0, candy1Image: Candy1, candy2Image: Candy2, candy3Image: Candy3, candy4Image: Candy4, candy5Image: Candy5, candy6Image: Candy6, candy7Image: Candy7, moveFly: MovingPitchFly, back: BackButton, clear: ClearButton, play: Play, next: NextFButton)
         
         PitchFly.isHidden = true
         //FireflyAnimator.setIarray(ImageCount: 8, ImagePrefix: "YW1C")
@@ -187,7 +196,7 @@ class ViewController: UIViewController {
                 if j == 0 || j == 12{
                     let edgeImage  = UIImage(named: "edgeline")
                     
-                    var edgeLineView = UIImageView(frame: CGRect(x:  0, y: 0, width : width * 1.5, height: height))
+                    let edgeLineView = UIImageView(frame: CGRect(x:  0, y: 0, width : width * 1.5, height: height))
                     edgeLineView.image = edgeImage
                     newSlot = PitchSlot(pitchslot: imageView, edgeLine: edgeLineView)
                     edgeLineView.isHidden = true
@@ -206,11 +215,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func openJar(_ sender: Any) {
-        StartingJar.isHidden = true
-        EndingJar.isHidden = false
-        PitchView.setOrigpointsAndAutoFormatConstraints()
-        addSlots()
-        ChatOption.isHidden = false
+        if(flyCtr == -1){
+            //StartingJar.isHidden = true
+            DotTop.isHidden = false
+            FireflyImage.isHidden = false
+            //EndingJar.isHidden = false
+            PitchView.setOrigpointsAndAutoFormatConstraints()
+            addSlots()
+            ChatOption.isHidden = false
+            JFly1.isHidden = true
+            flyCtr+=1
+        }
+        
+    
     }
     
     
@@ -223,6 +240,10 @@ class ViewController: UIViewController {
         PitchView.showCandies(notes: fSong.getNotes())
         Chat.isHidden = true
         ChatOption.isHidden = true
+        if PitchView.checkReady(){
+            Play.isHidden = false
+            NextFButton.isHidden = false
+        }
     }
     
     func lockProgress(){
@@ -230,46 +251,57 @@ class ViewController: UIViewController {
         tail1lock = true
         tail2lock = true
         playlock = true
+        arrow2Appear = false
+        arrowApppear = false
         
-        toggleBody()
+        if(flyCtr>0){
+            DotTop.isHidden = false
+        }
         
-        toggleWing1()
-        toggleRightWingTouch()
+        toggleBody(val:true)
         
-        toggleLeftWingtouch()
-        toggleWing2()
+        toggleWing1(val:true)
+        toggleRightWingTouch(val:true)
         
-        toggleTailTouch()
-        toggleTail()
+        toggleLeftWingtouch(val:true)
+        toggleWing2(val:true)
         
-        Play.isHidden = !Play.isHidden
+        toggleTailTouch(val:true)
+        toggleTail(val:true)
+        
+        Play.isHidden = true
+        FeedBtn.isHidden = true
     }
+
     
-    func toggleBodyTouch(){
-        DotTop.isHidden = !DotTop.isHidden
-        HeadTouchArea.isHidden = !HeadTouchArea.isHidden
+    func toggleBodyTouch(val:Bool){
+        DotTop.isHidden = val
+        HeadTouchArea.isHidden = val
     }
-    func toggleRightWingTouch(){
-        DotRIght.isHidden = !DotRIght.isHidden
-        RightWingTouchArea.isHidden = !RightWingTouchArea.isHidden
+    func toggleRightWingTouch(val:Bool){
+        DotRIght.isHidden = val
+        RightWingTouchArea.isHidden = val
         
     }
-    func toggleLeftWingtouch(){
-        DotLeft.isHidden = !DotLeft.isHidden
-        LeftWingTouchArea.isHidden = !LeftWingTouchArea.isHidden
+    func toggleLeftWingtouch(val:Bool){
+        DotLeft.isHidden = val
+        LeftWingTouchArea.isHidden = val
 
         
     }
-    func toggleTailTouch(){
-        DotBottom.isHidden = !DotBottom.isHidden
-        TailTouchArea.isHidden = !TailTouchArea.isHidden
-
-        
+    func toggleTailTouch(val:Bool){
+        DotBottom.isHidden = val
+        TailTouchArea.isHidden = val
     }
 
 
     
     @IBAction func ToggleRest(_ sender: Any) {
+        
+        ChangeRest()
+    }
+    
+    func ChangeRest(){
         restToggle = !restToggle
         switch (wing.firstNote){
         case .eighth:
@@ -299,18 +331,18 @@ class ViewController: UIViewController {
         }
         UpdateImage()
         tail.setBeatPattern(beatType: wing.getNFirstNote(), Bindex: curTail)
-        
     }
+    
     @IBAction func RedBody(_ sender: Any) {
         bodyChange(Bcolor: "R")
     }
     
-    
+/*
     @IBAction func OrangeBody(_ sender: Any) {
         bodyChange(Bcolor: "O")
     }
     
-    
+*/
     @IBAction func YellowBody(_ sender: Any) {
         bodyChange(Bcolor: "Y")
     }
@@ -320,7 +352,7 @@ class ViewController: UIViewController {
         bodyChange(Bcolor: "G")
         
     }
-    
+ /*
     @IBAction func BlueBody(_ sender: Any) {
         bodyChange(Bcolor: "B")
         
@@ -335,19 +367,30 @@ class ViewController: UIViewController {
         bodyChange(Bcolor: "V")
         
     }
-    
+  */
     func bodyChange(Bcolor:String){
         
         bodyTemp = Bcolor
+        changeJarFliesColor()
         chatChangeHead()
         body.setColor(color: Lookups.colorsLookup(color: Bcolor))
         UpdateImage()
         UpdateTailOptions(isSingle: previousWhole)
         if(winglock){
             winglock = false
-            toggleLeftWingtouch()
-            toggleRightWingTouch()
+            toggleLeftWingtouch(val:false)
+            toggleRightWingTouch(val:false)
         }
+    }
+    func changeJarFliesColor(){
+        var pic = UIImage(named: "J\(bodyTemp)Fly")
+        JFly1.image = pic
+        JFly2.image = pic
+        JFly3.image = pic
+        JFly4.image = pic
+        JFly5.image = pic
+            
+        
     }
     
     @IBAction func WSize1(_ sender: Any) {
@@ -377,6 +420,8 @@ class ViewController: UIViewController {
     @IBAction func WSize6(_ sender: Any) {
         changeWingSizeAndUnlockTail1(num: 6)
     }
+    
+    
     func tail1LockUnlock(){
         
         if(tail1lock){
@@ -390,19 +435,18 @@ class ViewController: UIViewController {
         //chatChangeSize(num: num)
         changeWingSize(num: num)
         tail1LockUnlock()
+        chatChangeSize(num: num)
     }
     func changeWingSize(num:Int){
         wingTemp = num
-        chatChangeSize(num: num)
+        
         wing.setRepetitions(repetitions: num)
         UpdateImage()
         ChangeTopTouchSize()
-
-        
     }
     func checkTailLock(){
         if !tail1lock && !tail2lock {
-            toggleTailTouch()
+            toggleTailTouch(val:false)
         }
     }
     
@@ -510,51 +554,56 @@ class ViewController: UIViewController {
     
     
     @IBAction func HeadTouch(_ sender: Any) {
-        toggleBody()
+        
+        toggleBody(val:!BodyWood.isHidden)
         DotTop.isHidden = true
     }
     
     @IBAction func LWingTouch(_ sender: Any) {
-        toggleWing2()
+        toggleWing2(val:!Wing2Wood.isHidden)
         DotLeft.isHidden = true
     }
     
     @IBAction func RWingTouch(_ sender: Any) {
-        toggleWing1()
+        toggleWing1(val:!Wing1Wood.isHidden)
         DotRIght.isHidden = true
     }
     
     @IBAction func TailTouch(_ sender: Any) {
-        toggleTail()
+        toggleTail(val:!TailWood.isHidden)
         DotBottom.isHidden = true
     }
 
     
-    func toggleBody(){
-        BodyWood.isHidden = !BodyWood.isHidden
-        BodyOptions.isHidden = !BodyOptions.isHidden
+    func toggleBody(val : Bool){
+        BodyWood.isHidden = val
+        BodyOptions.isHidden = val
         
     }
-    func toggleWing1(){
-        Wing1Wood.isHidden = !Wing1Wood.isHidden
-        Wing1Options.isHidden = !Wing1Options.isHidden
+    func toggleWing1(val : Bool){
+        Wing1Wood.isHidden = val
+        Wing1Options.isHidden = val
         
     }
-    func toggleWing2(){
-        Wing2Wood.isHidden = !Wing2Wood.isHidden
-        Wing2Options.isHidden = !Wing2Options.isHidden
-        RestLever.isHidden = !RestLever.isHidden
-        if arrow2Appear{
-            Arrow2.isHidden = !Arrow2.isHidden
+    func toggleWing2(val : Bool){
+        Wing2Wood.isHidden = val
+        Wing2Options.isHidden = val
+        RestLever.isHidden = val
+        Arrow2.isHidden = true
+        if arrow2Appear && !val{
+            Arrow2.isHidden = val
         }
         
     }
-    func toggleTail(){
-        TailWood.isHidden = !TailWood.isHidden
-        TailOptions.isHidden = !TailOptions.isHidden
-        if arrowApppear{
-            Arrow.isHidden = !Arrow.isHidden
+    func toggleTail(val : Bool){
+        TailWood.isHidden = val
+        TailOptions.isHidden = val
+        
+        Arrow.isHidden = true
+        if arrowApppear && !val{
+            Arrow.isHidden = val
         }
+
     }
     
     func changeTail(index:Int){
@@ -752,16 +801,20 @@ class ViewController: UIViewController {
             let pitchVal = PitchView.trySnap(val: index)
             if pitchVal == -1{
                 gestureView.center = prevPoint
-                print(gestureView.center.x)
-                print(gestureView.center.y)
+                //print(gestureView.center.x)
+                //print(gestureView.center.y)
             }else{
                 PitchView.takeSlot(notenum: index, pitchnum: pitchVal)
-                if(fSong.getNotes()[index].convertToMIDI() != 0){
+                if(fSong.getNotes()[index].isRest()){
+                    fSong.getNotes()[index].changePitch(pitchIndex: 12)
+                    //12 is rest
+                }else{
                     fSong.getNotes()[index].changePitch(pitchIndex: pitchVal)
                 }
                 
                 if PitchView.checkReady(){
                     Play.isHidden = false
+                    NextFButton.isHidden = false
                 }
             }
 
@@ -770,25 +823,31 @@ class ViewController: UIViewController {
     }
     
     @IBAction func BackPitch(_ sender: Any) {
+        backFromPitch()
+    }
+    func backFromPitch(){
         FeedBtn.isHidden = false
         
         print("hello")
         View.hideAll(val: false)
         
-        PitchView.clearAll()
+        //PitchView.clearAll()
         PitchView.shouldHide(val: true)
         PitchView.hideCandies()
         PitchFly.isHidden = true
         FireFlySupport.isHidden = true
+        NextFButton.isHidden = true
         
         ChatOption.isHidden = false
     }
     @IBAction func clearPitch(_ sender: Any) {
         PitchView.clearAll()
         Play.isHidden = true
+        NextFButton.isHidden = true
+        fSong.removePitch()
     }
     
-    @IBAction func JarFunction(_ sender: Any) {
+    @IBAction func PreviewPitch(_ sender: Any) {
         //jarMode = !jarMode
         //ChoiceAppear()
         //let newFly = Firefly(nBody: body, nWing: wing, nTail: tail)
@@ -831,23 +890,58 @@ class ViewController: UIViewController {
     @IBAction func funcHideOrShowChat(_ sender: Any) {
         
         showChat = !showChat
-        Chat.isHidden = showChat
+        Chat.isHidden = !showChat
         if(showChat){
             ChatOption.setImage(UIImage(named:"Chat"), for: .normal)
         }else{
             ChatOption.setImage(UIImage(named:"NoChat"), for: .normal)
         }
+        
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @IBAction func NextFly(_ sender: Any) {
+        PitchView.clearAll()
+        backFromPitch()
+        if (flyCtr < 5){
+            //save
+            Songs.append(fSong)
+            
+            //reset except locks
+            changeWingSize(num: 1)
+            fSong.removePitch()
+            wingTemp = 1
+            tailTemp = 1
+            
+            wing = Wing()
+            body = Body()
+            tail = Tail()
+            if !restToggle {
+                ChangeRest()
+            }
+            // reset locks
+            
+            switch(flyCtr){
+                case 0:
+                    JFly1.isHidden = false
+                case 1:
+                    JFly2.isHidden = false
+                case 2:
+                    JFly3.isHidden = false
+                case 3:
+                    JFly4.isHidden = false
+                default:
+                    JFly5.isHidden = false
+                
+            }
+            flyCtr+=1
+            lockProgress()
+            
+        }
+        
+        
+        
+        
+    }
 }
 

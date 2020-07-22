@@ -25,8 +25,9 @@ class PitchView{
     static var clearBtn: UIButton!
     static var backBtn:UIButton!
     static var playBtn:UIButton!
+    static var nextFBtn:UIButton!
     //static var currSong:Song
-    static func setPitchImages(staffImage: UIImageView, pitchFlyImage: UIImageView, candy0Image: UIImageView, candy1Image: UIImageView, candy2Image: UIImageView, candy3Image: UIImageView, candy4Image: UIImageView, candy5Image: UIImageView, candy6Image: UIImageView, candy7Image: UIImageView, moveFly:UIImageView, back: UIButton, clear: UIButton, play:UIButton){
+    static func setPitchImages(staffImage: UIImageView, pitchFlyImage: UIImageView, candy0Image: UIImageView, candy1Image: UIImageView, candy2Image: UIImageView, candy3Image: UIImageView, candy4Image: UIImageView, candy5Image: UIImageView, candy6Image: UIImageView, candy7Image: UIImageView, moveFly:UIImageView, back: UIButton, clear: UIButton, play:UIButton, next:UIButton){
         
         staff = staffImage
         //tray = trayImage
@@ -48,6 +49,7 @@ class PitchView{
         backBtn = back
         playBtn = play
         clearBtn = clear
+        nextFBtn = next
         
         //pitchFly.translatesAutoresizingMaskIntoConstraints = true
         
@@ -64,6 +66,7 @@ class PitchView{
         pitchSLots = slotArray
     }
     static func showCandies(notes:[Note]){
+        let hasPitch = notes[0].convertToMIDI() != -1
         for i in 0 ..< notes.count{
             var CImage: UIImage!
             print(notes[i].convertBeat())
@@ -92,9 +95,17 @@ class PitchView{
             candies[i].isHidden = false
             candies[i].isUserInteractionEnabled = true
             
+            if (hasPitch){
+                let pIndex = notes[i].getPitchIndex()
+                print("HAS PITCH")
+                takeSlot(notenum: notes[i].getValue(), pitchnum: pIndex)
+                snap(candy: candies[i], pitchSlot: pitchSLots[i][pIndex].pitchSlot)
+                
+            }
         }
         maxPoint = notes.count
     }
+
     static func hideCandies(){
         for i in 0 ..< candies.count{
             candies[i].isHidden = true
@@ -102,7 +113,7 @@ class PitchView{
         }
     }
     static func retainCandies(){
-        print("RETAINNNNNNNNNNNNNNNNNNNN")
+        //print("RETAINNNNNNNNNNNNNNNNNNNN")
         for i in 0 ..< maxPoint{
             candies[i].center = pitchSLots[i][pitchPlaymap[i]].pitchSlot.center
         }
@@ -174,7 +185,7 @@ class PitchView{
         backBtn.isHidden = true
         clearBtn.isHidden = true
         playBtn.isHidden = true
-        
+        nextFBtn.isHidden = true
     }
     static func nextNoteMove(){
         fIndex += 1
@@ -190,8 +201,8 @@ class PitchView{
         backBtn.isHidden = false
         clearBtn.isHidden = false
         playBtn.isHidden = false
-        
-        print("SHOW UR SELF")
+        nextFBtn.isHidden = false
+        //print("SHOW UR SELF")
         pitchFly.isHidden = false
     }
     static func trySnap(val: Int)->Int{
@@ -205,16 +216,21 @@ class PitchView{
                         let upper = abs(Float(pitchSLots[val][i].pitchSlot.center.y - candies[val].center.y))
                         let lower = abs(Float(pitchSLots[val][i+1].pitchSlot.center.y - candies[val].center.y))
                         if lower < upper {
-                            candies[val].center = pitchSLots[val][i+1].pitchSlot.center
+                            //candies[val].center = pitchSLots[val][i+1].pitchSlot.center
+                            snap(candy: candies[val], pitchSlot: pitchSLots[val][i+1].pitchSlot)
                             return i+1
                         }else{
-                            candies[val].center = pitchSLots[val][i].pitchSlot.center
+                            
+                            //candies[val].center = pitchSLots[val][i].pitchSlot.center
+                            snap(candy: candies[val], pitchSlot: pitchSLots[val][i].pitchSlot)
                         }
                     }else{
-                        candies[val].center = pitchSLots[val][i].pitchSlot.center
+                        //candies[val].center = pitchSLots[val][i].pitchSlot.center
+                        snap(candy: candies[val], pitchSlot: pitchSLots[val][i].pitchSlot)
                     }
                 }else{
-                    candies[val].center = pitchSLots[val][i].pitchSlot.center
+                    //candies[val].center = pitchSLots[val][i].pitchSlot.center
+                    snap(candy: candies[val], pitchSlot: pitchSLots[val][i].pitchSlot)
                 }
                 //print(i)
                 return i
@@ -222,5 +238,9 @@ class PitchView{
         }
         return -1
     
+    }
+    
+    static func snap(candy: UIImageView,pitchSlot:UIImageView){
+        candy.center = pitchSlot.center
     }
 }

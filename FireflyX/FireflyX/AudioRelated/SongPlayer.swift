@@ -72,7 +72,7 @@ class SongPlayer{
             // get the MIDI number of current note and play it using the sampler
             // from AudioEngine
             
-            if currNote.convertToMIDI() != 0{
+            if !currNote.isRest(){
                 try! sampler.play(noteNumber: MIDINoteNumber(currNote.convertToMIDI()))
                 
                 

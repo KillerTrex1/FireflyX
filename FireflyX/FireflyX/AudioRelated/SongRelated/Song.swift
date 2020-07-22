@@ -27,12 +27,18 @@ class Song{
     }
     func getRepeatedNotes()->[Note]{
         var repeatedNotes = [Note]()
-        for i in 0 ..< repetitions{
+        for _ in 0 ..< repetitions{
             for j in 0 ..< notes.count{
                 repeatedNotes.append(notes[j])
             }
         }
         return repeatedNotes
+    }
+    func removePitch(){
+        for note in notes{
+            note.changePitch(pitchIndex: -1)
+            
+        }
     }
     
 }
