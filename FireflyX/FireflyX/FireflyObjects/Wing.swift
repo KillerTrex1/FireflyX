@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Wing{
+class Wing: Codable{
     var firstNote: NoteType
     var repetitions: Int
     

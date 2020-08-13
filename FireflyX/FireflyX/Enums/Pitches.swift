@@ -7,7 +7,7 @@
 //
 
 import Foundation
-enum Pitch {
+enum Pitch: String, Codable{
     case C
     case D
     case E
@@ -21,5 +21,4 @@ enum Pitch {
     case FH
     case GH
     case AH
-    case None
 }

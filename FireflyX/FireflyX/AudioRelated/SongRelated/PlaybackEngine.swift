@@ -11,7 +11,7 @@ class PlaybackEngine{
     static func makeAndPlaySong(mFirefly:Firefly){
         let newSong = songConverter(nfirefly: mFirefly)
         print("song tempo: \(newSong.getTempo())")
-        print("song rep:\(newSong.repetitions)")
+        print("song rep:\(newSong.getRepetitions())")
         print("song beats:\(mFirefly.getTail().getBeatPattern())")
         SongPlayer.placeSong(song: newSong)
         SongPlayer.playSong()
@@ -23,12 +23,11 @@ class PlaybackEngine{
     static func songConverter(nfirefly:Firefly)->Song{
         return Song(
             notes: noPitchSongNoteConverter(beatPattern:nfirefly.getTail().getBeatPattern()),
-            tempo: nfirefly.getBody().getTempo(),
-            repetitions: nfirefly.getWing().getRepetitions())
+            fFly: nfirefly)
     }
     
     static func noPitchSongNoteConverter(beatPattern:String)->[Note]{
-        let Tpitch = Pitch.None
+        let Tpitch = Pitch.C
         let beatLetters = beatPattern.components(separatedBy: " ")
         var beats:[Note]=[]
         for i in 0..<beatLetters.count{

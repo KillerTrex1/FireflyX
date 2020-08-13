@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Body{
+class Body: Codable{
     var color : Colors
     var tempo : Double
     

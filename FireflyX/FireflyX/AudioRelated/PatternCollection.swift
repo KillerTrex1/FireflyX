@@ -18,12 +18,14 @@ class PatternCollection{
     
     static let firstNoteQr = ["Qr Q Hr","Qr H Qr","Qr Q Qr Q", "Qr Q Q Qr","Qr E E Qr E E"]
     
-    //static let firstNoteQ = ["Q Q Hr","Q H Qr","Q Q Qr Q", "Q Q Q Qr","Q E E Qr E E"]
-    static let firstNoteQ = ["Q Qr Hr","Q H Qr","Q Q Qr Q", "Q Q Q Qr","Q E E Q Q"]
+    //static let firstNoteQ = ["Q Q Hr","Q H Qr","Q Q Qr Q", "Q Q Q Qr","Q E E Qr E E"]'
+    static let firstNoteQ = ["Q Q H","Q Qr Q Qr","Q Q Q Q", "Q Qr E E Qr","Q E E Q Q"]
     
-    static let firstNoteEr = ["Er H Qr E", "Er E Q Qr Q", "Er E Hr E E", "Er E E E Er E Q"]
+    static let firstNoteEr = ["Er H Qr E", "Er E Q Qr Q", "Er E Hr E E","Er E Er E Er E Q","Er E E E Er E Q"]
     
-    static let firstNoteE = ["E E Q H", "E Q E Q Q", "E E Qr E E Qr", "E E E E E E Q", "E E E E Er E E Er"]
+    static let firstNoteE = ["E E Q H", "E Q E Q Q", "E E Qr E E Qr", "E E E E Q Q", "E E E E Er E E Er"]
+    
+    
     static func getBeatString(noteType: NoteType, index:Int)->String{
         switch noteType{
         case .wholeRest:

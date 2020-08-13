@@ -26,7 +26,7 @@ class Lookups{
             return 108.0
         */
         default:
-            return 66.0
+            return 100.0
             
             
         }
@@ -51,6 +51,45 @@ class Lookups{
         default:
             //return .Violet
             return .Green
+        }
+    }
+    static func colorsStringLookup(color:Colors)->String{
+        switch color{
+        case .Red:
+            return "R"
+        //case "O":
+            //return .Orange
+        case .Yellow:
+            return "Y"
+        /*
+        case "G":
+            return .Green
+        
+        case "B":
+            return .Blue
+        case "I":
+            return .Indigo
+        */
+        default:
+            //return .Violet
+            return "G"
+        }
+    }
+    static func NoteValueLookup(type: NoteType)->Int{
+        
+        switch type {
+        case .whole,
+             .wholeRest:
+            return 8
+        case .half,
+             .halfRest:
+            return 4
+        case .quarter,
+             .quarterRest:
+            return 2
+        case .eighth,
+             .eighthRest:
+            return 1
         }
     }
 }

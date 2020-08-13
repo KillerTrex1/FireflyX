@@ -7,7 +7,7 @@
 //
 
 import Foundation
-enum NoteType {
+enum NoteType :String, Codable{
     case whole
     case half
     case quarter

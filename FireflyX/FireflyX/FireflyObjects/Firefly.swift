@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Firefly{
+class Firefly: Codable{
     
     var body : Body
     var wing : Wing

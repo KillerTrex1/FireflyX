@@ -62,9 +62,4 @@ class PitchSlot{
         }
         
     }
-
-    
-
-    
-
 }

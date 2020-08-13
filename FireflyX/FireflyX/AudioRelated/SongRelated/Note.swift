@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Note {
+class Note:Codable{ 
     var type:NoteType
     var value:Int
     var pitch:Pitch
@@ -18,21 +18,8 @@ class Note {
     //128
     //64
     init (type: NoteType, pitch:Pitch) {
-        switch type {
-        case .whole,
-             .wholeRest:
-            value = 8
-        case .half,
-             .halfRest:
-            value = 4
-        case .quarter,
-             .quarterRest:
-            value = 2
-        case .eighth,
-             .eighthRest:
-            value = 1
-        }
         
+        value = Lookups.NoteValueLookup(type: type)
         self.pitch = pitch
         self.type = type
     }
@@ -72,10 +59,9 @@ class Note {
                 pitch = .E
             case 11:
                 pitch = .D
-            case 12:
-                pitch = .C
             default:
-                pitch = .None
+                pitch = .C
+
             
         }
         self.pitch = pitch
@@ -125,31 +111,45 @@ class Note {
         
         switch self.pitch {
         case .C:
-            MIDINum = 60
+            //MIDINum = 60
+            MIDINum = 63
         case .D:
-            MIDINum = 62
-        case .E:
-            MIDINum = 64
-        case .F:
+            //MIDINum = 62
             MIDINum = 65
-        case .G:
+            //
+        case .E:
             MIDINum = 67
+            //MIDINum = 64
+        case .F:
+            MIDINum = 68
+            //MIDINum = 65
+        case .G:
+            MIDINum = 70
+            //MIDINum = 67
         case .A:
-            MIDINum = 69
-        case .B:
-            MIDINum = 71
-        case .CH:
             MIDINum = 72
-        case .DH:
+            //MIDINum = 69
+        case .B:
             MIDINum = 74
-        case .EH:
-            MIDINum = 76
-        case .FH:
+            //MIDINum = 71
+        case .CH:
+            MIDINum = 75
+            //MIDINum = 72
+        case .DH:
             MIDINum = 77
-        case .GH:
+            //MIDINum = 74
+        case .EH:
             MIDINum = 79
+            //MIDINum = 76
+        case .FH:
+            MIDINum = 80
+            //MIDINum = 77
+        case .GH:
+            MIDINum = 82
+            //MIDINum = 79
         case .AH:
-            MIDINum = 81
+            MIDINum = 84
+            //MIDINum = 81
         default:
             MIDINum = -1
         }

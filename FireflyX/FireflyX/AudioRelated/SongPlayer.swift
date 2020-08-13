@@ -16,25 +16,50 @@ class SongPlayer{
     static var currNoteIndex = -1
     static let audioEngine = AudioEngine()
     static var repeatCounter=0
+    static var fullMode = false
+    static var fullSongIndex = 0
     
     static var curSong: Song!
+    static var curJar: Jar!
+    static var noteArray: [Note]!
     
     static func placeSong(song:Song){
         curSong = song
         repeatCounter = 0
+        fullMode = false
         //FireflyAnimator.prepareAnimation()
-        
+    }
+    static func placeFullSong(jar:Jar){
+        curJar = jar
+        repeatCounter = 0
+        fullMode = true
+        //FireflyAnimator.prepareAnimation()
+    }
+    static func playNote(note: Note){
+        if !note.isRest(){
+            try! self.audioEngine.sampler.play(noteNumber: MIDINoteNumber(note.convertToMIDI()))
+        }
         
     }
     static func playSong(){
         //print("DURATION OF quarter NOTE: \(60 / self.curSong.getTempo() * 1.0)")
         PitchView.prepareMoveFly()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curSong.getTempo() * 0.5, // 1/128 = 0.0078125
-        repeats: true,
-        block: {_ in self.optimizedPlaybackLoop(
-            notes: self.curSong.getRepeatedNotes(),
-                sampler: self.audioEngine.sampler
-            )})
+        if fullMode{
+            self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curJar.getSongs()[0].getTempo() * 0.5, // 1/128 = 0.0078125
+            repeats: true,
+            block: {_ in self.optimizedPlaybackLoop(
+                notes: self.curJar.MakeFullSong(),
+                    sampler: self.audioEngine.sampler
+                )})
+        }else{
+            self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curSong.getTempo() * 0.5, // 1/128 = 0.0078125
+            repeats: true,
+            block: {_ in self.optimizedPlaybackLoop(
+                notes: self.curSong.getRepeatedNotes(),
+                    sampler: self.audioEngine.sampler
+                )})
+        }
+        
     }
     //static var num = 0
     static func optimizedPlaybackLoop (notes: [Note], sampler: AKAppleSampler) {
@@ -56,9 +81,18 @@ class SongPlayer{
                 //    playSong()
                     
                 //}else{
-                    FireflyAnimator.endAnimation()
+                FireflyAnimator.endAnimation()
                     //View.hidePanels(val: false)
-                    PitchView.endMoveFly()
+                PitchView.endMoveFly()
+                if(fullMode){
+                    
+                    PitchView.hideCandies()
+                    PitchView.clearAll()
+                    //PitchView.clearAll()
+                    PitchView.shouldHide(val: true)
+                    View.hideAll(val: false)
+                    fullSongIndex = 0
+                }
                 //}
                 
                 return
@@ -67,17 +101,37 @@ class SongPlayer{
             // assign next note to current note
             self.currNote = notes[self.currNoteIndex]
             print("Current MIDI Note Played: \(currNote.convertBeat())")
+            print(currNoteIndex)
+            
+            if fullMode && self.currNoteIndex != notes.count - 1{
+                if currNoteIndex == curJar.getChangeIndexes()[fullSongIndex]{
+                    fullSongIndex+=1
+                    PitchView.hideCandies()
+                    PitchView.clearAll()
+                    PitchView.showCandies(notes: curJar.getSongs()[fullSongIndex].getNotes())
+                    PitchView.prepareMoveFly()
+                }
+            }
+            
             PitchView.nextNoteMove()
+            
             //PitchView.retainCandies()
             // get the MIDI number of current note and play it using the sampler
             // from AudioEngine
+            
+            
             
             if !currNote.isRest(){
                 try! sampler.play(noteNumber: MIDINoteNumber(currNote.convertToMIDI()))
                 
                 
-                FireflyAnimator.animateImageOnce(duration: (60.0 / self.curSong.getTempo() *  0.5) * self.currNote.getValue())
-                print("DURATION OF NOTE: \((60.0 / self.curSong.getTempo() * (self.currNote.getValue() )))")
+                if fullMode{
+                    
+                    FireflyAnimator.animateImageOnce(duration: (60.0 / self.curJar.getTempo() *  0.5) * self.currNote.getValue())
+                }else{
+                    FireflyAnimator.animateImageOnce(duration: (60.0 / self.curSong.getTempo() *  0.5) * self.currNote.getValue())
+                    print("DURATION OF NOTE: \((60.0 / self.curSong.getTempo() * (self.currNote.getValue() )))")
+                }
             }
             
             
@@ -100,6 +154,8 @@ class SongPlayer{
             self.currBeatCounter = 0
             //self.timer.invalidate()
         }
+        
+        
         
     }
 }

@@ -51,6 +51,7 @@ class PitchView{
         clearBtn = clear
         nextFBtn = next
         
+        pitchFly.isHidden = true
         //pitchFly.translatesAutoresizingMaskIntoConstraints = true
         
     }
@@ -72,23 +73,23 @@ class PitchView{
             print(notes[i].convertBeat())
             switch notes[i].convertBeat(){
             case "W":
-                CImage  = UIImage(named: "cw2")
+                CImage  = UIImage(named: "tcw2")
             case "Wr":
-                CImage  = UIImage(named: "cwr2")
+                CImage  = UIImage(named: "tcwr2")
             case "H":
-                CImage  = UIImage(named: "ch2")
+                CImage  = UIImage(named: "tch2")
             case "Hr":
-                CImage  = UIImage(named: "chr2")
+                CImage  = UIImage(named: "tchr2")
             case "Q":
-                CImage  = UIImage(named: "cq2")
+                CImage  = UIImage(named: "tcq2")
             case "Qr":
-                CImage  = UIImage(named: "cqr2")
+                CImage  = UIImage(named: "tcqr2")
             case "E":
-                CImage  = UIImage(named: "ce2")
+                CImage  = UIImage(named: "tce2")
             case "Er":
-                CImage  = UIImage(named: "cer2")
+                CImage  = UIImage(named: "tcer2")
             default:
-                CImage  = UIImage(named: "cw2")
+                CImage  = UIImage(named: "tcw2")
                 
             }
             candies[i].image = CImage
@@ -97,13 +98,26 @@ class PitchView{
             
             if (hasPitch){
                 let pIndex = notes[i].getPitchIndex()
-                print("HAS PITCH")
-                takeSlot(notenum: notes[i].getValue(), pitchnum: pIndex)
+                //print("HAS PITCH")
+                takeSlot(notenum: i, pitchnum: pIndex)
                 snap(candy: candies[i], pitchSlot: pitchSLots[i][pIndex].pitchSlot)
-                
+                print("candy")
+                print(candies[i].center.x)
+                print(candies[i].center.y)
+                print(i)
+                if notes[i].isRest(){
+                    candies[i].isUserInteractionEnabled = false
+                    candies[i].alpha = 0.8
+                    
+                }else{
+                    candies[i].isUserInteractionEnabled = true
+                    candies[i].alpha = 1.0
+                }
             }
         }
         maxPoint = notes.count
+        fIndex = -1
+        checkReady()
     }
 
     static func hideCandies(){
@@ -128,6 +142,13 @@ class PitchView{
         clearBtn.isHidden = val
         backBtn.isHidden = val
         
+        if val{
+            hideCandies()
+            pitchFly.isHidden = val
+            //nextFBtn.isHidden = val
+            //playBtn.isHidden = val
+            hidePlayNext(val: val)
+        }
     }
     
     static func revealSlots(val: Int){
@@ -162,30 +183,40 @@ class PitchView{
         }
         for i in 0 ..< candies.count{
             candies[i].center = origPoints[i]
+            /*
             if(i==0){
                 print(candies[i].center.x)
                 print(candies[i].center.y)
             }
+            */
             pitchPlaymap[i] = -1
         }
+        hidePlayNext(val: true)
     }
     
-    static func checkReady()->Bool{
+    static func checkReady(){
+        var val = true
         for i in 0 ..< maxPoint{
             if pitchPlaymap[i] == -1{
-                return false
+                val = false
+                break
             }
         }
-        return true
+        if val{
+            hidePlayNext(val: false)
+        }
     }
     
     static func prepareMoveFly(){
         movingFly.isHidden = false
+        print(pitchPlaymap[0])
+        print(pitchSLots[0].count)
         movingFly.center = pitchSLots[0][pitchPlaymap[0]].pitchSlot.center
         backBtn.isHidden = true
         clearBtn.isHidden = true
-        playBtn.isHidden = true
-        nextFBtn.isHidden = true
+        //playBtn.isHidden = true
+        //nextFBtn.isHidden = true
+        hidePlayNext(val: true)
     }
     static func nextNoteMove(){
         fIndex += 1
@@ -200,10 +231,11 @@ class PitchView{
         
         backBtn.isHidden = false
         clearBtn.isHidden = false
-        playBtn.isHidden = false
-        nextFBtn.isHidden = false
+        //playBtn.isHidden = false
+        //nextFBtn.isHidden = false
         //print("SHOW UR SELF")
         pitchFly.isHidden = false
+        hidePlayNext(val: false)
     }
     static func trySnap(val: Int)->Int{
         for i in 0 ..< pitchSLots[0].count{
@@ -242,5 +274,9 @@ class PitchView{
     
     static func snap(candy: UIImageView,pitchSlot:UIImageView){
         candy.center = pitchSlot.center
+    }
+    static func hidePlayNext(val: Bool){
+        playBtn.isHidden = val
+        nextFBtn.isHidden = val
     }
 }

@@ -7,30 +7,29 @@
 //
 
 import Foundation
-class Song{
+class Song:Codable{
     var notes: [Note]
-    var tempo: Double
-    var repetitions: Int
-    init(notes:[Note],tempo:Double,repetitions:Int){
+    var firefly: Firefly
+    init(notes:[Note], fFly: Firefly){
         self.notes = notes
-        self.tempo = tempo
-        self.repetitions = repetitions
+        firefly = fFly
     }
     func getNotes()->[Note]{
         return notes
     }
     func getTempo()->Double{
-        return tempo
+        return firefly.getBody().getTempo()
     }
     func getRepetitions()->Int{
-        return repetitions
+        return firefly.getWing().getRepetitions()
+    }
+    func changeFireflyTempo(color:Colors){
+        firefly.getBody().setColor(color: color)
     }
     func getRepeatedNotes()->[Note]{
         var repeatedNotes = [Note]()
-        for _ in 0 ..< repetitions{
-            for j in 0 ..< notes.count{
-                repeatedNotes.append(notes[j])
-            }
+        for _ in 0 ..< getRepetitions(){
+            repeatedNotes+=notes
         }
         return repeatedNotes
     }
@@ -39,6 +38,9 @@ class Song{
             note.changePitch(pitchIndex: -1)
             
         }
+    }
+    func getFirefly()->Firefly{
+        return firefly
     }
     
 }
