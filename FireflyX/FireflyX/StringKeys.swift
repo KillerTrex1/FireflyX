@@ -10,13 +10,8 @@ import Foundation
 class StringKeys{
     
     static var KeyStart = "Task"
-    static var MenuToMainKey = "Main"
+    static var MainToMenu = "TaskMenu"
     static var MainToLoad = "Load"
-    static var LoadToMain = "LoadMain"
-    
-    static func KeyForCount(task: Int)->String{
-        return "\(KeyStart)\(task)C"
-    }
     static func KeyForJars(task: Int)->String{
         return "\(KeyStart)\(task)J"
     }

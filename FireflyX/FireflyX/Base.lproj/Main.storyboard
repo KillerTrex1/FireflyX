@@ -698,6 +698,7 @@
                         <outlet property="Wing2TouchArea" destination="qb4-P2-10j" id="YGP-Cb-kRk"/>
                         <outlet property="Wing2Wood" destination="vs4-AE-r1L" id="UOQ-nl-X7r"/>
                         <segue destination="fFi-HR-F01" kind="presentation" identifier="Load" id="GaB-pg-YsC"/>
+                        <segue destination="ZhF-fC-Z1K" kind="presentation" identifier="TaskMenu" id="INR-aH-eZq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -888,17 +889,16 @@
                         <outlet property="Wood0" destination="27r-7S-NYN" id="7nl-wr-4AM"/>
                         <outlet property="Wood1" destination="WyF-ZN-ibt" id="qxo-YJ-FXr"/>
                         <outlet property="Wood2" destination="96f-oV-uF8" id="aCu-Yd-HIw"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LoadMain" id="OHr-n5-pGx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rUq-p3-7aA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-513.0653266331658" y="873.38129496402883"/>
+            <point key="canvasLocation" x="132" y="847"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="nsE-Yk-BzR">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="ZhF-fC-Z1K" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ZhF-fC-Z1K" customClass="MenuViewController" customModule="FireflyX" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TeN-Y1-dxJ">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -906,23 +906,65 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menubg" translatesAutoresizingMaskIntoConstraints="NO" id="tpj-nj-lfI">
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="814"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rg8-k1-6cZ">
+                                <rect key="frame" x="404.5" y="104.5" width="385" height="101"/>
+                                <state key="normal" image="Task1"/>
+                                <connections>
+                                    <action selector="Task1:" destination="ZhF-fC-Z1K" eventType="touchUpInside" id="7A9-Y0-jNP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1f-lm-B8t">
+                                <rect key="frame" x="404.5" y="235.5" width="385" height="101"/>
+                                <state key="normal" image="Task2"/>
+                                <connections>
+                                    <action selector="Task2:" destination="ZhF-fC-Z1K" eventType="touchUpInside" id="d3m-gh-SO4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zo7-3g-hjn">
+                                <rect key="frame" x="404.5" y="366.5" width="385" height="101"/>
+                                <state key="normal" image="Task3"/>
+                                <connections>
+                                    <action selector="Task3:" destination="ZhF-fC-Z1K" eventType="touchUpInside" id="aRd-bg-Vzq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTM-pd-vsI">
+                                <rect key="frame" x="404.5" y="497.5" width="385" height="101"/>
+                                <state key="normal" image="Task4"/>
+                                <connections>
+                                    <action selector="Task4:" destination="ZhF-fC-Z1K" eventType="touchUpInside" id="ehU-wZ-oWn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwC-6H-Ysv">
+                                <rect key="frame" x="404.5" y="628.5" width="385" height="101"/>
+                                <state key="normal" image="Task5"/>
+                                <connections>
+                                    <action selector="Task5:" destination="ZhF-fC-Z1K" eventType="touchUpInside" id="Q4e-wl-aqO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="tpj-nj-lfI" firstAttribute="leading" secondItem="lWl-aB-v4k" secondAttribute="leading" id="2dZ-Gj-coA"/>
                             <constraint firstItem="tpj-nj-lfI" firstAttribute="top" secondItem="lWl-aB-v4k" secondAttribute="top" id="4rX-iK-azg"/>
+                            <constraint firstItem="wwC-6H-Ysv" firstAttribute="centerX" secondItem="TeN-Y1-dxJ" secondAttribute="centerX" id="5o1-hS-NnE"/>
+                            <constraint firstItem="zo7-3g-hjn" firstAttribute="centerX" secondItem="TeN-Y1-dxJ" secondAttribute="centerX" id="6T3-AP-ZeZ"/>
+                            <constraint firstItem="zo7-3g-hjn" firstAttribute="centerY" secondItem="TeN-Y1-dxJ" secondAttribute="centerY" id="BLW-tx-OdW"/>
+                            <constraint firstItem="wwC-6H-Ysv" firstAttribute="top" secondItem="FTM-pd-vsI" secondAttribute="bottom" constant="30" id="CFf-PM-Zgf"/>
+                            <constraint firstItem="FTM-pd-vsI" firstAttribute="top" secondItem="zo7-3g-hjn" secondAttribute="bottom" constant="30" id="Mq1-To-8Z9"/>
                             <constraint firstItem="lWl-aB-v4k" firstAttribute="trailing" secondItem="tpj-nj-lfI" secondAttribute="trailing" id="NH5-BY-IU9"/>
+                            <constraint firstItem="t1f-lm-B8t" firstAttribute="top" secondItem="rg8-k1-6cZ" secondAttribute="bottom" constant="30" id="Nf4-Yx-Feu"/>
+                            <constraint firstItem="t1f-lm-B8t" firstAttribute="centerX" secondItem="TeN-Y1-dxJ" secondAttribute="centerX" id="OJp-a6-3WO"/>
+                            <constraint firstItem="zo7-3g-hjn" firstAttribute="top" secondItem="t1f-lm-B8t" secondAttribute="bottom" constant="30" id="Ou5-7E-PWT"/>
                             <constraint firstItem="lWl-aB-v4k" firstAttribute="bottom" secondItem="tpj-nj-lfI" secondAttribute="bottom" id="m3x-Uk-ICB"/>
+                            <constraint firstItem="rg8-k1-6cZ" firstAttribute="centerX" secondItem="TeN-Y1-dxJ" secondAttribute="centerX" id="sPd-it-hCm"/>
+                            <constraint firstItem="FTM-pd-vsI" firstAttribute="centerX" secondItem="TeN-Y1-dxJ" secondAttribute="centerX" id="y7y-KX-u5U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lWl-aB-v4k"/>
                     </view>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="Main" id="yIp-e9-cO1"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HfM-nr-hvi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-686"/>
+            <point key="canvasLocation" x="913" y="98"/>
         </scene>
     </scenes>
     <resources>
@@ -957,6 +999,11 @@
         <image name="Save" width="101" height="49"/>
         <image name="SettingsBtn" width="333" height="54"/>
         <image name="Staff" width="631" height="297"/>
+        <image name="Task1" width="385" height="101"/>
+        <image name="Task2" width="385" height="101"/>
+        <image name="Task3" width="385" height="101"/>
+        <image name="Task4" width="385" height="101"/>
+        <image name="Task5" width="385" height="101"/>
         <image name="ToggleChatText" width="313" height="54"/>
         <image name="YChat" width="434" height="160"/>
         <image name="YL0" width="50" height="51"/>
@@ -986,7 +1033,4 @@
         <image name="woodWing1" width="376" height="193"/>
         <image name="woodWing2" width="274" height="69"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="yIp-e9-cO1"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -7,16 +7,40 @@
 //
 
 import UIKit
-
+protocol AssignTaskDelegate{
+    func AssignTask(taskNo: Int)
+}
 class MenuViewController: UIViewController {
-
+    var delegate: AssignTaskDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func Task1(_ sender: Any) {
+        delegate?.AssignTask(taskNo: 1)
+    }
+    
+    @IBAction func Task2(_ sender: Any) {
+        delegate?.AssignTask(taskNo: 2)
+    }
+    
+    @IBAction func Task3(_ sender: Any) {
+        delegate?.AssignTask(taskNo: 3)
+    }
+    
+    @IBAction func Task4(_ sender: Any) {
+        delegate?.AssignTask(taskNo: 4)
+    }
+    
+    @IBAction func Task5(_ sender: Any) {
+        delegate?.AssignTask(taskNo: 5)
+    }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 

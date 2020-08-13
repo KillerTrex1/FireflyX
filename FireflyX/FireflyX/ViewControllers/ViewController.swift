@@ -230,9 +230,22 @@ class ViewController: UIViewController {
         pause.startName()
         lockProgress()
         View.toggleBodyTouch(val: true)
+        //currentTask = 1
         //LoaderAndSaver.saveTask(Songs: [Jar](), key: StringKeys.KeyForJars(task: currentTask))
+        
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        if currentTask == -1{
+            goToTaskScreen()
+        }
+        
+    }
+    func goToTaskScreen(){
+        segueIdentifier = StringKeys.MainToMenu
+        performSegue(withIdentifier: segueIdentifier, sender: self)
+        print("T A S K")
+        
+    }
     @IBAction func openJar(_ sender: Any) {
         if(flyCtr == -1){
             startEditing()
@@ -1027,6 +1040,10 @@ class ViewController: UIViewController {
             let tempJars = LoaderAndSaver.loadTask(key:StringKeys.KeyForJars(task: currentTask))
             //vc.viewDidLoad()
             vc.InitialLoad(jar: tempJars)
+        }else{
+            let vc = segue.destination as! MenuViewController
+            vc.delegate = self
+            
         }
     }
     func loadJar(newJar:Jar,jarIndex:Int){
@@ -1041,6 +1058,9 @@ class ViewController: UIViewController {
         resetViewWithSelectedColor()
         
     }
+    func changeTask(taskNo: Int){
+        currentTask = taskNo
+    }
 }
 
 
@@ -1053,5 +1073,14 @@ extension ViewController: LoadJarDelegate{
         
         
     }
+}
+extension ViewController: AssignTaskDelegate{
+    func AssignTask(taskNo: Int) {
+        self.dismiss(animated: true){
+            self.changeTask(taskNo: taskNo)
+        }
+    }
+    
+    
 }
 
