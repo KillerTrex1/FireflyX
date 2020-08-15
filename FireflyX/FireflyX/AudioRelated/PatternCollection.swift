@@ -23,7 +23,7 @@ class PatternCollection{
     
     static let firstNoteEr = ["Er H Qr E", "Er E Q Qr Q", "Er E Hr E E","Er E Er E Er E Q","Er E E E Er E Q"]
     
-    static let firstNoteE = ["E E Q H", "E Q E Q Q", "E E Qr E E Qr", "E E E E Q Q", "E E E E Er E E Er"]
+    static let firstNoteE = ["E E Q H", "E Q E Q Q", "E E E E H", "E E E E Q Q", "E E E E E E E E"]
     
     
     static func getBeatString(noteType: NoteType, index:Int)->String{

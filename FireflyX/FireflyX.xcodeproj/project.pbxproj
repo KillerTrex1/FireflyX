@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C3EA9E758099E05465F1E53 /* Pods_FireflyX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1C7990A14F6941B38C6BC1 /* Pods_FireflyX.framework */; };
 		6AEE401023CE0636009149BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE400F23CE0636009149BD /* AppDelegate.swift */; };
 		6AEE401223CE0636009149BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE401123CE0636009149BD /* SceneDelegate.swift */; };
 		6AEE401423CE0636009149BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE401323CE0636009149BD /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 		6AEE402D23CE25E0009149BD /* Tail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE402C23CE25E0009149BD /* Tail.swift */; };
 		6AEE402F23CE27BE009149BD /* Wing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE402E23CE27BE009149BD /* Wing.swift */; };
 		6AEE403123CE2C49009149BD /* Firefly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE403023CE2C49009149BD /* Firefly.swift */; };
+		8421EA2224E5249300008A43 /* FBUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421EA2124E5249300008A43 /* FBUploader.swift */; };
 		84286F042409F68F00E449E7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84286F032409F68F00E449E7 /* View.swift */; };
 		8432470F2403AEB500F30379 /* FireflyAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432470E2403AEB500F30379 /* FireflyAnimator.swift */; };
 		8434F27F244F1209007FB693 /* PitchSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434F27E244F1209007FB693 /* PitchSlot.swift */; };
@@ -49,10 +51,14 @@
 		84CA823A24D29F1500FDA2C8 /* PauseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CA823924D29F1500FDA2C8 /* PauseMenuView.swift */; };
 		84CA823D24D7693D00FDA2C8 /* Jar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CA823C24D7693D00FDA2C8 /* Jar.swift */; };
 		84E98E43240024500013BC36 /* Grand Piano.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E98E42240024500013BC36 /* Grand Piano.wav */; };
+		84EC146F24E559CF00911667 /* firefly_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EC146E24E559CF00911667 /* firefly_1.png */; };
+		84EC147124E56C3200911667 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84EC147024E56C3200911667 /* GoogleService-Info.plist */; };
+		84EC147324E656D800911667 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EC147224E656D800911667 /* WarningView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1607FFDEF598377E21768079 /* Pods-FireflyX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireflyX.debug.xcconfig"; path = "Target Support Files/Pods-FireflyX/Pods-FireflyX.debug.xcconfig"; sourceTree = "<group>"; };
+		4E1C7990A14F6941B38C6BC1 /* Pods_FireflyX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireflyX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEE400C23CE0636009149BD /* FireflyX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireflyX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEE400F23CE0636009149BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AEE401123CE0636009149BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +73,7 @@
 		6AEE402C23CE25E0009149BD /* Tail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tail.swift; sourceTree = "<group>"; };
 		6AEE402E23CE27BE009149BD /* Wing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wing.swift; sourceTree = "<group>"; };
 		6AEE403023CE2C49009149BD /* Firefly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firefly.swift; sourceTree = "<group>"; };
+		8421EA2124E5249300008A43 /* FBUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUploader.swift; sourceTree = "<group>"; };
 		84286F032409F68F00E449E7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8432470E2403AEB500F30379 /* FireflyAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireflyAnimator.swift; sourceTree = "<group>"; };
 		8434F27E244F1209007FB693 /* PitchSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchSlot.swift; sourceTree = "<group>"; };
@@ -97,6 +104,9 @@
 		84CA823924D29F1500FDA2C8 /* PauseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuView.swift; sourceTree = "<group>"; };
 		84CA823C24D7693D00FDA2C8 /* Jar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jar.swift; sourceTree = "<group>"; };
 		84E98E42240024500013BC36 /* Grand Piano.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Grand Piano.wav"; sourceTree = "<group>"; };
+		84EC146E24E559CF00911667 /* firefly_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = firefly_1.png; path = ../../../../../Downloads/firefly_1.png; sourceTree = "<group>"; };
+		84EC147024E56C3200911667 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84EC147224E656D800911667 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		A9FDE6AC52C193E573D9F5E4 /* Pods-FireflyX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireflyX.release.xcconfig"; path = "Target Support Files/Pods-FireflyX/Pods-FireflyX.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +117,7 @@
 			files = (
 				8454B3A723F67F5300179E71 /* AudioKitUI.framework in Frameworks */,
 				8454B3A523F67F5300179E71 /* AudioKit.framework in Frameworks */,
+				2C3EA9E758099E05465F1E53 /* Pods_FireflyX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,10 +155,13 @@
 				6AEE401523CE0636009149BD /* Main.storyboard */,
 				6AEE402823CE1B6F009149BD /* Lookups.swift */,
 				6AEE401823CE0642009149BD /* Assets.xcassets */,
+				84EC146E24E559CF00911667 /* firefly_1.png */,
 				6AEE401A23CE0642009149BD /* LaunchScreen.storyboard */,
+				84EC147024E56C3200911667 /* GoogleService-Info.plist */,
 				6AEE401D23CE0642009149BD /* Info.plist */,
 				84596D3124E383EC00696790 /* StringKeys.swift */,
 				84596D3524E3ECDC00696790 /* LoaderAndSaver.swift */,
+				8421EA2124E5249300008A43 /* FBUploader.swift */,
 			);
 			path = FireflyX;
 			sourceTree = "<group>";
@@ -178,6 +192,7 @@
 				84286F032409F68F00E449E7 /* View.swift */,
 				84CA823524CFB88400FDA2C8 /* ChatView.swift */,
 				84CA823724D0B7B100FDA2C8 /* DotAndTouchArea.swift */,
+				84EC147224E656D800911667 /* WarningView.swift */,
 			);
 			path = ViewTools;
 			sourceTree = "<group>";
@@ -249,6 +264,7 @@
 			children = (
 				8454B3A323F67F5300179E71 /* AudioKit.framework */,
 				8454B3A423F67F5300179E71 /* AudioKitUI.framework */,
+				4E1C7990A14F6941B38C6BC1 /* Pods_FireflyX.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -264,6 +280,7 @@
 				6AEE400823CE0636009149BD /* Sources */,
 				6AEE400923CE0636009149BD /* Frameworks */,
 				6AEE400A23CE0636009149BD /* Resources */,
+				8F2CF851F1070AA722E05B19 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,9 +330,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AEE401C23CE0642009149BD /* LaunchScreen.storyboard in Resources */,
+				84EC146F24E559CF00911667 /* firefly_1.png in Resources */,
 				6AEE401923CE0642009149BD /* Assets.xcassets in Resources */,
 				84E98E43240024500013BC36 /* Grand Piano.wav in Resources */,
 				6AEE401723CE0636009149BD /* Main.storyboard in Resources */,
+				84EC147124E56C3200911667 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +363,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8F2CF851F1070AA722E05B19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FireflyX/Pods-FireflyX-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FireflyX/Pods-FireflyX-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FireflyX/Pods-FireflyX-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -351,9 +387,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8421EA2224E5249300008A43 /* FBUploader.swift in Sources */,
 				8454B3AF23F6861C00179E71 /* PlaybackEngine.swift in Sources */,
 				8470B88623FCE9DA002826C5 /* NoteTypes.swift in Sources */,
 				8494D0D424DCD054008ECEC1 /* JarFirefliesView.swift in Sources */,
+				84EC147324E656D800911667 /* WarningView.swift in Sources */,
 				8494D0D024DB7094008ECEC1 /* TailButtonView.swift in Sources */,
 				8494D0F824E103DF008ECEC1 /* MenuViewController.swift in Sources */,
 				84CA823824D0B7B100FDA2C8 /* DotAndTouchArea.swift in Sources */,
@@ -539,7 +577,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1607FFDEF598377E21768079 /* Pods-FireflyX.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2ST9FXBPKM;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -552,7 +590,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Thesis.FireflyX-SalcyTEST-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thesis.fireflyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -563,7 +601,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A9FDE6AC52C193E573D9F5E4 /* Pods-FireflyX.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2ST9FXBPKM;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -576,7 +614,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Thesis.FireflyX-SalcyTEST-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thesis.fireflyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;

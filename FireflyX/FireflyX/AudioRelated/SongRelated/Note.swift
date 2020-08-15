@@ -96,10 +96,8 @@ class Note:Codable{
             index = 2
         case .GH:
             index = 1
-        case .AH:
-            index = 0
         default:
-            index = -1
+            index = 0
 
         }
         
@@ -147,14 +145,62 @@ class Note:Codable{
         case .GH:
             MIDINum = 82
             //MIDINum = 79
-        case .AH:
+        default:
             MIDINum = 84
             //MIDINum = 81
-        default:
-            MIDINum = -1
+
         }
         
         return MIDINum
+    }
+    func convertPitchToString()->String{
+        // all values here are in 4th octave
+        var noteS: String
+        
+        switch self.pitch {
+        case .C:
+            //MIDINum = 60
+            noteS = "C"
+        case .D:
+            //MIDINum = 62
+            noteS = "D"
+            //
+        case .E:
+            noteS = "E"
+            //MIDINum = 64
+        case .F:
+            noteS = "F"
+            //MIDINum = 65
+        case .G:
+            noteS = "G"
+            //MIDINum = 67
+        case .A:
+            noteS = "A"
+            //MIDINum = 69
+        case .B:
+            noteS = "B"
+            //MIDINum = 71
+        case .CH:
+            noteS = "C"
+            //MIDINum = 72
+        case .DH:
+            noteS = "DH"
+            //MIDINum = 74
+        case .EH:
+            noteS = "EH"
+            //MIDINum = 76
+        case .FH:
+            noteS = "FH"
+            //MIDINum = 77
+        case .GH:
+            noteS = "GH"
+            //MIDINum = 79
+        default:
+            noteS = "AH"
+            //MIDINum = 81
+        }
+        
+        return noteS
     }
     func convertBeat() -> String {
         

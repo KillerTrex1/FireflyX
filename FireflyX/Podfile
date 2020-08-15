@@ -8,4 +8,7 @@ target 'FireflyX' do
   # Pods for FireflyX
 
   pod 'AudioKit', '~> 4.0'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  
 end

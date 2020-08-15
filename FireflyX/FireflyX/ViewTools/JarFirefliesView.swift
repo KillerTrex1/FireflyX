@@ -52,4 +52,9 @@ class JarFirefliesView{
             JFlies[i].isHidden = false
         }
     }
+    
+    func resetFLies(){
+        hideAllFlies()
+        doneFlies = 0
+    }
 }

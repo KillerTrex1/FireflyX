@@ -22,17 +22,18 @@ class SongPlayer{
     static var curSong: Song!
     static var curJar: Jar!
     static var noteArray: [Note]!
-    
+    static var VC: ViewController!
     static func placeSong(song:Song){
         curSong = song
         repeatCounter = 0
         fullMode = false
         //FireflyAnimator.prepareAnimation()
     }
-    static func placeFullSong(jar:Jar){
+    static func placeFullSong(jar:Jar, Vc: ViewController){
         curJar = jar
         repeatCounter = 0
         fullMode = true
+        VC = Vc
         //FireflyAnimator.prepareAnimation()
     }
     static func playNote(note: Note){
@@ -91,7 +92,13 @@ class SongPlayer{
                     //PitchView.clearAll()
                     PitchView.shouldHide(val: true)
                     View.hideAll(val: false)
+                    View.jarFlyAppear(index: fullSongIndex)
                     fullSongIndex = 0
+                    
+                    
+                    View.hideCork(val: false)
+                    VC.lockProgress()
+                    VC.skipFirstProgressStep()
                 }
                 //}
                 
@@ -100,11 +107,12 @@ class SongPlayer{
             
             // assign next note to current note
             self.currNote = notes[self.currNoteIndex]
-            print("Current MIDI Note Played: \(currNote.convertBeat())")
-            print(currNoteIndex)
+            //print("Current MIDI Note Played: \(currNote.convertBeat())")
+            //print(currNoteIndex)
             
             if fullMode && self.currNoteIndex != notes.count - 1{
                 if currNoteIndex == curJar.getChangeIndexes()[fullSongIndex]{
+                    View.jarFlyAppear(index: fullSongIndex)
                     fullSongIndex+=1
                     PitchView.hideCandies()
                     PitchView.clearAll()
@@ -118,9 +126,6 @@ class SongPlayer{
             //PitchView.retainCandies()
             // get the MIDI number of current note and play it using the sampler
             // from AudioEngine
-            
-            
-            
             if !currNote.isRest(){
                 try! sampler.play(noteNumber: MIDINoteNumber(currNote.convertToMIDI()))
                 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1072122722806-bln6pv5bu0dka4vekds6rcvmbl7nk73k.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1072122722806-bln6pv5bu0dka4vekds6rcvmbl7nk73k</string>
+	<key>API_KEY</key>
+	<string>AIzaSyANVqXpVzYmAJHjzW1AjEM8k5dnTQXoJEQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1072122722806</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.thesis.fireflyX</string>
+	<key>PROJECT_ID</key>
+	<string>fireflyx</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fireflyx.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1072122722806:ios:16feeaa51a65bed5f1afd7</string>
+	<key>DATABASE_URL</key>
+	<string>https://fireflyx.firebaseio.com</string>
+</dict>
+</plist>

@@ -20,6 +20,8 @@ class View{
     static var W2DotArea: DotAndTouchArea!
     static var TDotArea: DotAndTouchArea!
     static var TailPreview: UIImageView!
+    static var JarFlies: JarFirefliesView!
+    static var JarCork: UIButton!
     
     static func setMainImages(firefly : UIImageView, body : UIImageView, wing1 : UIImageView, wing2 : UIImageView,tail:UIImageView,wingArrow: UIImageView, tailArrow: UIImageView, rLever: UIButton, bOptions:UIStackView, w1Options:UIStackView, w2Options:UIStackView, tOptions:UIStackView, tailPreview: UIImageView){
         FireflyImage = firefly
@@ -42,6 +44,13 @@ class View{
         TDotArea = DotAndTouchArea(dot: dotTail, area: tailArea)
         
     }
+    static func setJarStuff(JF: JarFirefliesView,Cork: UIButton){
+        JarFlies = JF
+        JarCork = Cork
+    }
+    static func hideCork(val: Bool){
+        JarCork.isHidden = val
+    }
     static func hidePanels(val:Bool){
 
         BodyOptions.toggle(val: val)
@@ -56,6 +65,10 @@ class View{
         toggleFeed(val: val)
 
     }
+    static func jarFlyAppear(index: Int){
+        JarFlies.hideFly(index: index, val: false)
+    }
+
     static func toggleBodyTouch(val:Bool){
         BDotArea.toggle(val: val)
     }
@@ -121,6 +134,7 @@ class View{
     static func hideAll(val:Bool){
         FireflyImage.isHidden = val
         hidePanels(val: val)
+        
     }
 
 }

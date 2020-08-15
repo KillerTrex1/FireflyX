@@ -109,20 +109,27 @@ class LoadViewController: UIViewController {
         TaskJars = jar
 
         curPage = 0
-        
+        print(jar.count)
     }
     func loadPages(){
-        let maxPage = TaskJars.count / 3
+        let maxPage = (TaskJars.count - 1) / 3
         var itemCount = 3
+        print("\(maxPage)MAX")
+        print("\(curPage)CURR")
         if curPage == maxPage{
             itemCount = TaskJars.count - (curPage * 3)
              NextArrow.isHidden = true
         }else{
             NextArrow.isHidden = false
         }
-        for i in 0..<itemCount{
-            hideWood(val: false, index: i)
-            texts[i].text = TaskJars[(curPage * 3)+i].getName()
+        for i in 0..<3{
+            if i < itemCount{
+                hideWood(val: false, index: i)
+                texts[i].text = TaskJars[(curPage * 3)+i].getName()
+            }else{
+                hideWood(val: true, index: i)
+            }
+            
         }
         if curPage == 0{
             BackArrow.isHidden = true

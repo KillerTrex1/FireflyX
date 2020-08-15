@@ -11,7 +11,7 @@ import UIKit
 class PauseMenuView{
     var BRBG: UIButton!
     var PauseBG: UIImageView!
-    //var HelpBtn: UIButton!
+    var NJarButton: UIButton!
     var LoadBtn: UIButton!
     var SettingsBtn: UIButton!
     var ToggleChatText: UIImageView!
@@ -25,10 +25,11 @@ class PauseMenuView{
     var ConfirmButton: UIButton!
     var startMode: Bool!
     var NameBG: UIImageView!
-    init(brbg: UIButton, bg: UIImageView, load:UIButton, set: UIButton, toggleC: UIImageView, toggleW: UIImageView, toggleCBtn:UIButton, toggleWBtn: UIButton, exit: UIButton, x:UIButton,name: UITextField, confirm: UIButton,NBG: UIImageView){
+    var Paused = false
+    init(brbg: UIButton, bg: UIImageView, load:UIButton, set: UIButton, toggleC: UIImageView, toggleW: UIImageView, toggleCBtn:UIButton, toggleWBtn: UIButton, exit: UIButton, x:UIButton,name: UITextField, confirm: UIButton,NBG: UIImageView,NewJarBtn: UIButton){
         BRBG = brbg
         PauseBG = bg
-        //HelpBtn = help
+        NJarButton = NewJarBtn
         LoadBtn = load
         SettingsBtn = set
         ToggleChatText = toggleC
@@ -48,16 +49,17 @@ class PauseMenuView{
     func showPause(){
         BRBG.isHidden = false
         PauseBG.isHidden = false
-        //HelpBtn.isHidden = false
+        NJarButton.isHidden = false
         LoadBtn.isHidden = false
         SettingsBtn.isHidden = false
         ExitBtn.isHidden = false
         XBtn.isHidden = false
         
         pauseMode = true
+        Paused = true
     }
     func showSettings(){
-        //HelpBtn.isHidden = true
+        NJarButton.isHidden = true
         LoadBtn.isHidden = true
         SettingsBtn.isHidden = true
         ToggleChatText.isHidden = false
@@ -70,12 +72,17 @@ class PauseMenuView{
     func getStartMode()-> Bool{
         return startMode
     }
+    func isPaused()-> Bool{
+        return Paused
+    }
     func startName(){
+
         startMode = true
         BRBG.isHidden = false
         NameBG.isHidden = false
         NameText.isHidden = false
         ConfirmButton.isHidden = false
+        //print(ConfirmButton.isHidden)
     }
     func getName()-> String{
         return NameText.text ?? ""
@@ -94,7 +101,7 @@ class PauseMenuView{
         ExitBtn.isHidden = true
         XBtn.isHidden = true
         if pauseMode{
-            //HelpBtn.isHidden = true
+            NJarButton.isHidden = true
             LoadBtn.isHidden = true
             SettingsBtn.isHidden = true
         }else{
@@ -103,22 +110,26 @@ class PauseMenuView{
             ToggleWingOptionsText.isHidden = true
             ToggleWingOptionsBtn.isHidden = true
         }
+        Paused = false
     }
     
     func changeChatButtonImage(val: Bool){
-        changeBtn(btn: ToggleChatBtn, val: val)
-    }
-    func changeWOptionBtnImage(val: Bool){
-        changeBtn(btn: ToggleWingOptionsBtn, val: val)
-    }
-    
-    func changeBtn(btn: UIButton, val:Bool){
+        //changeBtn(btn: ToggleChatBtn, val: val)
         if(val){
-            btn.setImage(UIImage(named:"OnMode"), for: .normal)
+            ToggleChatBtn.setImage(UIImage(named:"OnMode"), for: .normal)
         }else{
-            btn.setImage(UIImage(named:"OffMode"), for: .normal)
+            ToggleChatBtn.setImage(UIImage(named:"OffMode"), for: .normal)
         }
     }
+    func changeWOptionBtnImage(val: Bool){
+        //changeBtn(btn: ToggleWingOptionsBtn, val: val)
+        if(val){
+            ToggleWingOptionsBtn.setImage(UIImage(named:"OnModeS"), for: .normal)
+        }else{
+            ToggleWingOptionsBtn.setImage(UIImage(named:"OffModeS"), for: .normal)
+        }
+    }
+
     
     func adjustLayers(view: UIView){
         view.bringSubviewToFront(BRBG)
@@ -127,7 +138,7 @@ class PauseMenuView{
         view.bringSubviewToFront(NameText)
         view.bringSubviewToFront(ConfirmButton)
         
-        //view.bringSubviewToFront(HelpBtn)
+        view.bringSubviewToFront(NJarButton)
         view.bringSubviewToFront(LoadBtn)
         view.bringSubviewToFront(SettingsBtn)
         view.bringSubviewToFront(ToggleChatText)

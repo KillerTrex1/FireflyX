@@ -26,8 +26,9 @@ class PitchView{
     static var backBtn:UIButton!
     static var playBtn:UIButton!
     static var nextFBtn:UIButton!
-    //static var currSong:Song
-    static func setPitchImages(staffImage: UIImageView, pitchFlyImage: UIImageView, candy0Image: UIImageView, candy1Image: UIImageView, candy2Image: UIImageView, candy3Image: UIImageView, candy4Image: UIImageView, candy5Image: UIImageView, candy6Image: UIImageView, candy7Image: UIImageView, moveFly:UIImageView, back: UIButton, clear: UIButton, play:UIButton, next:UIButton){
+    static var woodTool: UIImageView!
+    static var saveBtn: UIButton!
+    static func setPitchImages(staffImage: UIImageView, pitchFlyImage: UIImageView, candy0Image: UIImageView, candy1Image: UIImageView, candy2Image: UIImageView, candy3Image: UIImageView, candy4Image: UIImageView, candy5Image: UIImageView, candy6Image: UIImageView, candy7Image: UIImageView, moveFly:UIImageView, back: UIButton, clear: UIButton, play:UIButton, next:UIButton, wood: UIImageView, save: UIButton){
         
         staff = staffImage
         //tray = trayImage
@@ -50,6 +51,8 @@ class PitchView{
         playBtn = play
         clearBtn = clear
         nextFBtn = next
+        woodTool = wood
+        saveBtn = save
         
         pitchFly.isHidden = true
         //pitchFly.translatesAutoresizingMaskIntoConstraints = true
@@ -119,7 +122,11 @@ class PitchView{
         fIndex = -1
         checkReady()
     }
-
+    static func disableCandies(){
+        for i in 0 ..< candies.count{
+            candies[i].isUserInteractionEnabled = false
+        }
+    }
     static func hideCandies(){
         for i in 0 ..< candies.count{
             candies[i].isHidden = true
@@ -135,10 +142,11 @@ class PitchView{
     }
     static func shouldHide(val: Bool){
         staff.isHidden = val
+        saveBtn.isHidden = val
+        woodTool.isHidden = val
         //tray.isHidden = val
         pitchFly.isHidden = val
-        //candy1.isHidden = val
-        //playBtn.isHidden = val
+
         clearBtn.isHidden = val
         backBtn.isHidden = val
         
@@ -183,12 +191,6 @@ class PitchView{
         }
         for i in 0 ..< candies.count{
             candies[i].center = origPoints[i]
-            /*
-            if(i==0){
-                print(candies[i].center.x)
-                print(candies[i].center.y)
-            }
-            */
             pitchPlaymap[i] = -1
         }
         hidePlayNext(val: true)

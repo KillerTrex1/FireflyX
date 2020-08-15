@@ -42,5 +42,12 @@ class Song:Codable{
     func getFirefly()->Firefly{
         return firefly
     }
+    func getPitchPattern()->String{
+        var pp = notes[0].convertPitchToString()
+        for i in 1..<notes.count{
+            pp =  "\(pp) \(notes[i].convertPitchToString())"
+        }
+        return pp
+    }
     
 }
