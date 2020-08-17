@@ -11,6 +11,7 @@ import UIKit
 class JarFirefliesView{
     var JFlies: [UIButton]
     var doneFlies: Int!
+    var previousState = [Bool]()
     init(J0: UIButton,J1: UIButton,J2: UIButton,J3: UIButton,J4: UIButton){
         JFlies = [UIButton]()
         JFlies.append(J0)
@@ -19,6 +20,9 @@ class JarFirefliesView{
         JFlies.append(J3)
         JFlies.append(J4)
         doneFlies = 0
+        for _ in 0..<JFlies.count{
+            previousState.append(true)
+        }
     }
     
     func changeImage(bodyTemp: String){
@@ -56,5 +60,16 @@ class JarFirefliesView{
     func resetFLies(){
         hideAllFlies()
         doneFlies = 0
+    }
+    func saveStateThenHide(){
+        for i in 0..<JFlies.count{
+            previousState[i] = JFlies[i].isHidden
+        }
+        hideAllFlies()
+    }
+    func loadPreviousState(){
+        for i in 0..<JFlies.count{
+            JFlies[i].isHidden = previousState[i]
+        }
     }
 }

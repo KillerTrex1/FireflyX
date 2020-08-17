@@ -88,6 +88,7 @@ class PauseMenuView{
         return NameText.text ?? ""
     }
     func endName(){
+        NameText.endEditing(true)
         startMode = false
         BRBG.isHidden = true
         NameBG.isHidden = true

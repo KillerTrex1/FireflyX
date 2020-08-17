@@ -22,6 +22,7 @@ class View{
     static var TailPreview: UIImageView!
     static var JarFlies: JarFirefliesView!
     static var JarCork: UIButton!
+    static var JarBody: UIImageView!
     
     static func setMainImages(firefly : UIImageView, body : UIImageView, wing1 : UIImageView, wing2 : UIImageView,tail:UIImageView,wingArrow: UIImageView, tailArrow: UIImageView, rLever: UIButton, bOptions:UIStackView, w1Options:UIStackView, w2Options:UIStackView, tOptions:UIStackView, tailPreview: UIImageView){
         FireflyImage = firefly
@@ -44,12 +45,22 @@ class View{
         TDotArea = DotAndTouchArea(dot: dotTail, area: tailArea)
         
     }
-    static func setJarStuff(JF: JarFirefliesView,Cork: UIButton){
+    static func setJarStuff(JF: JarFirefliesView,Cork: UIButton, JB: UIImageView){
         JarFlies = JF
         JarCork = Cork
+        JarBody = JB
     }
     static func hideCork(val: Bool){
         JarCork.isHidden = val
+    }
+    static func hideJarStuffForPreview(val:Bool){
+        JarCork.isHidden = val
+        JarBody.isHidden = val
+        if val{
+            JarFlies.saveStateThenHide()
+        }else{
+            JarFlies.loadPreviousState()
+        }
     }
     static func hidePanels(val:Bool){
 
@@ -136,5 +147,38 @@ class View{
         hidePanels(val: val)
         
     }
+    /*
+    static func UpdateImage(bodyTemp:Int, wingTemp: Int){
+           //FireflyAnimator.ResetAnimate()
+        var fireflyPic: UIImage!
+        if  restToggle{
+            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1R")
+            FireflyImage.image = fireflyPic
+            FireflyAnimator.setAnimationMode(isRest: true)
+               
+            PitchView.getPitchFly().image = fireflyPic
+                //PitchFly.image = fireflyPic
+            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T1R")
+    
+        }else{
+            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1")
+            
+            FireflyImage.image = fireflyPic
+            FireflyAnimator.setAnimationMode(isRest: false)
 
+               
+            PitchFly.image = fireflyPic
+            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T1")
+        }
+        FireflyAnimator.setOGImage(image: fireflyPic)
+           //FireFlySupport.center = PitchFly.center
+        var pic: UIImage!
+        pic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1R")
+        FireflyAnimator.setRestImage(image: pic)
+           
+        let prefix = "\(bodyTemp)W\(wingTemp)C"
+        FireflyAnimator.setIarray(ImageCount: 8, ImagePrefix: prefix)
+           
+       }
+ */
 }

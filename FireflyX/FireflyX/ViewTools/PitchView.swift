@@ -26,9 +26,12 @@ class PitchView{
     static var backBtn:UIButton!
     static var playBtn:UIButton!
     static var nextFBtn:UIButton!
-    static var woodTool: UIImageView!
+    static var settingsBtn: UIButton!
     static var saveBtn: UIButton!
-    static func setPitchImages(staffImage: UIImageView, pitchFlyImage: UIImageView, candy0Image: UIImageView, candy1Image: UIImageView, candy2Image: UIImageView, candy3Image: UIImageView, candy4Image: UIImageView, candy5Image: UIImageView, candy6Image: UIImageView, candy7Image: UIImageView, moveFly:UIImageView, back: UIButton, clear: UIButton, play:UIButton, next:UIButton, wood: UIImageView, save: UIButton){
+    static var settings: UIButton!
+    static var previewMode: Bool!
+    static var fullMode:Bool!
+    static func setPitchImages(staffImage: UIImageView, pitchFlyImage: UIImageView, candy0Image: UIImageView, candy1Image: UIImageView, candy2Image: UIImageView, candy3Image: UIImageView, candy4Image: UIImageView, candy5Image: UIImageView, candy6Image: UIImageView, candy7Image: UIImageView, moveFly:UIImageView, back: UIButton, clear: UIButton, play:UIButton, next:UIButton, settings: UIButton, save: UIButton){
         
         staff = staffImage
         //tray = trayImage
@@ -51,10 +54,12 @@ class PitchView{
         playBtn = play
         clearBtn = clear
         nextFBtn = next
-        woodTool = wood
+        settingsBtn = settings
         saveBtn = save
         
         pitchFly.isHidden = true
+        fullMode = false
+        previewMode = true
         //pitchFly.translatesAutoresizingMaskIntoConstraints = true
         
     }
@@ -66,10 +71,17 @@ class PitchView{
         }
         
     }
+    static func getPitchFly()->UIImageView{
+        return pitchFly
+    }
+    static func getMovingFly()->UIImageView{
+        return movingFly
+    }
     static func setSlots(slotArray: [[PitchSlot]]){
         pitchSLots = slotArray
     }
     static func showCandies(notes:[Note]){
+        clearAll()
         let hasPitch = notes[0].convertToMIDI() != -1
         for i in 0 ..< notes.count{
             var CImage: UIImage!
@@ -143,7 +155,7 @@ class PitchView{
     static func shouldHide(val: Bool){
         staff.isHidden = val
         saveBtn.isHidden = val
-        woodTool.isHidden = val
+        //settingsBtn.isHidden = val
         //tray.isHidden = val
         pitchFly.isHidden = val
 
@@ -153,8 +165,7 @@ class PitchView{
         if val{
             hideCandies()
             pitchFly.isHidden = val
-            //nextFBtn.isHidden = val
-            //playBtn.isHidden = val
+
             hidePlayNext(val: val)
         }
     }
@@ -193,7 +204,7 @@ class PitchView{
             candies[i].center = origPoints[i]
             pitchPlaymap[i] = -1
         }
-        hidePlayNext(val: true)
+        //hidePlayNext(val: true)
     }
     
     static func checkReady(){
@@ -205,20 +216,18 @@ class PitchView{
             }
         }
         if val{
+            
             hidePlayNext(val: false)
         }
     }
+ 
     
-    static func prepareMoveFly(){
-        movingFly.isHidden = false
-        print(pitchPlaymap[0])
-        print(pitchSLots[0].count)
+    static func prepareMoveFly(forPreview: Bool){
+        //print(pitchPlaymap[0])
+        //print(pitchSLots[0].count)
+        previewMode = forPreview
+        hidePitchButtonsForMoving(val: true)
         movingFly.center = pitchSLots[0][pitchPlaymap[0]].pitchSlot.center
-        backBtn.isHidden = true
-        clearBtn.isHidden = true
-        //playBtn.isHidden = true
-        //nextFBtn.isHidden = true
-        hidePlayNext(val: true)
     }
     static func nextNoteMove(){
         fIndex += 1
@@ -229,16 +238,25 @@ class PitchView{
     }
     static func endMoveFly(){
         fIndex = -1
-        movingFly.isHidden = true
-        
-        backBtn.isHidden = false
-        clearBtn.isHidden = false
-        //playBtn.isHidden = false
-        //nextFBtn.isHidden = false
-        //print("SHOW UR SELF")
-        pitchFly.isHidden = false
-        hidePlayNext(val: false)
+        hidePitchButtonsForMoving(val: false)
     }
+    static func hidePitchButtonsForMoving(val:Bool){
+        movingFly.isHidden = !val
+        settingsBtn.isHidden = val
+        backBtn.isHidden = val
+        clearBtn.isHidden = val
+        saveBtn.isHidden = val
+        pitchFly.isHidden = val
+        hidePlayNext(val: val)
+        print(previewMode)
+        if previewMode{
+            View.hideJarStuffForPreview(val: val)
+        }
+        //View.hideJarStuffForPreview(val: val)
+    }
+    
+    
+    
     static func trySnap(val: Int)->Int{
         for i in 0 ..< pitchSLots[0].count{
             //print(pitchSLots[0].count)
@@ -279,6 +297,14 @@ class PitchView{
     }
     static func hidePlayNext(val: Bool){
         playBtn.isHidden = val
-        nextFBtn.isHidden = val
+        if !fullMode{
+            nextFBtn.isHidden = val
+        }
+    }
+    static func setFull(val: Bool){
+        fullMode = val
+        if fullMode{
+            nextFBtn.isHidden = true
+        }
     }
 }

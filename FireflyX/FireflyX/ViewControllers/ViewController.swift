@@ -136,6 +136,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var NextFButton: UIButton!
     
+    @IBOutlet weak var jarBody: UIImageView!
+    
     @IBOutlet weak var JFly0: UIButton!
     
     @IBOutlet weak var JFly1: UIButton!
@@ -184,7 +186,7 @@ class ViewController: UIViewController {
     
     var bodyTemp = "Y"
     var wingTemp = 1
-    var tailTemp = 1
+    //var tailTemp = 1
     var wing = Wing()
     var body = Body()
     var tail = Tail()
@@ -223,20 +225,26 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         ChangeTopTouchSize()
+        
         TailBtnView = TailButtonsView(T0: Tail0, T1: Tail1, T2: Tail2, T3: Tail3, T4: Tail4)
         W2BtnView = W2ButtonView(W20: Note1, W21: Note2, W22: Note4, W23: Note8)
         JarFlies = JarFirefliesView(J0: JFly0, J1: JFly1, J2: JFly2, J3: JFly3, J4: JFly4)
+        
         View.setMainImages(firefly: FireflyImage, body: BodyWood, wing1: Wing1Wood, wing2: Wing2Wood, tail: TailWood,wingArrow: Arrow2, tailArrow: Arrow,rLever: RestLever,bOptions: BodyOptions, w1Options: Wing1Options, w2Options: Wing2Options, tOptions: TailOptions, tailPreview: TailPreview)
 
         View.setButtonsAndDots(feedButton: FeedBtn, headArea: HeadTouchArea, wing1Area: Wing1TouchArea, wing2Area: Wing2TouchArea, tailArea: TailTouchArea,dotTop: DotTop, dotWing1: DotW1, dotWing2: DotW2, dotTail: DotBottom)
-        View.setJarStuff(JF: JarFlies, Cork: Cork)
+        View.setJarStuff(JF: JarFlies, Cork: Cork,JB: jarBody)
         //View.setArrow(wingArrow: Arrow2, tailArrow: Arrow)
         FireflyAnimator.setImage(flyImageView: PitchFly ,support: FireFlySupport)
-        PitchView.setPitchImages(staffImage: Staff, pitchFlyImage: PitchFly, candy0Image: Candy0, candy1Image: Candy1, candy2Image: Candy2, candy3Image: Candy3, candy4Image: Candy4, candy5Image: Candy5, candy6Image: Candy6, candy7Image: Candy7, moveFly: MovingPitchFly, back: BackButton, clear: ClearButton, play: Play, next: NextFButton,wood: ToolWood, save: SaveBtn)
-        chatView = ChatView(chatImage: Chat)
-        pause = PauseMenuView(brbg: BRBG,bg: PauseBg,load: LoadBtn, set: SettingsBtn, toggleC: ToggleChatText, toggleW: ToggleWingText, toggleCBtn: ChatSymbolButton, toggleWBtn: ToggleWingSymbolBtn, exit: ExitBtn, x: CloseBtn, name: NameField, confirm: Confirm, NBG: NameBG,NewJarBtn: NewJar)
-        pause.adjustLayers(view: self.view)
         
+        PitchView.setPitchImages(staffImage: Staff, pitchFlyImage: PitchFly, candy0Image: Candy0, candy1Image: Candy1, candy2Image: Candy2, candy3Image: Candy3, candy4Image: Candy4, candy5Image: Candy5, candy6Image: Candy6, candy7Image: Candy7, moveFly: MovingPitchFly, back: BackButton, clear: ClearButton, play: Play, next: NextFButton,settings: ShowSettingsBtn, save: SaveBtn)
+        
+        chatView = ChatView(chatImage: Chat)
+        
+        
+        pause = PauseMenuView(brbg: BRBG,bg: PauseBg,load: LoadBtn, set: SettingsBtn, toggleC: ToggleChatText, toggleW: ToggleWingText, toggleCBtn: ChatSymbolButton, toggleWBtn: ToggleWingSymbolBtn, exit: ExitBtn, x: CloseBtn, name: NameField, confirm: Confirm, NBG: NameBG,NewJarBtn: NewJar)
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        pause.adjustLayers(view: self.view)
         pause.unpause()
         //pause.startName()
         //lockProgress()
@@ -259,12 +267,13 @@ class ViewController: UIViewController {
         //print("viewDidAppear\(currentTask)")
 
         if currentTask == -1{
-            print("test")
+            //print("test")
             goToTaskScreen()
             currentTask = 1
         }
         
     }
+
     func goToTaskScreen(){
         segueIdentifier = StringKeys.MainToMenu
         performSegue(withIdentifier: segueIdentifier, sender: self)
@@ -273,7 +282,7 @@ class ViewController: UIViewController {
     }
     @IBAction func openJar(_ sender: Any) {
         if(flyCtr > 0){
-            startPlayback()
+            WarnView.showWarn(mode: 9)
         }else{
             WarnView.showWarn(mode: 0)
         }
@@ -296,7 +305,7 @@ class ViewController: UIViewController {
     func startPlayback(){
         //let time = NSDate().timeIntervalSince1970
         FB.uploadJar(jar:Songs)
-        
+        PitchView.clearAll()
         PitchView.shouldHide(val: false)
         View.hideAll(val: true)
         JarFlies.hideAllFlies()
@@ -357,9 +366,7 @@ class ViewController: UIViewController {
         PitchView.setSlots(slotArray: pSlots)
         
     }
-    @IBAction func HideTest(_ sender: Any) {
-        Cork.isHidden = true
-    }
+
     
     
     func lockProgress(){
@@ -400,6 +407,9 @@ class ViewController: UIViewController {
     @IBAction func YellowBody(_ sender: Any) {
         if bodyTemp != "Y"{
             preWarnCheckBodyChange(Bcolor: "Y")
+        }
+        if (flyCtr == 0){
+            bodyChange(Bcolor: "Y")
         }
     }
     
@@ -702,30 +712,28 @@ class ViewController: UIViewController {
         //FireflyAnimator.ResetAnimate()
         var fireflyPic: UIImage!
         if  restToggle{
-            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)R")
+            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1R")
             FireflyImage.image = fireflyPic
             FireflyAnimator.setAnimationMode(isRest: true)
             
             
             PitchFly.image = fireflyPic
-            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T\(tailTemp)R")
-            
-            
-            //FireFlySupport.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)R")
+            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T1R")
+ 
         }else{
-            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)")
+            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1")
             
             FireflyImage.image = fireflyPic
             FireflyAnimator.setAnimationMode(isRest: false)
+
             
-            //FireFlySupport.image = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)")
             PitchFly.image = fireflyPic
-            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T\(tailTemp)")
+            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T1")
         }
         FireflyAnimator.setOGImage(image: fireflyPic)
         //FireFlySupport.center = PitchFly.center
         var pic: UIImage!
-        pic = UIImage(named: "\(bodyTemp)W\(wingTemp)T\(tailTemp)R")
+        pic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1R")
         FireflyAnimator.setRestImage(image: pic)
         
         let prefix = "\(bodyTemp)W\(wingTemp)C"
@@ -853,7 +861,9 @@ class ViewController: UIViewController {
         }
         saveJar()
         if flyCtr > 4{
-            NextFButton.isHidden = true
+            PitchView.setFull(val: true)
+        }else{
+            PitchView.setFull(val: false)
         }
     }
     @IBAction func BackPitch(_ sender: Any) {
@@ -885,7 +895,7 @@ class ViewController: UIViewController {
     @IBAction func PreviewPitch(_ sender: Any) {
 
         
-        PitchView.prepareMoveFly()
+        //PitchView.prepareMoveFly(forPreview: true)
         Play.isHidden = true
         //print(fSong.getRepeatedNotes().count)
         SongPlayer.placeSong(song: fSong)
@@ -902,11 +912,15 @@ class ViewController: UIViewController {
         //PitchView.clearAll()
     }
     @IBAction func SaveJar(_ sender: Any) {
-        Songs.replace(index: LoadedIndex, song: fSong)
-        saveJar()
-        
+        WarnView.showWarn(mode: 7)
+        saveButtonAction()
         //uDef.set(Songs, forKey: defaultKey)
     }
+    func saveButtonAction(){
+        Songs.replace(index: LoadedIndex, song: fSong)
+        saveJar()
+    }
+    
     func saveJar(){
         
         let key = StringKeys.KeyForJars(task: currentTask)
@@ -920,30 +934,14 @@ class ViewController: UIViewController {
         LoaderAndSaver.saveTask(Songs: tempJars, key: key)
 
     }
+ 
     func NextFlyAction(){
         backFromPitch()
         //Songs.replace(index: LoadedIndex, song: fSong)
         JarFlies.hideFly(index: LoadedIndex, val: false)
         
             //reset except locks
-        wing = Wing()
-        body = Body()
-        tail = Tail()
-        changeWingSize(num: 1)
-        wingTemp = 1
-        tailTemp = 1
-        if restToggle {
-            ChangeRest()
-        }
-        //saveJar()
-        if(flyCtr==5){
-            PitchView.clearAll()
-            PitchView.shouldHide(val: true)
-            View.hideAll(val: true)
-        }else{
-            lockProgress()
-            skipFirstProgressStep()
-        }
+        resetViewWithSelectedColor()
         LoadedFly = false
     }
     
@@ -971,7 +969,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func ExitTask(_ sender: Any) {
-        WarnView.showWarn(mode: 6)
+        pause.unpause()
+        WarnView.showWarn(mode: 6,view: self.view)
         
     }
     @IBAction func ConfirmAction(_ sender: Any) {
@@ -982,9 +981,17 @@ class ViewController: UIViewController {
                 jarName = "Task \(currentTask): \(name)"
                 Songs.setName(s: jarName)
                 pause.endName()
+                
             }
         }else{
+            pause.adjustLayers(view: self.view)
+            WarnView.bringToFront(view: self.view)
+            let num = WarnView.getWarnMode()
             WarnView.endWarn()
+            if num == 4{
+                pause.showPause()
+            }
+            
         }
         
     }
@@ -994,11 +1001,23 @@ class ViewController: UIViewController {
             bodyTemp = Lookups.colorsStringLookup(color: body.getColor())
             
         }
-        WarnView.endWarn()
+        pause.adjustLayers(view: self.view)
+        WarnView.bringToFront(view: self.view)
+        switch WarnView.getWarnMode(){
+        case 5,6,8:
+            
+            WarnView.endWarn()
+            pause.showPause()
+        default:
+            WarnView.endWarn()
+        }
+
     }
     
     @IBAction func YesWarn(_ sender: Any) {
         //WarnView.endWarn()
+        pause.adjustLayers(view: self.view)
+        WarnView.bringToFront(view: self.view)
         switch(WarnView.getWarnMode()){
         case 1:
             //next fly
@@ -1013,6 +1032,13 @@ class ViewController: UIViewController {
             //new jar
             WarnView.endWarn()
             newJar()
+        case 8:
+            //load
+            WarnView.endWarn()
+            loadButtonAction()
+        case 9:
+            WarnView.endWarn()
+            startPlayback()
         default:
             //exit
             WarnView.endWarn()
@@ -1025,29 +1051,33 @@ class ViewController: UIViewController {
     }
     
     @IBAction func makeNewJar(_ sender: Any) {
-        WarnView.showWarn(mode: 5)
+        pause.unpause()
+        WarnView.showWarn(mode: 5,view: self.view)
         
     }
     func newJar(){
-        
-        
-        wing = Wing()
+        backFromPitch()
         body = Body()
-        tail = Tail()
-        bodyChange(Bcolor: "Y")
         bodyTemp = "Y"
-        changeWingSize(num: 1)
-        wingTemp = 1
-        tailTemp = 1
+        bodyChange(Bcolor: "Y")
+        resetMainView()
+        
+        
+        
+
         pause.unpause()
         View.hideAll(val: true)
-        lockProgress()
         View.toggleBodyTouch(val: true)
         flyCtr = -1
-        pause.startName()
+        JarIndex = -1
+        
         JarFlies.hideAllFlies()
         JarFlies.hideFly(index: 0, val: false)
         chatView.forcedHideChat()
+        
+        pause.startName()
+        
+        
     }
     
     @IBAction func ChangeWingSymbols(_ sender: Any) {
@@ -1081,10 +1111,11 @@ class ViewController: UIViewController {
     
     func LoadFlyInJar(index: Int){
         if LoadedFly{
-            Songs.replace(index: LoadedIndex, song: fSong)
-            saveJar()
+            //Songs.replace(index: LoadedIndex, song: fSong)
+            //saveJar()
             JarFlies.hideFly(index: LoadedIndex, val: false)
         }
+        backFromPitch()
         lockProgress()
         skipFirstProgressStep()
         JarFlies.hideFly(index: index, val: true)
@@ -1119,7 +1150,9 @@ class ViewController: UIViewController {
         chatView.forcedHideChat()
         PitchView.checkReady()
         if flyCtr > 4{
-            NextFButton.isHidden = true
+            PitchView.setFull(val: true)
+        }else{
+            PitchView.setFull(val: false)
         }
 
 
@@ -1132,33 +1165,35 @@ class ViewController: UIViewController {
     
     func resetViewWithSelectedColor(){
         //backFromPitch()
+        resetMainView()
+        
+        skipFirstProgressStep()
+    }
+    func resetMainView(){
         wing = Wing()
         body = Body()
         tail = Tail()
         changeWingSize(num: 1)
         wingTemp = 1
-        tailTemp = 1
         if restToggle {
             ChangeRest()
         }
         lockProgress()
-        skipFirstProgressStep()
     }
-    
-    
-
-    
-    
     @IBAction func goToLoadScreen(_ sender: Any) {
         let tempJars = LoaderAndSaver.loadTask(key:StringKeys.KeyForJars(task: currentTask))
+        pause.unpause()
         if tempJars.count != 0{
-            segueIdentifier = StringKeys.MainToLoad
-            performSegue(withIdentifier: segueIdentifier, sender: self)
+            WarnView.showWarn(mode: 8,view: self.view)
         }else{
-            WarnView.showWarn(mode: 4)
+            WarnView.showWarn(mode: 4,view: self.view)
         }
         
         
+    }
+    func loadButtonAction(){
+        segueIdentifier = StringKeys.MainToLoad
+        performSegue(withIdentifier: segueIdentifier, sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segueIdentifier == StringKeys.MainToLoad{
@@ -1174,13 +1209,14 @@ class ViewController: UIViewController {
         }
     }
     func loadJar(newJar:Jar,jarIndex:Int){
+        
         if flyCtr == -1{
             startEditing()
         }
         Songs = newJar
         JarIndex = jarIndex
         flyCtr = newJar.getSongs().count
-        JarFlies.loadFlies(count: Songs.getSongs().count)
+        JarFlies.loadFlies(count: Songs.getSongs().count-1)
         bodyChange(Bcolor: Lookups.colorsStringLookup(color: Songs.getSongs()[0].getFirefly().body.getColor()))
         
         LoadFlyInJar(index: Songs.getSongs().count - 1)
@@ -1207,7 +1243,6 @@ extension ViewController: AssignTaskDelegate{
             //print(self.currentTask)
         }
     }
-    
-    
 }
+
 

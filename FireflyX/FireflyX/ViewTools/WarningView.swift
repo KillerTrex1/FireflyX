@@ -19,11 +19,14 @@ class WarningView{
     1 next fly yesno
     2 task 2 ok
     3 color yesno
-    4 nojarload ok
-    5 new jar yesno
-    6 exit yesno
+    4 nojarload ok menu
+    5 new jar yesno menu
+    6 exit yesno menu
+    7 Saved Notif ok
+    8 LoadWarn yesno menu
+    9 playback yesno
     */
-    var modes = [false,false,false,false,false,false,false]
+    var modes = [false,false,false,false,false,false,false,false,false,false]
     init(warn: UIImageView, yes: UIButton, no: UIButton, bg: UIButton, ok: UIButton){
         Warning = warn
         Yes = yes
@@ -31,17 +34,28 @@ class WarningView{
         BRBG = bg
         Ok = ok
     }
+    func pauseAdjustLayers(view: UIView){
+        view.bringSubviewToFront(BRBG)
+        bringToFront(view: view)
+    }
     func bringToFront(view: UIView){
+        //view.bringSubviewToFront(BRBG)
         view.bringSubviewToFront(Warning)
         view.bringSubviewToFront(Yes)
         view.bringSubviewToFront(No)
         view.bringSubviewToFront(Ok)
     }
+    func showWarn(mode: Int,view: UIView){
+        pauseAdjustLayers(view: view)
+        showWarn(mode: mode)
+        
+    }
     func showWarn(mode: Int){
+        //bringToFront(view: view)
         modes[mode] = true
         Warning.image = UIImage(named: "Warn\(mode)")
         switch(mode){
-        case 0, 2, 4:
+        case 0, 2, 4, 7:
             showWarnOk()
         default:
             showWarnYesNo()

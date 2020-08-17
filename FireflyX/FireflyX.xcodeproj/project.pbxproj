@@ -24,6 +24,7 @@
 		84286F042409F68F00E449E7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84286F032409F68F00E449E7 /* View.swift */; };
 		8432470F2403AEB500F30379 /* FireflyAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432470E2403AEB500F30379 /* FireflyAnimator.swift */; };
 		8434F27F244F1209007FB693 /* PitchSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434F27E244F1209007FB693 /* PitchSlot.swift */; };
+		843C3E0024EA76100061CC17 /* BubblegumSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 843C3DFF24EA76100061CC17 /* BubblegumSans-Regular.otf */; };
 		843F6E3324181D4400CFCEBD /* OptionsWithLevelAndArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F6E3224181D4400CFCEBD /* OptionsWithLevelAndArrows.swift */; };
 		843F6E37241961BF00CFCEBD /* OptionsWithArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F6E36241961BF00CFCEBD /* OptionsWithArrowsView.swift */; };
 		843F6E3924197E4B00CFCEBD /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F6E3824197E4B00CFCEBD /* OptionsView.swift */; };
@@ -77,6 +78,7 @@
 		84286F032409F68F00E449E7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8432470E2403AEB500F30379 /* FireflyAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireflyAnimator.swift; sourceTree = "<group>"; };
 		8434F27E244F1209007FB693 /* PitchSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchSlot.swift; sourceTree = "<group>"; };
+		843C3DFF24EA76100061CC17 /* BubblegumSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BubblegumSans-Regular.otf"; sourceTree = "<group>"; };
 		843F6E3224181D4400CFCEBD /* OptionsWithLevelAndArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsWithLevelAndArrows.swift; sourceTree = "<group>"; };
 		843F6E36241961BF00CFCEBD /* OptionsWithArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsWithArrowsView.swift; sourceTree = "<group>"; };
 		843F6E3824197E4B00CFCEBD /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		6AEE400E23CE0636009149BD /* FireflyX */ = {
 			isa = PBXGroup;
 			children = (
+				843C3DFE24EA75E40061CC17 /* Fonts */,
 				84596D3724E3F26000696790 /* ViewControllers */,
 				8470B88724001CF4002826C5 /* FireflyObjects */,
 				8454B3AA23F681C300179E71 /* AudioRelated */,
@@ -174,6 +177,14 @@
 				8470B88523FCE9DA002826C5 /* NoteTypes.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		843C3DFE24EA75E40061CC17 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				843C3DFF24EA76100061CC17 /* BubblegumSans-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		843F6E3124181D0D00CFCEBD /* ViewTools */ = {
@@ -333,6 +344,7 @@
 				84EC146F24E559CF00911667 /* firefly_1.png in Resources */,
 				6AEE401923CE0642009149BD /* Assets.xcassets in Resources */,
 				84E98E43240024500013BC36 /* Grand Piano.wav in Resources */,
+				843C3E0024EA76100061CC17 /* BubblegumSans-Regular.otf in Resources */,
 				6AEE401723CE0636009149BD /* Main.storyboard in Resources */,
 				84EC147124E56C3200911667 /* GoogleService-Info.plist in Resources */,
 			);
@@ -579,6 +591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2ST9FXBPKM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -590,6 +603,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesis.fireflyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -603,6 +617,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2ST9FXBPKM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -614,6 +629,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesis.fireflyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

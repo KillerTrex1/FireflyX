@@ -44,8 +44,10 @@ class SongPlayer{
     }
     static func playSong(){
         //print("DURATION OF quarter NOTE: \(60 / self.curSong.getTempo() * 1.0)")
-        PitchView.prepareMoveFly()
+        
+        
         if fullMode{
+            PitchView.prepareMoveFly(forPreview: false)
             self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curJar.getSongs()[0].getTempo() * 0.5, // 1/128 = 0.0078125
             repeats: true,
             block: {_ in self.optimizedPlaybackLoop(
@@ -53,6 +55,7 @@ class SongPlayer{
                     sampler: self.audioEngine.sampler
                 )})
         }else{
+            PitchView.prepareMoveFly(forPreview: true)
             self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curSong.getTempo() * 0.5, // 1/128 = 0.0078125
             repeats: true,
             block: {_ in self.optimizedPlaybackLoop(
@@ -97,8 +100,7 @@ class SongPlayer{
                     
                     
                     View.hideCork(val: false)
-                    VC.lockProgress()
-                    VC.skipFirstProgressStep()
+                    VC.LoadFlyInJar(index: curJar.getSongs().count - 1)
                 }
                 //}
                 
@@ -117,7 +119,7 @@ class SongPlayer{
                     PitchView.hideCandies()
                     PitchView.clearAll()
                     PitchView.showCandies(notes: curJar.getSongs()[fullSongIndex].getNotes())
-                    PitchView.prepareMoveFly()
+                    PitchView.prepareMoveFly(forPreview: false)
                 }
             }
             
