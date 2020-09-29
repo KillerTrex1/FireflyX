@@ -25,14 +25,23 @@ class WarningView{
     7 Saved Notif ok
     8 LoadWarn yesno menu
     9 playback yesno
+    10 no body ok
+    11 no right wing/wing1 ok
+    12 no Lwing/wing 2 ok
+    13 no wings ok
+    
     */
-    var modes = [false,false,false,false,false,false,false,false,false,false]
+    var modes = [Bool]()
+    var warningCount = 14
     init(warn: UIImageView, yes: UIButton, no: UIButton, bg: UIButton, ok: UIButton){
         Warning = warn
         Yes = yes
         No = no
         BRBG = bg
         Ok = ok
+        for _ in 0..<warningCount{
+            modes.append(false)
+        }
     }
     func pauseAdjustLayers(view: UIView){
         view.bringSubviewToFront(BRBG)
@@ -55,7 +64,7 @@ class WarningView{
         modes[mode] = true
         Warning.image = UIImage(named: "Warn\(mode)")
         switch(mode){
-        case 0, 2, 4, 7:
+        case 0, 2, 4, 7, 10, 11, 12 ,13:
             showWarnOk()
         default:
             showWarnYesNo()

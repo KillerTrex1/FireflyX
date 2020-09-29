@@ -62,6 +62,7 @@ class PauseMenuView{
         NJarButton.isHidden = true
         LoadBtn.isHidden = true
         SettingsBtn.isHidden = true
+        ExitBtn.isHidden = true
         ToggleChatText.isHidden = false
         ToggleChatBtn.isHidden = false
         ToggleWingOptionsText.isHidden = false

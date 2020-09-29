@@ -10,8 +10,9 @@ import Foundation
 class Tail: Codable{
     var beatPattern: String
     var beatIndex: Int
-    //var pitchPattern: String
     
+    //var pitchPattern: String
+    var isWhole: Bool!
     init(){
         beatPattern = ""
         beatIndex = -1
@@ -26,8 +27,10 @@ class Tail: Codable{
     func setBeatPattern(beatType:NoteType, Bindex:Int){
         if beatType == .whole || beatType == .wholeRest{
             beatIndex = 0
+            isWhole = true
         }else{
             beatIndex = Bindex
+            isWhole = false
         }
         beatPattern = PatternCollection.getBeatString(noteType: beatType, index: Bindex)
         print(beatPattern)
@@ -37,6 +40,9 @@ class Tail: Codable{
         return self.beatPattern
     }
     func getBeatIndex()->Int{
+        if isWhole{
+            return 2
+        }
         return beatIndex
     }
     /*

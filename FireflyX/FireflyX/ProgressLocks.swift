@@ -61,6 +61,15 @@ class ProgressLocks{
     func checkP()->Bool{
         return playlock
     }
+    func checkW()->Bool{
+        return winglock
+    }
+    func checkT1()->Bool{
+        return tail1lock
+    }
+    func checkT2()->Bool{
+        return tail2lock
+    }
     
     
 }

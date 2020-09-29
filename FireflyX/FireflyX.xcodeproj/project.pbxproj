@@ -28,14 +28,14 @@
 		843F6E3324181D4400CFCEBD /* OptionsWithLevelAndArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F6E3224181D4400CFCEBD /* OptionsWithLevelAndArrows.swift */; };
 		843F6E37241961BF00CFCEBD /* OptionsWithArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F6E36241961BF00CFCEBD /* OptionsWithArrowsView.swift */; };
 		843F6E3924197E4B00CFCEBD /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F6E3824197E4B00CFCEBD /* OptionsView.swift */; };
-		843F6E3B241A468600CFCEBD /* PitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F6E3A241A468600CFCEBD /* PitchView.swift */; };
+		843F6E3B241A468600CFCEBD /* StaffandPitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F6E3A241A468600CFCEBD /* StaffandPitch.swift */; };
 		84418AE423F800D80056F4C6 /* SongPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84418AE323F800D80056F4C6 /* SongPlayer.swift */; };
 		84418AE723F802940056F4C6 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84418AE623F802940056F4C6 /* Song.swift */; };
 		8454B3A223F67D1300179E71 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454B3A123F67D1300179E71 /* Note.swift */; };
 		8454B3A523F67F5300179E71 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8454B3A323F67F5300179E71 /* AudioKit.framework */; };
 		8454B3A723F67F5300179E71 /* AudioKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8454B3A423F67F5300179E71 /* AudioKitUI.framework */; };
 		8454B3AD23F682A400179E71 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454B3AC23F682A400179E71 /* AudioEngine.swift */; };
-		8454B3AF23F6861C00179E71 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454B3AE23F6861C00179E71 /* PlaybackEngine.swift */; };
+		8454B3AF23F6861C00179E71 /* SongMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454B3AE23F6861C00179E71 /* SongMaker.swift */; };
 		84596D3024E375A600696790 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84596D2F24E375A600696790 /* LoadViewController.swift */; };
 		84596D3224E383EC00696790 /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84596D3124E383EC00696790 /* StringKeys.swift */; };
 		84596D3624E3ECDC00696790 /* LoaderAndSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84596D3524E3ECDC00696790 /* LoaderAndSaver.swift */; };
@@ -82,14 +82,14 @@
 		843F6E3224181D4400CFCEBD /* OptionsWithLevelAndArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsWithLevelAndArrows.swift; sourceTree = "<group>"; };
 		843F6E36241961BF00CFCEBD /* OptionsWithArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsWithArrowsView.swift; sourceTree = "<group>"; };
 		843F6E3824197E4B00CFCEBD /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
-		843F6E3A241A468600CFCEBD /* PitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchView.swift; sourceTree = "<group>"; };
+		843F6E3A241A468600CFCEBD /* StaffandPitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffandPitch.swift; sourceTree = "<group>"; };
 		84418AE323F800D80056F4C6 /* SongPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongPlayer.swift; sourceTree = "<group>"; };
 		84418AE623F802940056F4C6 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		8454B3A123F67D1300179E71 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		8454B3A323F67F5300179E71 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = Pods/AudioKit/iOS/AudioKit.framework; sourceTree = "<group>"; };
 		8454B3A423F67F5300179E71 /* AudioKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKitUI.framework; path = Pods/AudioKit/iOS/AudioKitUI.framework; sourceTree = "<group>"; };
 		8454B3AC23F682A400179E71 /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
-		8454B3AE23F6861C00179E71 /* PlaybackEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
+		8454B3AE23F6861C00179E71 /* SongMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongMaker.swift; sourceTree = "<group>"; };
 		84596D2F24E375A600696790 /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
 		84596D3124E383EC00696790 /* StringKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKeys.swift; sourceTree = "<group>"; };
 		84596D3524E3ECDC00696790 /* LoaderAndSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderAndSaver.swift; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				843F6E36241961BF00CFCEBD /* OptionsWithArrowsView.swift */,
 				8494D0D324DCD054008ECEC1 /* JarFirefliesView.swift */,
 				843F6E3824197E4B00CFCEBD /* OptionsView.swift */,
-				843F6E3A241A468600CFCEBD /* PitchView.swift */,
+				843F6E3A241A468600CFCEBD /* StaffandPitch.swift */,
 				8434F27E244F1209007FB693 /* PitchSlot.swift */,
 				8494D0CF24DB7094008ECEC1 /* TailButtonView.swift */,
 				8494D0D124DB7855008ECEC1 /* W2ButtonView.swift */,
@@ -213,7 +213,7 @@
 			children = (
 				84418AE623F802940056F4C6 /* Song.swift */,
 				8454B3A123F67D1300179E71 /* Note.swift */,
-				8454B3AE23F6861C00179E71 /* PlaybackEngine.swift */,
+				8454B3AE23F6861C00179E71 /* SongMaker.swift */,
 				84CA823C24D7693D00FDA2C8 /* Jar.swift */,
 			);
 			path = SongRelated;
@@ -400,7 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8421EA2224E5249300008A43 /* FBUploader.swift in Sources */,
-				8454B3AF23F6861C00179E71 /* PlaybackEngine.swift in Sources */,
+				8454B3AF23F6861C00179E71 /* SongMaker.swift in Sources */,
 				8470B88623FCE9DA002826C5 /* NoteTypes.swift in Sources */,
 				8494D0D424DCD054008ECEC1 /* JarFirefliesView.swift in Sources */,
 				84EC147324E656D800911667 /* WarningView.swift in Sources */,
@@ -412,7 +412,7 @@
 				6AEE401423CE0636009149BD /* ViewController.swift in Sources */,
 				84CA823624CFB88400FDA2C8 /* ChatView.swift in Sources */,
 				6AEE402B23CE1DBE009149BD /* Body.swift in Sources */,
-				843F6E3B241A468600CFCEBD /* PitchView.swift in Sources */,
+				843F6E3B241A468600CFCEBD /* StaffandPitch.swift in Sources */,
 				6AEE402F23CE27BE009149BD /* Wing.swift in Sources */,
 				84286F042409F68F00E449E7 /* View.swift in Sources */,
 				6AEE402923CE1B6F009149BD /* Lookups.swift in Sources */,
@@ -591,7 +591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 2ST9FXBPKM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -603,7 +603,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesis.fireflyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -617,7 +617,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 2ST9FXBPKM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -629,7 +629,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesis.fireflyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

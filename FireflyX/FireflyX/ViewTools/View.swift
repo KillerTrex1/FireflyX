@@ -19,6 +19,7 @@ class View{
     static var W1DotArea: DotAndTouchArea!
     static var W2DotArea: DotAndTouchArea!
     static var TDotArea: DotAndTouchArea!
+    static var DotAreas: [DotAndTouchArea]!
     static var TailPreview: UIImageView!
     static var JarFlies: JarFirefliesView!
     static var JarCork: UIButton!
@@ -38,6 +39,11 @@ class View{
     
     static func setButtonsAndDots(feedButton:UIButton, headArea: UIButton, wing1Area: UIButton, wing2Area: UIButton,tailArea: UIButton,dotTop:UIImageView, dotWing1:UIImageView, dotWing2:UIImageView, dotTail:UIImageView){
         FeedBtn = feedButton
+        DotAreas = [DotAndTouchArea]()
+        DotAreas.append(DotAndTouchArea(dot: dotTop, area: headArea))
+        DotAreas.append(DotAndTouchArea(dot: dotWing1, area: wing1Area))
+        DotAreas.append(DotAndTouchArea(dot: dotWing2, area: wing2Area))
+        DotAreas.append(DotAndTouchArea(dot: dotTail, area: tailArea))
         
         BDotArea = DotAndTouchArea(dot: dotTop, area: headArea)
         W1DotArea = DotAndTouchArea(dot: dotWing1, area: wing1Area)
@@ -69,17 +75,18 @@ class View{
         Wing2Options.toggle(val: val)
         TailOptions.toggle(val: val)
         
-        BDotArea.toggleArea(val: val)
-        W1DotArea.toggleArea(val: val)
-        W2DotArea.toggleArea(val: val)
-        TDotArea.toggleArea(val: val)
+        BDotArea.toggleAreaForViewChange(val: val)
+        W1DotArea.toggleAreaForViewChange(val: val)
+        W2DotArea.toggleAreaForViewChange(val: val)
+        TDotArea.toggleAreaForViewChange(val: val)
         toggleFeed(val: val)
 
     }
+    
     static func jarFlyAppear(index: Int){
         JarFlies.hideFly(index: index, val: false)
     }
-
+    /*
     static func toggleBodyTouch(val:Bool){
         BDotArea.toggle(val: val)
     }
@@ -91,6 +98,17 @@ class View{
     }
     static func toggleTailTouch(val:Bool){
         TDotArea.toggle(val: val)
+    }
+    */
+    static func hideAllTouchAndDot(){
+        for i in 0 ..< DotAreas.count{
+            DotAreas[i].toggle(val:true)
+        }
+    }
+    static func showAllTouchAreas(){
+        for i in 0 ..< DotAreas.count{
+            DotAreas[i].toggleArea(val: false)
+        }
     }
     static func toggleBodyDot(val:Bool){
         BDotArea.toggleDot(val: val)
@@ -134,10 +152,14 @@ class View{
         TailPreview.isHidden = val
     }
     static func changeTailPreview(isRest:Bool,NoteValue: Int, BeatIndex: Int){
+        var TempInt = BeatIndex
+        if NoteValue == 8{
+            TempInt = 0
+        }
         if isRest{
-            TailPreview.image = UIImage(named: "PR\(NoteValue)\(BeatIndex)")
+            TailPreview.image = UIImage(named: "PR\(NoteValue)\(TempInt)")
         }else{
-            TailPreview.image = UIImage(named: "P\(NoteValue)\(BeatIndex)")
+            TailPreview.image = UIImage(named: "P\(NoteValue)\(TempInt)")
         }
     }
     
@@ -147,8 +169,8 @@ class View{
         hidePanels(val: val)
         
     }
-    /*
-    static func UpdateImage(bodyTemp:Int, wingTemp: Int){
+    
+    static func UpdateImage(bodyTemp:String, wingTemp: Int,restToggle: Bool){
            //FireflyAnimator.ResetAnimate()
         var fireflyPic: UIImage!
         if  restToggle{
@@ -156,9 +178,9 @@ class View{
             FireflyImage.image = fireflyPic
             FireflyAnimator.setAnimationMode(isRest: true)
                
-            PitchView.getPitchFly().image = fireflyPic
+            StaffandPitch.getPitchFly().image = fireflyPic
                 //PitchFly.image = fireflyPic
-            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T1R")
+            StaffandPitch.getMovingFly().image = UIImage(named: "\(bodyTemp)W1T1R")
     
         }else{
             fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1")
@@ -167,8 +189,8 @@ class View{
             FireflyAnimator.setAnimationMode(isRest: false)
 
                
-            PitchFly.image = fireflyPic
-            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T1")
+            StaffandPitch.getPitchFly().image = fireflyPic
+            StaffandPitch.getMovingFly().image = UIImage(named: "\(bodyTemp)W1T1")
         }
         FireflyAnimator.setOGImage(image: fireflyPic)
            //FireFlySupport.center = PitchFly.center
@@ -180,5 +202,5 @@ class View{
         FireflyAnimator.setIarray(ImageCount: 8, ImagePrefix: prefix)
            
        }
- */
+ 
 }

@@ -20,8 +20,8 @@ class Wing: Codable{
         self.repetitions = rep
     }
     
-    func setFirstNote(notePattern:NoteType){
-        self.firstNote = notePattern
+    func setFirstNote(note:NoteType){
+        self.firstNote = note
     }
     func setRepetitions(repetitions:Int){
         self.repetitions = repetitions

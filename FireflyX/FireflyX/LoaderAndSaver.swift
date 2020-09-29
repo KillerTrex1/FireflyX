@@ -20,6 +20,7 @@ class LoaderAndSaver{
     }
     static func saveTask(Songs: [Jar],key: String){
         if let encoded = try? JSONEncoder().encode(Songs){
+            print(encoded)
             uDef.set(encoded,forKey: key)
         }
     }

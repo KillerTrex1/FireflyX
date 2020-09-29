@@ -7,15 +7,8 @@
 //
 
 import Foundation
-class PlaybackEngine{
-    static func makeAndPlaySong(mFirefly:Firefly){
-        let newSong = songConverter(nfirefly: mFirefly)
-        print("song tempo: \(newSong.getTempo())")
-        print("song rep:\(newSong.getRepetitions())")
-        print("song beats:\(mFirefly.getTail().getBeatPattern())")
-        SongPlayer.placeSong(song: newSong)
-        SongPlayer.playSong()
-    }
+class SongMaker{
+    
     static func makeSongnoPitch(mFirefly:Firefly)->Song{
         let newSong = songConverter(nfirefly: mFirefly)
         return newSong

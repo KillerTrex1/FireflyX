@@ -202,7 +202,7 @@ class Note:Codable{
         
         return noteS
     }
-    func convertBeat() -> String {
+    func getType() -> String {
         
         switch self.type {
         case .whole:

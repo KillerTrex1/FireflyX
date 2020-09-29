@@ -215,6 +215,7 @@ class ViewController: UIViewController {
     var segueIdentifier: String!
     var FB: FBUploader!
     var WarnView: WarningView!
+    var shownOnce: Bool!
     
     
     @IBOutlet weak var TailPreview: UIImageView!
@@ -237,7 +238,7 @@ class ViewController: UIViewController {
         //View.setArrow(wingArrow: Arrow2, tailArrow: Arrow)
         FireflyAnimator.setImage(flyImageView: PitchFly ,support: FireFlySupport)
         
-        PitchView.setPitchImages(staffImage: Staff, pitchFlyImage: PitchFly, candy0Image: Candy0, candy1Image: Candy1, candy2Image: Candy2, candy3Image: Candy3, candy4Image: Candy4, candy5Image: Candy5, candy6Image: Candy6, candy7Image: Candy7, moveFly: MovingPitchFly, back: BackButton, clear: ClearButton, play: Play, next: NextFButton,settings: ShowSettingsBtn, save: SaveBtn)
+        StaffandPitch.setPitchImages(staffImage: Staff, pitchFlyImage: PitchFly, candy0Image: Candy0, candy1Image: Candy1, candy2Image: Candy2, candy3Image: Candy3, candy4Image: Candy4, candy5Image: Candy5, candy6Image: Candy6, candy7Image: Candy7, moveFly: MovingPitchFly, back: BackButton, clear: ClearButton, play: Play, next: NextFButton,settings: ShowSettingsBtn, save: SaveBtn)
         
         chatView = ChatView(chatImage: Chat)
         
@@ -252,13 +253,16 @@ class ViewController: UIViewController {
         WarnView = WarningView(warn: WarnImage, yes: YesBtn, no: NoBtn, bg: BRBG, ok: Confirm)
         WarnView.bringToFront(view: self.view)
         WarnView.hideWarn()
-        View.toggleBodyTouch(val: true)
+        //View.toggleBodyTouch(val: true)
+        View.hideAllTouchAndDot()
+        
         FB = FBUploader()
-        PitchView.setOrigpointsAndAutoFormatConstraints()
+        StaffandPitch.setOrigpointsAndAutoFormatConstraints()
         addSlots()
         
         //currentTask = -1
         //LoaderAndSaver.saveTask(Songs: [Jar](), key: StringKeys.KeyForJars(task: currentTask))
+        shownOnce = false
         
     }
     
@@ -273,21 +277,27 @@ class ViewController: UIViewController {
         }
         
     }
+    func ChangeTopTouchSize(){
+        let newBHeight = dimensions[wingTemp-1] * 0.28 * -1
+        //print("HEIGHT: \(FireflyImage.frame.size.height)")
+        TopTouchAreaLength.constant = newBHeight
+        let newBWidth = dimensions[wingTemp-1] * 0.15
+        //print("WIDTH: \(FireflyImage.frame.size.width)")
+        TopTouchAreaWidth.constant = newBWidth
+        let newLWHeight = dimensions[wingTemp-1] * 0.20 * -1
+        LeftWingTouchAreaHeight.constant = newLWHeight
+        
+        let newTWidth = dimensions[wingTemp-1] * 0.15 * -1
+        TailTouchAreaWidth.constant = newTWidth
 
+    }
+    
     func goToTaskScreen(){
         segueIdentifier = StringKeys.MainToMenu
         performSegue(withIdentifier: segueIdentifier, sender: self)
         
         
     }
-    @IBAction func openJar(_ sender: Any) {
-        if(flyCtr > 0){
-            WarnView.showWarn(mode: 9)
-        }else{
-            WarnView.showWarn(mode: 0)
-        }
-    }
-    
     func startEditing(){
         //StartingJar.isHidden = true
         View.toggleBodyDot(val: false)
@@ -298,15 +308,25 @@ class ViewController: UIViewController {
         //ChatOption.isHidden = false
         JFly0.isHidden = true
         flyCtr+=1
-        View.toggleBodyTouch(val: false)
+        //View.toggleBodyTouch(val: false)
+        View.showAllTouchAreas()
     }
     
-    
+    @IBAction func openJar(_ sender: Any) {
+        if(flyCtr > 0){
+            WarnView.showWarn(mode: 9)
+        }else{
+            WarnView.showWarn(mode: 0)
+        }
+    }
+
     func startPlayback(){
         //let time = NSDate().timeIntervalSince1970
+        Songs.replace(index: LoadedIndex, song: fSong)
+        saveJar()
         FB.uploadJar(jar:Songs)
-        PitchView.clearAll()
-        PitchView.shouldHide(val: false)
+        StaffandPitch.clearAll()
+        StaffandPitch.shouldHide(val: false)
         View.hideAll(val: true)
         JarFlies.hideAllFlies()
         View.hideCork(val: true)
@@ -316,7 +336,7 @@ class ViewController: UIViewController {
         
         //print(Songs.getSongs()[0].getNotes()[0].convertToMIDI())
         //print(Songs.getSongs()[0].getNotes()[0].getPitchIndex())
-        PitchView.showCandies(notes: Songs.getSongs()[0].getNotes())
+        StaffandPitch.showCandies(notes: Songs.getSongs()[0].getNotes())
         
         //print(Songs.getSongs()[0].getRepeatedNotes().count)
         //PitchView.prepareMoveFly()
@@ -363,41 +383,9 @@ class ViewController: UIViewController {
             }
             pSlots.append(array)
         }
-        PitchView.setSlots(slotArray: pSlots)
+        StaffandPitch.setSlots(slotArray: pSlots)
         
     }
-
-    
-    
-    func lockProgress(){
-        Locks.reset()
-        View.tailArrowAppear(val: false)
-        View.wingArrowAppear(val: false)
-
-        
-        if(flyCtr>0){
-            DotTop.isHidden = false
-        }
-        
-        View.toggleBody(val:true)
-        View.toggleBodyTouch(val: false)
-        
-        View.toggleWing1(val:true)
-        View.toggleWing1Touch(val:true)
-        
-        View.toggleWing2Touch(val:true)
-        View.toggleWing2(val:true)
-        
-        View.toggleTailTouch(val:true)
-        View.toggleTail(val:true)
-        
-        //Play.isHidden = true
-        View.toggleFeed(val: true)
-    }
-
-
- 
-    
     @IBAction func RedBody(_ sender: Any) {
         if bodyTemp != "R"{
             preWarnCheckBodyChange(Bcolor: "R")
@@ -440,9 +428,11 @@ class ViewController: UIViewController {
         UpdateImage()
         TailBtnView.UpdateTailOptions(isSingle: previousWhole,bodyTemp: bodyTemp)
         if(Locks.unlockW()){
+            //View.toggleWing1Touch(val:false)
+            View.toggleW1Dot(val: false)
+            //View.toggleWing2Touch(val:false)
+            View.toggleW2Dot(val: false)
             
-            View.toggleWing2Touch(val:false)
-            View.toggleWing1Touch(val:false)
         }
     }
 
@@ -492,7 +482,8 @@ class ViewController: UIViewController {
     
     func checkTailLock(){
         if Locks.checkT(){
-            View.toggleTailTouch(val:false)
+            //View.toggleTailTouch(val:false)
+            View.toggleTDot(val: false)
         }
     }
  
@@ -501,9 +492,11 @@ class ViewController: UIViewController {
     }
     func changeToW(){
         if !restToggle {
-            wing.firstNote = NoteType.whole
+            wing.setFirstNote(note: NoteType.whole)
+            //wing.firstNote = NoteType.whole
         }else{
-            wing.firstNote = NoteType.wholeRest
+            wing.setFirstNote(note: NoteType.wholeRest)
+            //wing.firstNote = NoteType.wholeRest
         }
         changeFirstNote(fNoteIndex: 1)
         if Locks.checkT(){
@@ -521,9 +514,11 @@ class ViewController: UIViewController {
     }
     func changeToH(){
         if !restToggle {
-            wing.firstNote = NoteType.half
+            wing.setFirstNote(note: NoteType.half)
+            //wing.firstNote = NoteType.half
         }else{
-            wing.firstNote = NoteType.halfRest
+            wing.setFirstNote(note: NoteType.halfRest)
+            //wing.firstNote = NoteType.halfRest
         }
         changeFirstNote(fNoteIndex: 2)
         if !Locks.checkP(){
@@ -537,9 +532,11 @@ class ViewController: UIViewController {
     }
     func changeToQ(){
         if !restToggle {
-            wing.firstNote = NoteType.quarter
+            wing.setFirstNote(note: NoteType.quarter)
+            //wing.firstNote = NoteType.quarter
         }else{
-            wing.firstNote = NoteType.quarterRest
+            wing.setFirstNote(note: NoteType.quarterRest)
+            //wing.firstNote = NoteType.quarterRest
         }
         changeFirstNote(fNoteIndex: 3)
         if !Locks.checkP(){
@@ -553,9 +550,11 @@ class ViewController: UIViewController {
     }
     func changeToE(){
         if !restToggle {
-            wing.firstNote = NoteType.eighth
+            wing.setFirstNote(note: NoteType.eighth)
+            //wing.firstNote = NoteType.eighth
         }else{
-            wing.firstNote = NoteType.eighthRest
+            wing.setFirstNote(note: NoteType.eighthRest)
+            //wing.firstNote = NoteType.eighthRest
         }
         changeFirstNote(fNoteIndex: 4)
         if !Locks.checkP(){
@@ -598,24 +597,16 @@ class ViewController: UIViewController {
     func ChangeRest(){
         restToggle = !restToggle
         switch (wing.firstNote){
-        case .eighth:
-            wing.firstNote = .eighthRest
-        case .eighthRest:
-            wing.firstNote = .eighth
-        case .quarter:
-            wing.firstNote = .quarterRest
-        case .quarterRest:
-            wing.firstNote = .quarter
-        case .half:
-            wing.firstNote = .halfRest
-        case .halfRest:
-            wing.firstNote = .half
-        case.whole:
-            wing.firstNote = .wholeRest
-        case.wholeRest:
-            wing.firstNote = .whole
+            
+        case .eighth,.eighthRest:
+            changeToE()
+        case .quarter,.quarterRest:
+            changeToQ()
+        case .half,.halfRest:
+            changeToH()
+        case .whole,.wholeRest:
+            changeToW()
         }
-        
         if restToggle{
             RestLever.setImage(UIImage(named:"rightLever"), for: .normal)
             chatView.chatChangeLeverToRest(bodyTemp: bodyTemp)
@@ -625,6 +616,7 @@ class ViewController: UIViewController {
         }
         W2BtnView.UpdateWingOptionsImages(isRest: restToggle)
         UpdateImage()
+        
         tail.setBeatPattern(beatType: wing.getNFirstNote(), Bindex: curTail)
     }
     
@@ -661,19 +653,20 @@ class ViewController: UIViewController {
     
     func changeTail(index:Int,fromTail:Bool){
         curTail = index
-        Chat.isHidden = true
+        
         tail.setBeatPattern(beatType: wing.getNFirstNote(), Bindex: index)
         
         
         //MoveArrow(mArrow: Arrow, stack: TailOptions, Sindex: index)
         //arrowApppear =  true
         if fromTail{
+            Chat.isHidden = true
             if(Locks.unlockP()){
                 View.toggleFeed(val: false)
                 //Play.isHidden = false
             }
             View.tailArrowAppear(val: true)
-            print("TAIL")
+            //print("TAIL")
         }
         //View.tailArrowAppear(val: true)
         View.changeTailPreview(isRest: restToggle, NoteValue: Lookups.NoteValueLookup(type: wing.getNFirstNote()) , BeatIndex: tail.getBeatIndex())
@@ -687,74 +680,55 @@ class ViewController: UIViewController {
         View.toggleBodyDot(val: true)
     }
     
-    @IBAction func Wing2Touch(_ sender: Any) {
-        View.toggleWing2(val:!Wing2Wood.isHidden)
-        View.toggleW2Dot(val: true)
-        //DotW2.isHidden = true
-    }
-    
     @IBAction func Wing1Touch(_ sender: Any) {
-        View.toggleWing1(val:!Wing1Wood.isHidden)
-        View.toggleW1Dot(val: true)
+        if !Locks.checkW() {
+            View.toggleWing1(val:!Wing1Wood.isHidden)
+            View.toggleW1Dot(val: true)
+        }else{
+                WarnView.showWarn(mode: 10)
+            }
+        
         //DotW1.isHidden = true
     }
     
-    @IBAction func TailTouch(_ sender: Any) {
+    @IBAction func Wing2Touch(_ sender: Any) {
+        if !Locks.checkW() {
+            View.toggleWing2(val:!Wing2Wood.isHidden)
+            View.toggleW2Dot(val: true)
+        }else{
+            WarnView.showWarn(mode: 10)
+        }
         
-        View.toggleTail(val:!TailWood.isHidden)
-        View.toggleTDot(val: true)
+        //DotW2.isHidden = true
+        
+    }
+    
+
+    
+    @IBAction func TailTouch(_ sender: Any) {
+        if Locks.checkT(){
+            View.toggleTail(val:!TailWood.isHidden)
+            View.toggleTDot(val: true)
+        }else{
+            if Locks.checkT1() && Locks.checkT2(){
+                WarnView.showWarn(mode: 13)
+            }else if Locks.checkT1(){
+                WarnView.showWarn(mode: 11)
+            }else{
+                WarnView.showWarn(mode: 12)
+            }
+        }
+        
         //DotBottom.isHidden = true
     }
 
 
 
     func UpdateImage(){
-        //FireflyAnimator.ResetAnimate()
-        var fireflyPic: UIImage!
-        if  restToggle{
-            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1R")
-            FireflyImage.image = fireflyPic
-            FireflyAnimator.setAnimationMode(isRest: true)
-            
-            
-            PitchFly.image = fireflyPic
-            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T1R")
- 
-        }else{
-            fireflyPic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1")
-            
-            FireflyImage.image = fireflyPic
-            FireflyAnimator.setAnimationMode(isRest: false)
-
-            
-            PitchFly.image = fireflyPic
-            MovingPitchFly.image = UIImage(named: "\(bodyTemp)W1T1")
-        }
-        FireflyAnimator.setOGImage(image: fireflyPic)
-        //FireFlySupport.center = PitchFly.center
-        var pic: UIImage!
-        pic = UIImage(named: "\(bodyTemp)W\(wingTemp)T1R")
-        FireflyAnimator.setRestImage(image: pic)
-        
-        let prefix = "\(bodyTemp)W\(wingTemp)C"
-        FireflyAnimator.setIarray(ImageCount: 8, ImagePrefix: prefix)
-        
+        View.UpdateImage(bodyTemp: bodyTemp, wingTemp: wingTemp, restToggle: restToggle)
     }
  
-    func ChangeTopTouchSize(){
-        let newBHeight = dimensions[wingTemp-1] * 0.28 * -1
-        //print("HEIGHT: \(FireflyImage.frame.size.height)")
-        TopTouchAreaLength.constant = newBHeight
-        let newBWidth = dimensions[wingTemp-1] * 0.15
-        //print("WIDTH: \(FireflyImage.frame.size.width)")
-        TopTouchAreaWidth.constant = newBWidth
-        let newLWHeight = dimensions[wingTemp-1] * 0.20 * -1
-        LeftWingTouchAreaHeight.constant = newLWHeight
-        
-        let newTWidth = dimensions[wingTemp-1] * 0.15 * -1
-        TailTouchAreaWidth.constant = newTWidth
 
-    }
     
     @IBAction func CandyAction0(_ gesture: UIPanGestureRecognizer) {
         gestureActions(gesture: gesture, index: 0)
@@ -795,7 +769,7 @@ class ViewController: UIViewController {
 
           if gesture.state == .began {
             prevPoint = gestureView.center
-            PitchView.revealSlots(val: index)
+            StaffandPitch.revealSlots(val: index)
           }else if gesture.state == .changed {
 
               let translation = gesture.translation(in: view)
@@ -807,14 +781,14 @@ class ViewController: UIViewController {
               gesture.setTranslation(.zero, in: view)
           }else{
             //PitchView.hideCandies()
-            PitchView.hideSlots(val: index)
-            let pitchVal = PitchView.trySnap(val: index)
+            StaffandPitch.hideSlots(val: index)
+            let pitchVal = StaffandPitch.trySnap(val: index)
             if pitchVal == -1{
                 gestureView.center = prevPoint
                 //print(gestureView.center.x)
                 //print(gestureView.center.y)
             }else{
-                PitchView.takeSlot(notenum: index, pitchnum: pitchVal)
+                StaffandPitch.takeSlot(notenum: index, pitchnum: pitchVal)
                 if(fSong.getNotes()[index].isRest()){
                     fSong.getNotes()[index].changePitch(pitchIndex: 12)
                     //12 is rest
@@ -823,30 +797,15 @@ class ViewController: UIViewController {
                     SongPlayer.playNote(note: fSong.getNotes()[index])
                 }
                 
-                PitchView.checkReady()
+                StaffandPitch.checkReady()
             }
 
-              
           }
     }
     @IBAction func ShowPitch(_ sender: Any) {
-        
-        PitchView.shouldHide(val: false)
-        
-        View.hideAll(val: true)
         //FeedBtn.isHidden = true
         let newFly = Firefly(nBody: body, nWing: wing, nTail: tail)
-        fSong = PlaybackEngine.makeSongnoPitch(mFirefly: newFly)
-        PitchView.showCandies(notes: fSong.getNotes())
-        chatView.forcedHideChat()
-        
-        PitchView.checkReady()
-        if currentTask == 2{
-            WarnView.showWarn(mode: 2)
-            PitchView.disableCandies()
-        }
-        
-        
+        fSong = SongMaker.makeSongnoPitch(mFirefly: newFly)
         if !LoadedFly{
             Songs.addSong(song: fSong)
             flyCtr+=1
@@ -859,12 +818,31 @@ class ViewController: UIViewController {
             Songs.replace(index: LoadedIndex, song: fSong)
 
         }
-        saveJar()
+        
+        View.hideAll(val: true)
+        StaffandPitch.shouldHide(val: false)
+        //print("FLYCTR \(flyCtr)")
         if flyCtr > 4{
-            PitchView.setFull(val: true)
+            StaffandPitch.setFull(val: true)
         }else{
-            PitchView.setFull(val: false)
+            StaffandPitch.setFull(val: false)
         }
+        
+        StaffandPitch.showCandies(notes: fSong.getNotes())
+        chatView.forcedHideChat()
+        
+        //PitchView.checkReady()
+        if currentTask == 2{
+            if !shownOnce{
+                WarnView.showWarn(mode: 2)
+                shownOnce = true
+            }
+            
+            StaffandPitch.disableCandies()
+        }
+        saveJar()
+        
+        
     }
     @IBAction func BackPitch(_ sender: Any) {
         //print("test")
@@ -878,39 +856,28 @@ class ViewController: UIViewController {
         
         //PitchView.clearAll()
         //PitchView.hideCandies()
-        PitchView.clearAll()
-        PitchView.shouldHide(val: true)
-        //PitchFly.isHidden = true
-        //FireFlySupport.isHidden = true
-        //NextFButton.isHidden = true
-        
-        
+        StaffandPitch.clearAll()
+        StaffandPitch.shouldHide(val: true)
     }
     @IBAction func clearPitch(_ sender: Any) {
-        PitchView.clearAll()
+        StaffandPitch.clearAll()
         fSong.removePitch()
-        PitchView.showCandies(notes: fSong.getNotes())
+        StaffandPitch.showCandies(notes: fSong.getNotes())
     }
     
     @IBAction func PreviewPitch(_ sender: Any) {
 
-        
-        //PitchView.prepareMoveFly(forPreview: true)
-        Play.isHidden = true
-        //print(fSong.getRepeatedNotes().count)
         SongPlayer.placeSong(song: fSong)
         SongPlayer.playSong()
     }
 
-    @IBAction func funcHideOrShowChat(_ sender: Any) {
-        pause.changeChatButtonImage(val: chatView.hideShowChat())
 
-    }
     
     @IBAction func NextFly(_ sender: Any) {
         WarnView.showWarn(mode: 1)
         //PitchView.clearAll()
     }
+    
     @IBAction func SaveJar(_ sender: Any) {
         WarnView.showWarn(mode: 7)
         saveButtonAction()
@@ -952,7 +919,13 @@ class ViewController: UIViewController {
     @IBAction func showSettingsMenu(_ sender: Any) {
         pause.showSettings()
     }
-    
+    @IBAction func ChangeWingSymbols(_ sender: Any) {
+        pause.changeWOptionBtnImage(val: W2BtnView.changeWingOptionsImages(isRest: restToggle))
+    }
+    @IBAction func funcHideOrShowChat(_ sender: Any) {
+        pause.changeChatButtonImage(val: chatView.hideShowChat())
+
+    }
     @IBAction func hidePauseMenu(_ sender: Any) {
         exitPause()
     }
@@ -967,6 +940,8 @@ class ViewController: UIViewController {
     func exitPause(){
         pause.unpause()
     }
+    
+    
     
     @IBAction func ExitTask(_ sender: Any) {
         pause.unpause()
@@ -1056,20 +1031,23 @@ class ViewController: UIViewController {
         
     }
     func newJar(){
+        Songs = Jar()
         backFromPitch()
         body = Body()
         bodyTemp = "Y"
         bodyChange(Bcolor: "Y")
         resetMainView()
         
-        
-        
-
         pause.unpause()
         View.hideAll(val: true)
-        View.toggleBodyTouch(val: true)
+        
+        //View.toggleBodyTouch(val: true)
+        View.hideAllTouchAndDot()
+        
         flyCtr = -1
         JarIndex = -1
+        LoadedFly = false
+        LoadedIndex = -1
         
         JarFlies.hideAllFlies()
         JarFlies.hideFly(index: 0, val: false)
@@ -1077,12 +1055,8 @@ class ViewController: UIViewController {
         
         pause.startName()
         
-        
     }
     
-    @IBAction func ChangeWingSymbols(_ sender: Any) {
-        pause.changeWOptionBtnImage(val: W2BtnView.changeWingOptionsImages(isRest: restToggle))
-    }
     
     @IBAction func JFly0Load(_ sender: Any) {
         if flyCtr < 0{
@@ -1116,7 +1090,8 @@ class ViewController: UIViewController {
             JarFlies.hideFly(index: LoadedIndex, val: false)
         }
         backFromPitch()
-        lockProgress()
+        resetMainView()
+        
         skipFirstProgressStep()
         JarFlies.hideFly(index: index, val: true)
         LoadedFly = true
@@ -1140,46 +1115,47 @@ class ViewController: UIViewController {
         }
         changeTail(index: fSong.getFirefly().getTail().beatIndex , fromTail: true)
         View.hideAll(val: true)
-        PitchView.shouldHide(val: false)
+        StaffandPitch.shouldHide(val: false)
           //FeedBtn.isHidden = true
-        PitchView.showCandies(notes: fSong.getNotes())
+        StaffandPitch.showCandies(notes: fSong.getNotes())
         if currentTask == 2{
-            WarnView.showWarn(mode: 2)
-            PitchView.disableCandies()
+            if !shownOnce{
+                WarnView.showWarn(mode: 2)
+                shownOnce = true
+            }
+            StaffandPitch.disableCandies()
         }
         chatView.forcedHideChat()
-        PitchView.checkReady()
+        StaffandPitch.checkReady()
         if flyCtr > 4{
-            PitchView.setFull(val: true)
+            StaffandPitch.setFull(val: true)
         }else{
-            PitchView.setFull(val: false)
+            StaffandPitch.setFull(val: false)
         }
 
 
     }
-    func skipFirstProgressStep(){
-        View.toggleBody(val: false)
-        bodyChange(Bcolor: bodyTemp)
-        DotTop.isHidden = true
+
+    func loadJar(newJar:Jar,jarIndex:Int){
+        
+        if flyCtr == -1{
+            startEditing()
+        }
+        JarFlies.hideAllFlies()
+        Songs = newJar
+        JarIndex = jarIndex
+        flyCtr = newJar.getSongs().count
+        
+        print(Songs.getSongs().count)
+        LoadedFly = false
+        JarFlies.loadFlies(count: Songs.getSongs().count-1)
+        
+        bodyChange(Bcolor: Lookups.colorsStringLookup(color: Songs.getSongs()[0].getFirefly().body.getColor()))
+        
+        LoadFlyInJar(index: Songs.getSongs().count - 1)
+        
     }
     
-    func resetViewWithSelectedColor(){
-        //backFromPitch()
-        resetMainView()
-        
-        skipFirstProgressStep()
-    }
-    func resetMainView(){
-        wing = Wing()
-        body = Body()
-        tail = Tail()
-        changeWingSize(num: 1)
-        wingTemp = 1
-        if restToggle {
-            ChangeRest()
-        }
-        lockProgress()
-    }
     @IBAction func goToLoadScreen(_ sender: Any) {
         let tempJars = LoaderAndSaver.loadTask(key:StringKeys.KeyForJars(task: currentTask))
         pause.unpause()
@@ -1188,7 +1164,6 @@ class ViewController: UIViewController {
         }else{
             WarnView.showWarn(mode: 4,view: self.view)
         }
-        
         
     }
     func loadButtonAction(){
@@ -1208,21 +1183,61 @@ class ViewController: UIViewController {
             
         }
     }
-    func loadJar(newJar:Jar,jarIndex:Int){
-        
-        if flyCtr == -1{
-            startEditing()
-        }
-        Songs = newJar
-        JarIndex = jarIndex
-        flyCtr = newJar.getSongs().count
-        JarFlies.loadFlies(count: Songs.getSongs().count-1)
-        bodyChange(Bcolor: Lookups.colorsStringLookup(color: Songs.getSongs()[0].getFirefly().body.getColor()))
-        
-        LoadFlyInJar(index: Songs.getSongs().count - 1)
-        
+    
+    
+    func skipFirstProgressStep(){
+        View.toggleBody(val: false)
+        bodyChange(Bcolor: bodyTemp)
+        View.toggleBodyDot(val: true)
     }
+    
+    func resetViewWithSelectedColor(){
+        //backFromPitch()
+        resetMainView()
+        
+        skipFirstProgressStep()
+    }
+    func resetMainView(){
+        wing = Wing()
+        body = Body()
+        tail = Tail()
+        changeWingSize(num: 1)
+        wingTemp = 1
+        if restToggle {
+            ChangeRest()
+        }
+        lockProgress()
+    }
+    func lockProgress(){
+        Locks.reset()
+        View.tailArrowAppear(val: false)
+        View.wingArrowAppear(val: false)
 
+        
+        if(flyCtr>0){
+            DotTop.isHidden = false
+        }
+        View.showAllTouchAreas()
+        
+        View.toggleBodyDot(val: false)
+        View.toggleBody(val:true)
+        //View.toggleBodyTouch(val: false)
+        
+        View.toggleW1Dot(val: true)
+        View.toggleWing1(val:true)
+        //View.toggleWing1Touch(val:true)
+        
+        View.toggleW2Dot(val: true)
+        //View.toggleWing2Touch(val:true)
+        View.toggleWing2(val:true)
+        
+        View.toggleTDot(val: true)
+        //View.toggleTailTouch(val:true)
+        View.toggleTail(val:true)
+        
+        //Play.isHidden = true
+        View.toggleFeed(val: true)
+    }
 }
 
 
@@ -1239,6 +1254,9 @@ extension ViewController: AssignTaskDelegate{
     func AssignTask(taskNo: Int) {
         self.dismiss(animated: true){
             self.currentTask = taskNo
+            if taskNo == 2{
+                self.shownOnce = false
+            }
             self.newJar()
             //print(self.currentTask)
         }

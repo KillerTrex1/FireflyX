@@ -47,7 +47,10 @@ class SongPlayer{
         
         
         if fullMode{
-            PitchView.prepareMoveFly(forPreview: false)
+            let curSong = curJar.getSongs()[0]
+            View.UpdateImage(bodyTemp: Lookups.colorsStringLookup(color: curSong.getFirefly().getBody().getColor()), wingTemp: curSong.getRepetitions(), restToggle: curSong.getNotes()[0].isRest())
+            StaffandPitch.prepareMoveFly(forPreview: false)
+            StaffandPitch.getPitchFly().isHidden = false
             self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curJar.getSongs()[0].getTempo() * 0.5, // 1/128 = 0.0078125
             repeats: true,
             block: {_ in self.optimizedPlaybackLoop(
@@ -55,7 +58,7 @@ class SongPlayer{
                     sampler: self.audioEngine.sampler
                 )})
         }else{
-            PitchView.prepareMoveFly(forPreview: true)
+            StaffandPitch.prepareMoveFly(forPreview: true)
             self.timer = Timer.scheduledTimer(withTimeInterval: 60 / self.curSong.getTempo() * 0.5, // 1/128 = 0.0078125
             repeats: true,
             block: {_ in self.optimizedPlaybackLoop(
@@ -87,13 +90,13 @@ class SongPlayer{
                 //}else{
                 FireflyAnimator.endAnimation()
                     //View.hidePanels(val: false)
-                PitchView.endMoveFly()
+                StaffandPitch.endMoveFly()
                 if(fullMode){
                     
-                    PitchView.hideCandies()
-                    PitchView.clearAll()
+                    StaffandPitch.hideCandies()
+                    StaffandPitch.clearAll()
                     //PitchView.clearAll()
-                    PitchView.shouldHide(val: true)
+                    StaffandPitch.shouldHide(val: true)
                     View.hideAll(val: false)
                     View.jarFlyAppear(index: fullSongIndex)
                     fullSongIndex = 0
@@ -112,18 +115,21 @@ class SongPlayer{
             //print("Current MIDI Note Played: \(currNote.convertBeat())")
             //print(currNoteIndex)
             
-            if fullMode && self.currNoteIndex != notes.count - 1{
+            if fullMode && self.currNoteIndex != notes.count {
                 if currNoteIndex == curJar.getChangeIndexes()[fullSongIndex]{
                     View.jarFlyAppear(index: fullSongIndex)
                     fullSongIndex+=1
-                    PitchView.hideCandies()
-                    PitchView.clearAll()
-                    PitchView.showCandies(notes: curJar.getSongs()[fullSongIndex].getNotes())
-                    PitchView.prepareMoveFly(forPreview: false)
+                    StaffandPitch.hideCandies()
+                    StaffandPitch.clearAll()
+                    let curSong = curJar.getSongs()[fullSongIndex]
+                    View.UpdateImage(bodyTemp: Lookups.colorsStringLookup(color: curSong.getFirefly().getBody().getColor()), wingTemp: curSong.getRepetitions(), restToggle: curSong.getNotes()[0].isRest())
+                    
+                    StaffandPitch.showCandies(notes: curSong.getNotes())
+                    StaffandPitch.prepareMoveFly(forPreview: false)
                 }
             }
             
-            PitchView.nextNoteMove()
+            StaffandPitch.nextNoteMove()
             
             //PitchView.retainCandies()
             // get the MIDI number of current note and play it using the sampler
@@ -137,7 +143,7 @@ class SongPlayer{
                     FireflyAnimator.animateImageOnce(duration: (60.0 / self.curJar.getTempo() *  0.5) * self.currNote.getValue())
                 }else{
                     FireflyAnimator.animateImageOnce(duration: (60.0 / self.curSong.getTempo() *  0.5) * self.currNote.getValue())
-                    print("DURATION OF NOTE: \((60.0 / self.curSong.getTempo() * (self.currNote.getValue() )))")
+                    //print("DURATION OF NOTE: \((60.0 / self.curSong.getTempo() * (self.currNote.getValue() )))")
                 }
             }
             

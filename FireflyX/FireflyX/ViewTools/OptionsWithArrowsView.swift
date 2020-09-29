@@ -42,9 +42,10 @@ class OptionsWithArrowsView: OptionsView {
         
         ArrowWidth = Arrow.frame.size.width
         let xLocation = Options.frame.origin.x + curElementLocation + ( elementWidth / 2.0) - (ArrowWidth / 2.0)
-        let ArrowHeight: CGFloat!
-        ArrowHeight = Arrow.frame.size.height
-        let yLocation = Options.frame.origin.y - ArrowHeight - 3
+        //let ArrowHeight: CGFloat!
+        //ArrowHeight = Arrow.frame.size.height
+        let yLocation = Background.frame.origin.y
+        //Options.frame.origin.y - ArrowHeight - 3
         if ArrowAppear{
             Arrow.isHidden = false
         }

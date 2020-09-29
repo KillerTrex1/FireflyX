@@ -26,11 +26,19 @@ class DotAndTouchArea{
         dot.isHidden = val
     }
     
-    func toggleArea(val: Bool){
+    func toggleAreaForViewChange(val: Bool){
         
         area.isHidden = val
         if val{
             dot.isHidden = val
         }
     }
+    
+    func toggleArea(val: Bool){
+        area.isHidden = val
+        
+    }
+    
+    
+    
 }

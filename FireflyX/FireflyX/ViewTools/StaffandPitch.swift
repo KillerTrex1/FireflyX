@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class PitchView{
+class StaffandPitch{
     static var staff: UIImageView!
     //static var tray: UIImageView!
     static var pitchFly: UIImageView!
@@ -81,12 +81,13 @@ class PitchView{
         pitchSLots = slotArray
     }
     static func showCandies(notes:[Note]){
+        hideCandies()
         clearAll()
         let hasPitch = notes[0].convertToMIDI() != -1
         for i in 0 ..< notes.count{
             var CImage: UIImage!
-            print(notes[i].convertBeat())
-            switch notes[i].convertBeat(){
+            //print(notes[i].convertBeat())
+            switch notes[i].getType(){
             case "W":
                 CImage  = UIImage(named: "tcw2")
             case "Wr":
@@ -116,10 +117,10 @@ class PitchView{
                 //print("HAS PITCH")
                 takeSlot(notenum: i, pitchnum: pIndex)
                 snap(candy: candies[i], pitchSlot: pitchSLots[i][pIndex].pitchSlot)
-                print("candy")
-                print(candies[i].center.x)
-                print(candies[i].center.y)
-                print(i)
+                //print("candy")
+                //print(candies[i].center.x)
+                //print(candies[i].center.y)
+                //print(i)
                 if notes[i].isRest(){
                     candies[i].isUserInteractionEnabled = false
                     candies[i].alpha = 0.8
@@ -204,7 +205,6 @@ class PitchView{
             candies[i].center = origPoints[i]
             pitchPlaymap[i] = -1
         }
-        //hidePlayNext(val: true)
     }
     
     static func checkReady(){
@@ -248,7 +248,7 @@ class PitchView{
         saveBtn.isHidden = val
         pitchFly.isHidden = val
         hidePlayNext(val: val)
-        print(previewMode)
+        //print(previewMode)
         if previewMode{
             View.hideJarStuffForPreview(val: val)
         }
@@ -297,7 +297,11 @@ class PitchView{
     }
     static func hidePlayNext(val: Bool){
         playBtn.isHidden = val
-        if !fullMode{
+        //print("FULLL")
+        //print(fullMode)
+        if fullMode{
+            nextFBtn.isHidden = true
+        }else{
             nextFBtn.isHidden = val
         }
     }

@@ -113,13 +113,13 @@
                                 <rect key="frame" x="272" y="91" width="752" height="386"/>
                             </imageView>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Dq-W9-II2">
-                                <rect key="frame" x="632.5" y="170.5" width="31" height="227"/>
+                                <rect key="frame" x="632.5" y="170" width="31" height="228"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="4jG-2z-KmB">
-                                        <rect key="frame" x="0.0" y="0.0" width="31" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="31" height="110.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t3y-ju-gZS">
-                                                <rect key="frame" x="0.0" y="0.0" width="1" height="110"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="1" height="110.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw1"/>
                                                 <connections>
@@ -127,7 +127,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="csx-wJ-hFF">
-                                                <rect key="frame" x="15" y="0.0" width="1" height="110"/>
+                                                <rect key="frame" x="15" y="0.0" width="1" height="110.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw2"/>
                                                 <connections>
@@ -135,7 +135,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cse-om-TMV">
-                                                <rect key="frame" x="30" y="0.0" width="1" height="110"/>
+                                                <rect key="frame" x="30" y="0.0" width="1" height="110.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw3"/>
                                                 <connections>
@@ -145,10 +145,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-9L-gXJ">
-                                        <rect key="frame" x="0.0" y="110" width="31" height="117"/>
+                                        <rect key="frame" x="0.0" y="110.5" width="31" height="117.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nPi-t8-cVg">
-                                                <rect key="frame" x="0.0" y="0.0" width="1" height="117"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="1" height="117.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw4"/>
                                                 <connections>
@@ -156,7 +156,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="maI-I1-jmo">
-                                                <rect key="frame" x="15" y="0.0" width="1" height="117"/>
+                                                <rect key="frame" x="15" y="0.0" width="1" height="117.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw5"/>
                                                 <connections>
@@ -164,7 +164,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bcz-jC-eYx">
-                                                <rect key="frame" x="30" y="0.0" width="1" height="117"/>
+                                                <rect key="frame" x="30" y="0.0" width="1" height="117.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="rw6"/>
                                                 <connections>
@@ -277,45 +277,45 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1u-l4-VmB">
-                                <rect key="frame" x="6.5" y="260" width="172" height="288"/>
+                                <rect key="frame" x="5" y="262" width="1" height="286"/>
                                 <state key="normal" image="cork"/>
                                 <connections>
                                     <action selector="openJar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ai8-DL-Hmv"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="jarlidless" translatesAutoresizingMaskIntoConstraints="NO" id="xSs-KG-qQj">
-                                <rect key="frame" x="0.0" y="198" width="175" height="570"/>
+                                <rect key="frame" x="0.0" y="198" width="1" height="570"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIO-sL-8gi">
-                                <rect key="frame" x="30" y="400" width="50" height="100"/>
+                                <rect key="frame" x="-8" y="402" width="1" height="100"/>
                                 <state key="normal" image="JYFly"/>
                                 <connections>
                                     <action selector="JFly0Load:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A0I-Nr-aYU"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRO-l6-zxk">
-                                <rect key="frame" x="105" y="400" width="50" height="100"/>
+                                <rect key="frame" x="18" y="402" width="1" height="100"/>
                                 <state key="normal" image="JYFly"/>
                                 <connections>
                                     <action selector="JFly1Load:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UeB-SA-1q9"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rja-XJ-z0h">
-                                <rect key="frame" x="30" y="510" width="50" height="100"/>
+                                <rect key="frame" x="-8" y="512" width="1" height="100"/>
                                 <state key="normal" image="JYFly"/>
                                 <connections>
                                     <action selector="JFly2Load:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bzw-hT-LTJ"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHm-ie-ZbF">
-                                <rect key="frame" x="105" y="510" width="50" height="100"/>
+                                <rect key="frame" x="18" y="512" width="1" height="100"/>
                                 <state key="normal" image="JYFly"/>
                                 <connections>
                                     <action selector="JFly3Load:" destination="BYZ-38-t0r" eventType="touchUpInside" id="156-1R-gwI"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aP0-jH-ozO">
-                                <rect key="frame" x="67.5" y="620" width="50" height="100"/>
+                                <rect key="frame" x="5" y="622" width="1" height="100"/>
                                 <state key="normal" image="JYFly"/>
                                 <connections>
                                     <action selector="JFly4Load:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUi-Om-cMv"/>
@@ -386,7 +386,7 @@
                                 </connections>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="PR10" translatesAutoresizingMaskIntoConstraints="NO" id="jLG-tT-7A3">
-                                <rect key="frame" x="175" y="522" width="838" height="242"/>
+                                <rect key="frame" x="1" y="522" width="1" height="242"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YW1T1" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yY9-4q-EjE">
                                 <rect key="frame" x="-49" y="140" width="300" height="300"/>
@@ -498,28 +498,28 @@
                                 <rect key="frame" x="160" y="668" width="744" height="200"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t20-sB-zvE" userLabel="PreviewBtn">
-                                <rect key="frame" x="195" y="508" width="200" height="260"/>
+                                <rect key="frame" x="21" y="508" width="1" height="260"/>
                                 <state key="normal" image="PlayWood"/>
                                 <connections>
                                     <action selector="PreviewPitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7X-6V-sJ6"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBx-2W-VSX">
-                                <rect key="frame" x="355" y="508" width="200" height="260"/>
+                                <rect key="frame" x="-18" y="508" width="1" height="260"/>
                                 <state key="normal" image="Clear Button"/>
                                 <connections>
                                     <action selector="clearPitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ePx-us-7xG"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8kx-Yc-Zg8">
-                                <rect key="frame" x="515" y="508" width="200" height="260"/>
+                                <rect key="frame" x="-57" y="508" width="1" height="260"/>
                                 <state key="normal" image="Back Button"/>
                                 <connections>
                                     <action selector="BackPitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9CC-G5-g4F"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLF-vA-Yi7">
-                                <rect key="frame" x="675" y="508" width="200" height="260"/>
+                                <rect key="frame" x="-96" y="508" width="1" height="260"/>
                                 <state key="normal" image="Save"/>
                                 <connections>
                                     <action selector="SaveJar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cb5-09-aas"/>
@@ -1087,7 +1087,7 @@
         <image name="bg" width="960" height="720"/>
         <image name="ce2" width="114" height="100"/>
         <image name="confirmBtn" width="121" height="34"/>
-        <image name="cork" width="172" height="144"/>
+        <image name="cork" width="172" height="143"/>
         <image name="jarlidless" width="175" height="285"/>
         <image name="leftLever" width="102" height="102"/>
         <image name="menubg" width="1024" height="768"/>
